@@ -1,0 +1,19 @@
+# robots.txt - GlobalIncom
+# Fecha: 29/nov/2025
+
+# Permitir acceso a todos los bots
+User-agent: *
+Allow: /
+
+# Descartar archivos específicos
+Disallow: /admin/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: *.pdf
+Disallow: *.zip
+
+# Referencia al Sitemap XML
+Sitemap: https://globalincom.com.mx/sitemap.xml
+
+# Especificar crawl delay para respetar recursos del servidor
+Crawl-delay: 1

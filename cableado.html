@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cableado Estructurado - Fundamentos y Estadísticas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#000000',
+                            red: '#E31B23',
+                            gray: '#64748b',
+                            lightgray: '#f1f5f9',
+                            darkgray: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-red {
+            background: linear-gradient(to right, #E31B23, #b91c1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-institutional {
+            transition: all 0.3s ease;
+        }
+        .card-institutional:hover {
+            border-color: #E31B23;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+        }
+        .icon-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #E31B23;
+        }
+        .dark .icon-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+        .data-card {
+            transition: all 0.3s ease;
+        }
+        .data-card:hover {
+            border-color: #E31B23;
+            background: #fff1f2;
+        }
+        .dark .data-card:hover {
+            background: #7f1d1d;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-red selection:text-white bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+
+    <!-- Header Section -->
+    <header class="pt-20 pb-12 text-center px-4 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-red-50 dark:bg-red-900/50 blur-[80px] -z-10 rounded-full opacity-80"></div>
+        
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-brand-gray font-semibold tracking-[0.2em] uppercase text-xs mb-4 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 inline-block px-4 py-1 rounded-full shadow-sm">Guía Técnica 2025</h2>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+                Cableado <span class="gradient-red">Estructurado</span>
+            </h1>
+            <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-light">
+                La base invisible de toda infraestructura de red moderna. Comprende los estándares, componentes y mejores prácticas.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 pb-24">
+
+        <!-- MÉTRICAS DE RENDIMIENTO SECTION -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 text-center">Métricas de Rendimiento Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Metric 1 -->
+                <div class="data-card rounded-lg p-6 text-center group transition-all duration-300 shadow-sm bg-red-50/50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 hover:border-red-200 dark:hover:border-red-800">
+                    <div class="text-brand-red mb-3 flex justify-center transform group-hover:scale-110 transition-transform"><svg class="w-10 h-10 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    <h3 class="text-4xl font-bold text-slate-900 dark:text-white mb-1">99.99%</h3>
+                    <p class="text-xs text-brand-red font-bold uppercase tracking-widest mb-2">Confiabilidad</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-light">Garantía de calidad de señal y minimización de errores.</p>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="data-card rounded-lg p-6 text-center group transition-all duration-300 shadow-sm bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-800">
+                    <div class="text-blue-600 mb-3 flex justify-center transform group-hover:scale-110 transition-transform"><svg class="w-10 h-10 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M8 3H6c-1.1 0-2 .9-2 2v10h2V5h2V3zm0 18H6v-2h2v2zm10-2h-2v2h2v-2zm0-14h-2v2h2V5zM4 9v6h16V9H4z"/></svg></div>
+                    <h3 class="text-4xl font-bold text-slate-900 dark:text-white mb-1">100m</h3>
+                    <p class="text-xs text-blue-600 font-bold uppercase tracking-widest mb-2">Distancia Máxima</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-light">La distancia crítica estándar para canales horizontales.</p>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="data-card rounded-lg p-6 text-center group transition-all duration-300 shadow-sm bg-purple-50/50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20 hover:border-purple-200 dark:hover:border-purple-800">
+                    <div class="text-purple-600 mb-3 flex justify-center transform group-hover:scale-110 transition-transform"><svg class="w-10 h-10 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2l3.29 3.29h2.5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h2.5L11 2m1 4h-2v6h-3l5 7 5-7h-3v-6z"/></svg></div>
+                    <h3 class="text-4xl font-bold text-slate-900 dark:text-white mb-1">&lt; 100ms</h3>
+                    <p class="text-xs text-purple-600 font-bold uppercase tracking-widest mb-2">Latencia Ideal</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-light">Fundamental para VoIP, videoconferencia y tiempo real.</p>
+                </div>
+
+                <!-- Metric 4 -->
+                <div class="data-card rounded-lg p-6 text-center group transition-all duration-300 shadow-sm bg-green-50/50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20 hover:border-green-200 dark:hover:border-green-800">
+                    <div class="text-green-600 mb-3 flex justify-center transform group-hover:scale-110 transition-transform"><svg class="w-10 h-10 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16l7-3 7 3V4c0-1.1-.9-2-2-2z"/></svg></div>
+                    <h3 class="text-4xl font-bold text-slate-900 dark:text-white mb-1">568B</h3>
+                    <p class="text-xs text-green-600 font-bold uppercase tracking-widest mb-2">Estándar ANSI/TIA</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-light">Norma internacional para instalación de telecomunicaciones.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CATEGORÍAS SECTION -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 text-center">Comparativa de Categorías</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Cat 5e -->
+                <div class="card-institutional rounded-xl p-8 group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-red dark:hover:border-brand-red">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="icon-box p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-brand-red transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 3H6c-1.1 0-2 .9-2 2v10h2V5h2V3zm0 18H6v-2h2v2zm10-2h-2v2h2v-2zm0-14h-2v2h2V5zM4 9v6h16V9H4z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-300 rounded-sm border border-slate-200 dark:border-slate-600 tracking-widest uppercase">Cat 5e</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors">Cat 5e</h3>
+                    
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Velocidad:</strong> 1 Gbps</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Ancho de Banda:</strong> 100 MHz</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Distancia:</strong> 100 m</span>
+                        </li>
+                    </ul>
+                    
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">El estándar mínimo funcional para redes modernas de oficina.</p>
+                </div>
+
+                <!-- Cat 6 -->
+                <div class="card-institutional rounded-xl p-8 group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-red dark:hover:border-brand-red">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="icon-box p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-brand-red transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 3H6c-1.1 0-2 .9-2 2v10h2V5h2V3zm0 18H6v-2h2v2zm10-2h-2v2h2v-2zm0-14h-2v2h2V5zM4 9v6h16V9H4z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-sm border border-yellow-200 dark:border-yellow-700 tracking-widest uppercase">Cat 6</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors">Cat 6</h3>
+                    
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Velocidad:</strong> 1 / 10 Gbps*</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Ancho de Banda:</strong> 250 MHz</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Distancia (10G):</strong> 37 m</span>
+                        </li>
+                    </ul>
+                    
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">Mejor inmunidad al ruido (*Limitado a 55m o menos).</p>
+                </div>
+
+                <!-- Cat 6A (Recomendado) -->
+                <div class="card-institutional rounded-xl p-8 group relative overflow-hidden bg-white dark:bg-slate-800 border-2 border-brand-red dark:border-brand-red">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 dark:bg-red-900/20 rounded-full -mr-16 -mt-16 opacity-50"></div>
+                    
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="icon-box p-3 rounded-lg bg-red-50 dark:bg-red-900/30 border border-brand-red">
+                            <svg class="w-8 h-8 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M8 3H6c-1.1 0-2 .9-2 2v10h2V5h2V3zm0 18H6v-2h2v2zm10-2h-2v2h2v-2zm0-14h-2v2h2V5zM4 9v6h16V9H4z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-brand-red text-white rounded-sm border border-brand-red tracking-widest uppercase">Recomendado</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors relative z-10">Cat 6A</h3>
+                    
+                    <ul class="space-y-3 text-sm relative z-10">
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Velocidad:</strong> 10 Gbps</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Ancho de Banda:</strong> 500 MHz</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Distancia (10G):</strong> 100 m</span>
+                        </li>
+                    </ul>
+                    
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700 font-semibold relative z-10">El estándar actual para garantizar 10G en todo el canal horizontal.</p>
+                </div>
+
+                <!-- Cat 8 -->
+                <div class="card-institutional rounded-xl p-8 group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-red dark:hover:border-brand-red">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="icon-box p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-brand-red transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 3H6c-1.1 0-2 .9-2 2v10h2V5h2V3zm0 18H6v-2h2v2zm10-2h-2v2h2v-2zm0-14h-2v2h2V5zM4 9v6h16V9H4z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-300 rounded-sm border border-slate-200 dark:border-slate-600 tracking-widest uppercase">Cat 8</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors">Cat 8</h3>
+                    
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Velocidad:</strong> 25 / 40 Gbps</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Ancho de Banda:</strong> 2000 MHz</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-brand-red rounded-full"></div>
+                            <span class="text-slate-600 dark:text-slate-400"><strong>Distancia (40G):</strong> 30 m</span>
+                        </li>
+                    </ul>
+                    
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">Diseñado para centros de datos y enlaces cortos de alto rendimiento.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- COMPONENTES ESENCIALES SECTION -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 text-center">Componentes Esenciales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="card-institutional rounded-xl p-8 group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-red dark:hover:border-brand-red">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="icon-box p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-brand-red transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 3H6c-1.1 0-2 .9-2 2v10h2V5h2V3zm0 18H6v-2h2v2zm10-2h-2v2h2v-2zm0-14h-2v2h2V5zM4 9v6h16V9H4z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-300 rounded-sm border border-slate-200 dark:border-slate-600 tracking-widest uppercase">Hardware</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors">Cable Horizontal</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">El backbone que conecta el distribuidor con el área de trabajo, transportando datos entre pisos y zonas.</p>
+                </div>
+
+                <div class="card-institutional rounded-xl p-8 group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-red dark:hover:border-brand-red">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="icon-box p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-brand-red transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-300 rounded-sm border border-slate-200 dark:border-slate-600 tracking-widest uppercase">Centro</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors">Panel de Parcheo</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Punto central de gestión para interconexión, pruebas y administración de toda la red estructurada.</p>
+                </div>
+
+                <div class="card-institutional rounded-xl p-8 group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-red dark:hover:border-brand-red">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="icon-box p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-brand-red transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 13.5h-11c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h11c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zm0-5h-11c-.83 0-1.5.67-1.5 1.5S5.67 11 6.5 11h11c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zM19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-300 rounded-sm border border-slate-200 dark:border-slate-600 tracking-widest uppercase">Estándar</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-red transition-colors">T-568A vs T-568B</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Códigos de color que definen la terminación del conector RJ45 según estándar ANSI/TIA-568.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CALCULADORA DE INVERSIÓN -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 text-center">Impacto de la Inversión</h2>
+            <div class="p-8 rounded-xl card-institutional bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <p class="text-slate-600 dark:text-slate-400 mb-6 text-lg">
+                    Un buen cableado previene costosos tiempos de inactividad. Si el costo de inactividad es de <strong class="text-brand-red">$500/hora</strong>, ¿cuánto ahorra una red fiable?
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-end gap-4">
+                    <div class="flex-1">
+                        <label for="downtime-hours" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Horas de Inactividad Evitadas al Mes:</label>
+                        <input type="number" id="downtime-hours" value="4" min="0" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white p-3 focus:border-brand-red focus:ring-2 focus:ring-brand-red focus:ring-opacity-50 transition">
+                    </div>
+                    <button onclick="calculateSavings()" class="px-8 py-3 bg-brand-red text-white font-semibold rounded-lg hover:bg-red-800 dark:hover:bg-red-900 transition duration-150 w-full sm:w-auto">
+                        Calcular Ahorro
+                    </button>
+                </div>
+                
+                <div id="savings-result" class="mt-8 text-center p-6 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-900/50 hidden">
+                    <div class="text-3xl font-bold"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="border-t border-slate-200 dark:border-slate-700 pt-12 text-center">
+            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-2xl mx-auto font-light">
+                La infraestructura de cableado es la base invisible que garantiza la confiabilidad, velocidad y longevidad de tu red corporativa.
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        function calculateSavings() {
+            const hourlyCost = 500;
+            const hoursInput = document.getElementById('downtime-hours');
+            const resultDiv = document.getElementById('savings-result');
+            
+            const hours = parseFloat(hoursInput.value);
+            
+            if (isNaN(hours) || hours < 0) {
+                resultDiv.innerHTML = '<div class="text-red-700 dark:text-red-400">Por favor, ingrese un número válido de horas.</div>';
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'dark:bg-green-900/20', 'text-green-700', 'dark:text-green-400', 'border-green-200', 'dark:border-green-900/50');
+                resultDiv.classList.add('bg-red-50', 'dark:bg-red-900/20', 'border-red-200', 'dark:border-red-900/50');
+                return;
+            }
+
+            const savings = hours * hourlyCost;
+            
+            const formatter = new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+            });
+
+            resultDiv.innerHTML = `<div class="text-3xl font-bold">Ahorro Estimado: ${formatter.format(savings)} al mes</div>`;
+            resultDiv.classList.remove('hidden', 'bg-red-50', 'dark:bg-red-900/20', 'border-red-200', 'dark:border-red-900/50');
+            resultDiv.classList.add('bg-green-50', 'dark:bg-green-900/20', 'text-green-700', 'dark:text-green-400', 'border-green-200', 'dark:border-green-900/50');
+        }
+
+        window.onload = calculateSavings;
+    </script>
+</body>
+</html>

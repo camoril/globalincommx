@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Incom - Soluciones Integrales en Tecnología</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#E31B23',
+                            dark: '#000000',
+                            neutral: '#A1A1A4',
+                            light: '#F8F9FA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .flowchart-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+    <header class="bg-gray-900 text-white p-8 text-center relative dark:bg-black">
+        <h1 class="text-4xl md:text-5xl font-black mb-2">Impulsando tu Negocio con Soluciones Tecnológicas a Medida</h1>
+        <p class="text-lg md:text-xl text-gray-300">Tu socio estratégico para optimizar, proteger y evolucionar en el entorno digital.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="seguridad" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 dark:bg-gray-800">
+                <h2 class="text-3xl font-bold text-brand-primary mb-4 text-center">Seguridad: La Base de la Confianza Digital</h2>
+                <p class="text-center mb-8 max-w-3xl mx-auto dark:text-gray-300">En un mundo intercontectado, la protección de la información no es una opción, es una necesidad fundamental. Nuestro enfoque integral de seguridad blinda tu organización contra amenazas, garantizando la integridad, confidencialidad y disponibilidad de tus activos más valiosos.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="chart-container">
+                        <canvas id="securityChart"></canvas>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand-primary mb-4">Pilares de Nuestro Servicio de Seguridad</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">🛡️</span><div><strong class="text-gray-800 dark:text-gray-100">Políticas y Estándares:</strong> Desarrollamos un marco de seguridad robusto (SGSI) que define las reglas y procedimientos para proteger la información.</div></li>
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">🔍</span><div><strong class="text-gray-800 dark:text-gray-100">Prevención de Fraudes:</strong> Implementamos controles y tecnologías para detectar y prevenir fraudes electrónicos, protegiendo tus transacciones y la confianza de tus clientes.</div></li>
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">💾</span><div><strong class="text-gray-800 dark:text-gray-100">Gestión de Datos Segura:</strong> Aseguramos el ciclo de vida de tu información con procesos de borrado seguro y planes de recuperación efectivos ante incidentes.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="supervision" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 dark:bg-gray-800">
+                <h2 class="text-3xl font-bold text-brand-primary mb-4 text-center">Supervisión y Aseguramiento de Proyectos TIC</h2>
+                <p class="text-center mb-8 max-w-3xl mx-auto dark:text-gray-300">Garantizamos que tus proyectos tecnológicos se ejecuten con precisión, cumpliendo plazos, presupuestos y, sobre todo, los objetivos de negocio. Actuamos como tu ojo experto en cada fase, desde la concepción hasta la implementación.</p>
+                <div class="relative flex flex-col items-center">
+                     <div class="w-full max-w-4xl">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                            <div class="flowchart-step bg-brand-light dark:bg-gray-700 p-4 rounded-lg shadow">
+                                <div class="text-3xl mb-2">1️⃣</div>
+                                <h4 class="font-bold text-gray-800 dark:text-gray-100">Supervisión de Fábricas de Software</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Aseguramos la calidad del código, la metodología y los entregables.</p>
+                            </div>
+                            <div class="flowchart-step bg-red-200 dark:bg-red-900/50 p-4 rounded-lg shadow">
+                                <div class="text-3xl mb-2">2️⃣</div>
+                                <h4 class="font-bold text-gray-800 dark:text-gray-100">Aseguramiento de Procesos</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Validamos que los flujos de trabajo sean eficientes y estén optimizados.</p>
+                            </div>
+                            <div class="flowchart-step bg-brand-primary p-4 rounded-lg shadow text-white">
+                                <div class="text-3xl mb-2">3️⃣</div>
+                                <h4 class="font-bold">Control de Implantación</h4>
+                                <p class="text-sm">Verificamos la correcta instalación y configuración de redes y sistemas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gestion" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 dark:bg-gray-800">
+                <h2 class="text-3xl font-bold text-brand-primary mb-4 text-center">Sistemas de Gestión y Gobierno de TI</h2>
+                 <p class="text-center mb-8 max-w-3xl mx-auto dark:text-gray-300">Transformamos la administración de riesgos y la gestión tecnológica en una ventaja competitiva. Te ayudamos a establecer un gobierno de TI sólido que alinee la tecnología con la estrategia de tu organización, garantizando el cumplimiento y la continuidad del negocio.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                     <div>
+                        <h3 class="text-2xl font-bold text-brand-primary mb-4">Áreas Clave de Consultoría</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">📈</span><div><strong class="text-gray-800 dark:text-gray-100">Administración Integral de Riesgos:</strong> Identificamos y mitigamos riesgos operativos, legales, financieros y tecnológicos.</div></li>
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">🏛️</span><div><strong class="text-gray-800 dark:text-gray-100">Gobierno de TI y Control Interno:</strong> Establecemos marcos de trabajo para una toma de decisiones informada y transparente.</div></li>
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">📋</span><div><strong class="text-gray-800 dark:text-gray-100">Gestión de Portafolio de Proyectos:</strong> Optimizamos la selección y valuación de proyectos para maximizar el retorno de inversión.</div></li>
+                            <li class="flex items-start"><span class="text-red-500 font-bold text-2xl mr-3">🔄</span><div><strong class="text-gray-800 dark:text-gray-100">Planes de Continuidad (BCP/DRP):</strong> Aseguramos la resiliencia de tu negocio ante cualquier desastre o contingencia.</div></li>
+                        </ul>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="managementChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= NUEVA SECCIÓN: DIFERENCIADORES ======================= -->
+        <section id="diferenciadores" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 dark:bg-gray-800">
+                <h2 class="text-3xl font-bold text-brand-primary mb-4 text-center">¿Por Qué Elegirnos?</h2>
+                <p class="text-center mb-8 max-w-3xl mx-auto dark:text-gray-300">Combinamos experiencia, estrategia y un enfoque centrado en el cliente para ofrecer resultados que van más allá de la tecnología.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-brand-light dark:bg-gray-700 p-4 rounded-full mb-4">
+                            <i data-lucide="award" class="w-8 h-8 text-brand-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 dark:text-gray-100">Experiencia Certificada</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Nuestro equipo cuenta con las certificaciones más importantes de la industria para garantizar la calidad.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-brand-light dark:bg-gray-700 p-4 rounded-full mb-4">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-brand-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 dark:text-gray-100">Enfoque Integral</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Desde la consultoría estratégica hasta la implementación y el soporte continuo, te cubrimos en todo.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-brand-light dark:bg-gray-700 p-4 rounded-full mb-4">
+                            <i data-lucide="users" class="w-8 h-8 text-brand-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 dark:text-gray-100">Socio Estratégico</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Nos alineamos con tus objetivos de negocio para ser un verdadero aliado tecnológico en tu crecimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificacion" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 dark:bg-gray-800">
+                <h2 class="text-3xl font-bold text-brand-primary mb-4 text-center">Certificación y Capacitación Especializada</h2>
+                <p class="text-center mb-8 max-w-3xl mx-auto dark:text-gray-300">Elevamos las capacidades de tu equipo y la madurez de tu organización a través de la capacitación en estándares internacionales y el acompañamiento en procesos de certificación clave.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-brand-light dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">Acompañamiento en Certificaciones</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Te guiamos paso a paso para obtener certificaciones que validan la calidad y seguridad de tus procesos.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200 text-sm font-semibold px-3 py-1 rounded-full">ISO 9000</span>
+                            <span class="bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200 text-sm font-semibold px-3 py-1 rounded-full">ISO 27000</span>
+                            <span class="bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200 text-sm font-semibold px-3 py-1 rounded-full">ISO 20000</span>
+                            <span class="bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200 text-sm font-semibold px-3 py-1 rounded-full">ISO 38500</span>
+                        </div>
+                    </div>
+                    <div class="bg-brand-primary p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-white mb-3">Capacitación y Talleres de Alto Nivel</h3>
+                        <p class="text-red-100 mb-4">Formamos a tus profesionales en las prácticas y certificaciones más demandadas del mercado.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white text-brand-primary text-sm font-semibold px-3 py-1 rounded-full">CISA</span>
+                            <span class="bg-white text-brand-primary text-sm font-semibold px-3 py-1 rounded-full">PMP</span>
+                            <span class="bg-white text-brand-primary text-sm font-semibold px-3 py-1 rounded-full">ITIL</span>
+                            <span class="bg-red-700 text-white text-sm font-semibold px-3 py-1 rounded-full">COBIT</span>
+                            <span class="bg-white text-brand-primary text-sm font-semibold px-3 py-1 rounded-full">Hackeo Ético</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======================= NUEVA SECCIÓN: CLIENTES ======================= -->
+        <section id="clientes" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 dark:bg-gray-800">
+                <h2 class="text-3xl font-bold text-brand-primary mb-8 text-center">Confían en Nosotros</h2>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 grayscale dark:grayscale-0 dark:opacity-100">
+                    <img src="brands/cisco.svg" alt="Logo de Cliente Cisco" class="h-10 w-auto object-contain">
+                    <img src="brands/sophos-logo.svg" alt="Logo de Cliente Sophos" class="h-7 w-auto object-contain">
+                    <img src="brands/fortinet-logo.svg" alt="Logo de Cliente Fortinet" class="h-6 w-auto object-contain">
+                    <img src="brands/aruba-networks.svg" alt="Logo de Cliente Aruba" class="h-10 w-auto object-contain">
+                    <img src="brands/hp-hewlett-packard.svg" alt="Logo de Cliente HP" class="h-11 w-auto object-contain">
+                    <img src="brands/comptia-logo.svg" alt="Logo de Cliente CompTIA" class="h-11 w-auto object-contain">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white p-8 text-center mt-12 dark:bg-black">
+        <h2 class="text-3xl font-bold mb-2">¿Listo para Transformar tu Negocio?</h2>
+        <p class="mb-4 text-gray-300">Contáctanos. Juntos podemos diseñar la estrategia tecnológica que tu empresa necesita para crecer.</p>
+        <a href="mailto:contacto@globalincom.com.mx" class="bg-brand-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-colors text-lg">Hablemos</a>
+    </footer>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) return label;
+            
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const securityCtx = document.getElementById('securityChart').getContext('2d');
+        const securityChart = new Chart(securityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Políticas y Estándares (SGSI)', 'Prevención de Fraudes Electrónicos', 'Recuperación de Información', 'Borrado Seguro de Datos'],
+                datasets: [{
+                    label: 'Componentes de Seguridad',
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#E31B23', '#A1A1A4', '#333333', '#f8f9fa'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: document.documentElement.classList.contains('dark') ? '#FFF' : '#666'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const managementCtx = document.getElementById('managementChart').getContext('2d');
+        const originalLabels = ['Administración Integral de Riesgos', 'Gobierno de TI', 'Planes de Continuidad y Recuperación', 'Portafolio de Proyectos'];
+        const wrappedLabels = originalLabels.map(wrapLabel);
+
+        const managementChart = new Chart(managementCtx, {
+            type: 'bar',
+            data: {
+                labels: wrappedLabels,
+                datasets: [{
+                    label: 'Impacto en la Estrategia de Negocio',
+                    data: [95, 85, 90, 80],
+                    backgroundColor: ['#E31B23', '#A1A1A4', '#333333', '#dddddd'],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                           display: false
+                        },
+                        ticks: {
+                            color: document.documentElement.classList.contains('dark') ? '#FFF' : '#666'
+                        }
+                    },
+                    y: {
+                         grid: {
+                           display: false
+                        },
+                        ticks: {
+                            color: document.documentElement.classList.contains('dark') ? '#FFF' : '#666'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+        
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

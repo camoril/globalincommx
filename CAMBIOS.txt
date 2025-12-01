@@ -1,0 +1,269 @@
+CAMBIOS - GlobalIncom
+==========================================
+Registro de cambios implementados en el sitio web de GlobalIncom
+Período: 28/nov - 29/nov/2025
+Última actualización: 29/nov/2025 - 2:30 PM
+==========================================
+
+Fecha: 28/nov/2025 - 10:30 AM
+TRADUCCIÓN DE COMENTARIOS Y ANALYTICS
+- Traducción de comentarios en inglés a español para mejorar la documentación y mantenimiento
+- Implementación del script de Microsoft Clarity para análisis de comportamiento de usuarios
+  ID de Clarity: rvviylo106
+- No se realizaron cambios en funcionalidad ni estructura visual del sitio
+
+Fecha: 28/nov/2025 - 11:00 AM
+DARK MODE EN presenta.html
+- Implementación de modo oscuro en `presenta.html`
+- La página sincroniza el tema (claro/oscuro) con la página principal usando `localStorage`
+- Se ajustaron estilos y gráficos para ser compatibles con ambos temas
+
+Fecha: 28/nov/2025 - 11:45 AM
+DARK MODE EN seguridad.html
+- Implementación de modo oscuro en `seguridad.html`
+- La página sincroniza el tema (claro/oscuro) con la página principal
+- Se adaptaron todos los componentes visuales para la nueva paleta de colores oscuros
+
+Fecha: 28/nov/2025 - 12:15 PM
+LIMPIEZA DE DISEÑO EN seguridad.html
+- Se eliminó la cuadrícula de fondo en `seguridad.html` para un diseño más limpio
+
+Fecha: 29/nov/2025 - 10:00 AM
+REEMPLAZAMIENTO DE VIDEO POR SVG ANIMADO - ITERACIÓN 1
+- Reemplazado video estático (`Puntos_en_Bucle.mp4`) en hero section por SVG animado (`puntos-animados.svg`)
+- Se creó archivo SVG con 6 puntos basado en `9Puntos150px.svg`, con animación de opacidad y sombra dinámica
+- Se removió contenedor con fondo degradado, mostrando solo SVG con fondo transparente
+- Tamaño: w-80 h-80 (320px)
+- (Commit: d7621f0)
+
+Fecha: 29/nov/2025 - 10:15 AM
+OPTIMIZACIÓN SVG - ITERACIÓN 2
+- Eliminado fondo y recuadro del SVG animado en hero section
+- El SVG se renderiza directamente sobre el fondo transparente del hero, con efecto de hover y sombra sutil
+- (Commit: e4db77b)
+
+Fecha: 29/nov/2025 - 10:30 AM
+MEJORÍA SVG: GRID 2x3 CON CASCADA - ITERACIÓN 3
+- Mejorado SVG animado con estructura grid 2x3 (6 puntos en total)
+- Se implementó animación de rebote en cascada con retrasos de 0.15s entre cada punto
+- Animación: duración 1.8s, easing ease-in-out, escalado 70%-120%, opacidad 30%-100%
+- (Commit: 886793c)
+
+Fecha: 29/nov/2025 - 10:45 AM
+RESTAURACIÓN ESTRUCTURA ORIGINAL SVG - ITERACIÓN 4
+- Restaurada estructura original de `9Puntos150px.svg` en `puntos-animados.svg`
+- Se mantienen todos los 6 paths (368-373) con transformaciones exactas, añadiendo solo CSS `@keyframes`
+- Cada punto se anima con retrasos de 0.2s para efecto de cascada
+- Duración: 1.8s, opacidad + sombra dinámica
+- (Commit: 443b883)
+
+Fecha: 29/nov/2025 - 11:00 AM
+OPTIMIZACIÓN VELOCIDAD Y OPACIDAD SVG - ITERACIÓN 5
+- Ajustada animación SVG: duración aumentada a 3.5s (más lenta)
+- Iluminación reducida (sombra: 0.2mm → 0.05mm/0.3mm)
+- Movimiento aumentado con escalado a 1.3
+- Opacidad: 0.4-1 → 0.5-0.9 para efecto más natural
+- (Commit: 03d1985)
+
+Fecha: 29/nov/2025 - 11:15 AM
+CORRECCIÓN LOOP CONTINUO SVG - ITERACIÓN 6 (FINAL)
+- Corregida animación SVG para loop continuo sin interrupciones
+- Removido `transform: scale()` que causaba desaparición de puntos
+- Keyframes ahora usan 3 puntos (0%, 50%, 100%) en lugar de 2, garantizando loop infinito
+- Opacidad: 0.4 → 1 → 0.4, sombra variable de 0.05mm a 0.3mm
+- Duración final: 3.5s
+- (Commit: e08bc18)
+
+Fecha: 29/nov/2025 - 12:30 PM
+REDISEÑO Y DARK MODE DE cableado.html
+- Actualizado `cableado.html`: Aplicado diseño visual y modo oscuro de `seguridad.html`
+- Implementadas características de diseño consistente:
+  * Modo oscuro con localStorage (clave: 'color-theme')
+  * Configuración Tailwind darkMode: 'class'
+  * Componentes card-institutional con efectos hover y transiciones
+  * Sistema de colores consistente: rojo (#E31B23), gradientes y paleta de slate
+  * Tarjetas de métricas con colores distintivos (rojo, azul, púrpura, verde)
+  * Comparativa de categorías Cat 5e / Cat 6 / Cat 6A* / Cat 8 con diseño uniforme
+  * Sección de componentes esenciales con card-institutional
+  * Calculadora de ahorro con formateo de moneda USD
+  * Tipografía Inter, transiciones smooth 0.3s, bordes y espaciado mejorados
+- Todos los contenidos originales preservados y remozados con nuevo diseño
+- (Commit: 2874849)
+
+Fecha: 29/nov/2025 - 12:45 PM
+REPARACIÓN DE ICONOS EN cableado.html
+- Removido script de Phosphor icons (@phosphor-icons/web) que no cargaba correctamente
+- Reemplazados todos los iconos <i> con SVG inline para mayor confiabilidad
+- Iconos actualizados: check-circle, cable (×5), lightning, book-bookmark, shield, palette
+- SVG escalados correctamente con Tailwind y mantienen efectos hover y animaciones
+- (Commit: b7bd365)
+
+Fecha: 29/nov/2025 - 1:00 PM
+AÑADIR BOTÓN MODAL DE CABLEADO EN index.html
+- Añadido botón modal "Ver Infografía de Cableado" en página de Infraestructura (`index.html`)
+- Ubicación: Sección "Infraestructura y Conectividad" (página-infra), líneas 589-595
+- Funcionalidad: onclick="openModal('cableado.html', 'Infografía de Cableado')"
+- Diseño: Botón rojo (#E31B23) con ícono de shield (SVG Lucide)
+- Comportamiento: Abre modal con contenido de cableado.html en iframe
+- Clases: bg-brand-primary, hover:bg-red-700, flex items-center gap-2
+- (Commit: 4689859)
+
+Fecha: 29/nov/2025 - 2:00 PM
+IMPLEMENTACIÓN DE MEJORAS SEO - PRIORIDAD ALTA
+
+Fecha: 29/nov/2025 - 2:30 PM
+IMPLEMENTACIÓN DE OPTIMIZACIÓN DE IMÁGENES Y ACCESIBILIDAD
+
+Archivos modificados:
+  1. index.html - Añadidas 18+ instancias de lazy loading, ALTs mejorados, y URLs de Unsplash optimizadas (WebP, q=85).
+
+DETALLES TÉCNICOS:
+
+A. Lazy Loading (`loading="lazy"`):
+   - Implementado en todas las etiquetas `<img>` del `index.html` para diferir la carga de imágenes fuera del viewport inicial.
+   - Esto incluye el SVG animado del hero, la imagen de cableado estructurado, todos los logos de partners y las imágenes de Unsplash.
+
+B. Atributos ALT Mejorados:
+   - Se han revisado y mejorado los atributos `alt` para hacerlos más descriptivos y específicos, aumentando tanto el SEO como la accesibilidad.
+   - Ejemplos:
+     - `puntos-animados.svg`: "Animación interactiva de 6 puntos de conexión que representa la infraestructura de red conectada de GlobalIncom"
+     - `cabling-management-1500x430.jpg`: "Infraestructura de cableado estructurado categoría 6A con rack organizado y gestión profesional de cables"
+     - Logos de partners: Descripciones detalladas de cada marca y su rol (Cisco, Sophos, Fortinet, etc.)
+     - Imágenes de Unsplash: Descripciones contextuales de cada imagen (SOC, Consultoría, Soporte Corporativo, Financiamiento).
+
+C. Optimización de Imágenes de Unsplash:
+   - Las URLs de Unsplash han sido modificadas para incluir parámetros de optimización:
+     - `q=85`: Aumenta ligeramente la calidad de la imagen manteniendo un buen balance con el tamaño del archivo.
+     - `fm=webp`: Solicita el formato WebP (más eficiente) para navegadores que lo soporten, con fallback automático al formato original para los no compatibles.
+
+IMPACTO ESPERADO:
+✓ Mejora significativa en la velocidad de carga de la página (LCP).
+✓ Mayor puntuación en herramientas de rendimiento (PageSpeed Insights).
+✓ Mejor experiencia de usuario, especialmente en conexiones lentas o dispositivos móviles.
+✓ Mejora en accesibilidad para usuarios con lectores de pantalla.
+✓ SEO mejorado gracias a los ALTs más descriptivos.
+
+- (Commit: [PENDIENTE])
+
+
+
+Archivos modificados/creados:
+  1. index.html - Añadidas 26+ líneas de meta tags y JSON-LD
+  2. robots.txt - Archivo nuevo (14 líneas)
+  3. sitemap.xml - Archivo nuevo (77 líneas con 8 URLs)
+
+DETALLES TÉCNICOS:
+
+A. Meta Tags Implementados:
+   - Meta Description: "Infraestructura TI, Ciberseguridad y Consultoría especializada..." (160 caracteres)
+   - Meta Keywords: infraestructura TI, ciberseguridad, consultoría, cableado estructurado, etc.
+   - Canonical Tag: <link rel="canonical" href="https://globalincom.com.mx/">
+   - Robots Meta: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+   - Language Meta: Spanish
+   - Revisit-after: 7 days
+
+B. Open Graph Tags (Facebook/LinkedIn):
+   - og:type: website
+   - og:url: https://globalincom.com.mx/
+   - og:title: GlobalIncom | Soluciones en Infraestructura, Seguridad y Gobierno TI
+   - og:description: Infraestructura TI, Ciberseguridad y Consultoría especializada...
+   - og:image: https://globalincom.com.mx/img/og-image.jpg
+   - og:image:width: 1200, og:image:height: 630
+   - og:locale: es_MX
+
+C. Twitter Card Tags:
+   - twitter:card: summary_large_image
+   - twitter:title: GlobalIncom | Soluciones TI Integrales
+   - twitter:description: Infraestructura, Ciberseguridad y Consultoría...
+   - twitter:image: https://globalincom.com.mx/img/og-image.jpg
+
+D. JSON-LD Structured Data (3 Schemas):
+   - Organization Schema: name, url, logo, description, contactPoint
+   - LocalBusiness Schema: name, image, description, address (Mexico), areaServed
+   - WebSite Schema: url para integración con búsqueda de Google
+
+E. Archivo robots.txt (Nuevo):
+   User-agent: *
+   Allow: /
+   Disallow: /admin/, /.env, /node_modules/
+   Sitemap: https://globalincom.com.mx/sitemap.xml
+   Crawl-delay: 1
+
+F. Archivo sitemap.xml (Nuevo):
+   8 URLs con prioridades:
+   - Página principal: priority 1.0
+   - Infraestructura, Ciberseguridad, Consultoría, Servicios: priority 0.9
+   - Normatividad Aeronáutica: priority 0.85
+   - seguridad.html, cableado.html: priority 0.8
+   - Privacidad: priority 0.5
+   - Todos con: lastmod 2025-11-29, changefreq monthly (excepto privacy: yearly)
+
+IMPACTO ESPERADO:
+✓ Mejora en indexación de Google y otros buscadores
+✓ Previews atractivos en redes sociales (Facebook, LinkedIn, Twitter)
+✓ Posibles Rich Snippets y Featured Snippets
+✓ Mayor CTR (Click-Through Rate) en resultados de búsqueda
+✓ Mejor autoridad de dominio y crawleability
+✓ Mejor UX en búsqueda móvil
+
+PRÓXIMOS PASOS RECOMENDADOS:
+1. Registrar sitio en Google Search Console y enviar sitemap
+2. Registrar en Bing Webmaster Tools
+3. Crear og-image.jpg (1200x630px) para redes sociales
+4. Añadir lazy loading a imágenes (loading="lazy")
+5. Considerar mejorar SPA routing para URLs limpias
+
+- (Commit: 86ee4b0)
+
+
+Fecha: 29/nov/2025 - 3:00 PM
+IMPLEMENTACIÓN DE MEJORAS DE RENDIMIENTO Y ACCESIBILIDAD
+
+Archivos modificados:
+  1. index.html - Implementadas mejoras de precarga, `defer` de scripts y atributos ARIA.
+
+DETALLES TÉCNICOS:
+
+A. Precarga de Imagen del Hero (`preload`):
+   - Se añadió `<link rel="preload" as="image" href="./img/corporate_commercial.jpg">` al `<head>`.
+   - Esto indica al navegador que comience a descargar la imagen de fondo principal con alta prioridad, mejorando el LCP (Largest Contentful Paint).
+
+B. Diferir Script de Tailwind (`defer`):
+   - Se añadió el atributo `defer` al script de Tailwind CSS: `<script src="https://cdn.tailwindcss.com" defer></script>`.
+   - Esto evita que el script de Tailwind bloquee el renderizado de la página, mejorando la velocidad de carga percibida. No se aplicó a Lucide para evitar errores de renderizado de íconos.
+
+C. Accesibilidad ARIA en Menús:
+   - Se añadió `aria-haspopup="true"` al botón del menú desplegable "Soluciones".
+   - Se añadieron `aria-controls="mobile-menu"`, `aria-haspopup="true"` y `aria-expanded="false"` (dinámico) al botón del menú móvil.
+   - Esto mejora la semántica y la navegación para usuarios con lectores de pantalla.
+
+IMPACTO ESPERADO:
+✓ Mejora en la velocidad de carga y la puntuación de rendimiento.
+✓ Mejor experiencia para usuarios con tecnologías de asistencia.
+✓ Se mantiene la integridad visual al no diferir scripts críticos.
+
+- (Commit: [PENDIENTE])
+
+Fecha: 29/nov/2025 - 2:45 PM
+IMPLEMENTACIÓN DE MEJORAS DE ACCESIBILIDAD (ARIA) Y VALIDACIÓN DE FORMULARIO
+
+Archivos modificados:
+  1. index.html - Añadidos atributos ARIA al modal, y verificación de validación HTML5 en formulario de contacto.
+
+DETALLES TÉCNICOS:
+
+A. Accesibilidad ARIA en Modal (`#presentation-modal`):
+   - Atributos `role="dialog"`, `aria-modal="true"`, `aria-labelledby="modal-title"` y `aria-hidden="true"` (inicialmente) añadidos al elemento del modal.
+   - Esto mejora la semántica del modal para tecnologías asistivas (lectores de pantalla), indicando su propósito y estado.
+
+B. Validación de Formularios HTML5 (`#contactForm`):
+   - Se verificó que los campos `nombre`, `email` y `mensaje` ya cuentan con el atributo `required`.
+   - El campo `email` utiliza `type="email"`, lo que habilita la validación de formato nativa del navegador.
+   - Esto asegura una validación básica de los datos de entrada antes del envío, mejorando la UX y la integridad de los datos.
+
+IMPACTO ESPERADO:
+✓ Mejora en la accesibilidad del sitio para usuarios con discapacidades.
+✓ Experiencia de usuario más fluida en la interacción con modales y formularios.
+✓ Reducción de errores de entrada y mejora en la calidad de los datos recibidos a través del formulario de contacto.
+
+- (Commit: [PENDIENTE])
