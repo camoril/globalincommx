@@ -1,5 +1,5 @@
-# robots.txt - GlobalIncom
-# Fecha: 29/nov/2025
+# robots.txt - Bytel
+# Fecha: 01/dic/2025
 
 # Permitir acceso a todos los bots
 User-agent: *
@@ -13,7 +13,7 @@ Disallow: *.pdf
 Disallow: *.zip
 
 # Referencia al Sitemap XML
-Sitemap: https://globalincom.com.mx/sitemap.xml
+Sitemap: https://bytel.com.mx/sitemap.xml
 
 # Especificar crawl delay para respetar recursos del servidor
 Crawl-delay: 1
