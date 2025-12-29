@@ -267,3 +267,23 @@ IMPACTO ESPERADO:
 ✓ Reducción de errores de entrada y mejora en la calidad de los datos recibidos a través del formulario de contacto.
 
 - (Commit: [PENDIENTE])
+
+Fecha: 28/dic/2025 - 12:00 PM
+ELIMINACIÓN DE ICONOS SOCIALES DEL FOOTER
+- Se eliminaron los 3 iconos de redes sociales (GitHub, LinkedIn, PayPal) del footer según solicitud del usuario.
+- El footer ahora solo contiene el logo con copyright y el enlace al aviso de privacidad.
+
+Archivos modificados:
+  1. index.html - Eliminada la sección de iconos sociales del footer.
+
+DETALLES TÉCNICOS:
+
+A. Footer simplificado:
+   - Removida la div con clase "flex gap-4" que contenía los enlaces a redes sociales.
+   - Mantenido el diseño responsive con flex-col md:flex-row.
+
+IMPACTO ESPERADO:
+✓ Diseño más limpio y minimalista en el footer.
+✓ Eliminación de elementos no deseados por el usuario.
+
+- (Commit: [PENDIENTE])
