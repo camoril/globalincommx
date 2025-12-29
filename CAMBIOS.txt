@@ -286,4 +286,4 @@ IMPACTO ESPERADO:
 ✓ Diseño más limpio y minimalista en el footer.
 ✓ Eliminación de elementos no deseados por el usuario.
 
-- (Commit: [PENDIENTE])
+- (Commit: 4d3b16d)
