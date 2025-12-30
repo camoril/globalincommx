@@ -267,44 +267,74 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
                     <!-- Dropdown Soluciones -->
                     <div class="relative group">
-                        <button class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition font-medium text-sm uppercase tracking-wide hover:text-brand-primary flex items-center gap-1" aria-haspopup="true">
-                            Soluciones <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        <button class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition font-medium text-sm uppercase tracking-wide hover:text-brand-primary nav-link flex items-center gap-1">
+                            <span>Soluciones</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
-                        <div class="absolute left-0 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50">
-                            <a href="javascript:void(0)" onclick="navigateTo('infra')" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-brand-primary border-b border-gray-50 dark:border-gray-700">Infraestructura</a>
-                            
-                            <!-- Grupo Ciberseguridad + Submenú -->
-                            <div class="border-b border-gray-50 dark:border-gray-700 bg-gray-50/30 dark:bg-gray-700/20">
-                                <a href="javascript:void(0)" onclick="navigateTo('ciber')" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-brand-primary font-bold">Ciberseguridad</a>
-                                <!-- Oculto temporalmente: Normatividad Aeronáutica
-                                <a href="javascript:void(0)" onclick="navigateTo('aero')" class="block pl-8 pr-4 py-2 text-xs text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-brand-primary flex items-center gap-2 border-l-2 border-brand-primary/20 ml-4 mb-2">
-                                    <span class="text-brand-primary">└</span> Normatividad Aeronáutica
+                        <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-20">
+                            <div class="p-2">
+                                <a href="javascript:void(0)" onclick="navigateTo('infra')" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="network" class="w-5 h-5 text-gray-400"></i>
+                                    <div>
+                                        <p class="font-bold text-black dark:text-white">Infraestructura</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Redes, Cableado y Wi-Fi</p>
+                                    </div>
                                 </a>
-                                -->
+                                <a href="javascript:void(0)" onclick="navigateTo('ciber')" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="shield" class="w-5 h-5 text-gray-400"></i>
+                                    <div>
+                                        <p class="font-bold text-black dark:text-white">Ciberseguridad</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Protección Lógica y Física</p>
+                                    </div>
+                                </a>
+                                <a href="javascript:void(0)" onclick="navigateTo('consultoria')" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="briefcase" class="w-5 h-5 text-gray-400"></i>
+                                    <div>
+                                        <p class="font-bold text-black dark:text-white">Consultoría y Gobierno TI</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Supervisión, Riesgo y Cumplimiento</p>
+                                    </div>
+                                </a>
+                                <a href="javascript:void(0)" onclick="navigateTo('servicios')" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="server" class="w-5 h-5 text-gray-400"></i>
+                                    <div>
+                                        <p class="font-bold text-black dark:text-white">Servicios Administrados</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">SOC, NOC y Staffing</p>
+                                    </div>
+                                </a>
                             </div>
-
-                            <a href="javascript:void(0)" onclick="navigateTo('consultoria')" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-brand-primary border-b border-gray-50 dark:border-gray-700">Consultoría y Gobierno TI</a>
-                            <a href="javascript:void(0)" onclick="navigateTo('servicios')" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-brand-primary">Servicios Administrados</a>
                         </div>
                     </div>
 
-                    <!-- Botón Mesa de Servicio (Nuevo) -->
-                    <a href="https://servicedesk.globalincom.com.mx/" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition font-medium text-sm uppercase tracking-wide hover:text-brand-primary nav-link flex items-center gap-2" title="Acceso a Mesa de Ayuda para Clientes">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-4 h-4 text-brand-primary" aria-labelledby="title" aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>Support</title>
-                          <desc>A color styled icon from Orion Icon Library.</desc>
-                          <path data-name="layer2" d="M40 58a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4 4 4 0 0 0 4 4h4a4 4 0 0 0 4-4z" fill="currentColor"></path>
-                          <path data-name="opacity" d="M37 59h-4a4 4 0 0 1-4-3.7 4 4 0 0 0 3 6.7h4a4 4 0 0 0 4-4v-.3a4 4 0 0 1-3 1.3z" fill="#000064" opacity=".14"></path>
-                          <path data-name="layer1" d="M16 44H7.6A3.6 3.6 0 0 1 4 40.4V29.6A3.6 3.6 0 0 1 7.6 26H16zm32 0h8.4a3.6 3.6 0 0 0 3.6-3.6V29.6a3.6 3.6 0 0 0-3.6-3.6H48z" fill="currentColor"></path>
-                          <path data-name="opacity" d="M4 34.4v6A3.6 3.6 0 0 0 7.6 44H16v-6H7.6A3.6 3.6 0 0 1 4 34.4zM56.4 38H48v6h8.4a3.6 3.6 0 0 0 3.6-3.6v-6a3.6 3.6 0 0 1-3.6 3.6z" fill="#000064" opacity=".14"></path>
-                          <path data-name="stroke" d="M12 26v-4c0-11 8-20 19-20h2c11 0 19 9 19 20v4M40 58a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4 4 4 0 0 0 4 4h4a4 4 0 0 0 4-4zm0 0s12 0 12-14m-36 0H7.6A3.6 3.6 0 0 1 4 40.4V29.6A3.6 3.6 0 0 1 7.6 26H16zm32 0h8.4a3.6 3.6 0 0 0 3.6-3.6V29.6a3.6 3.6 0 0 0-3.6-3.6H48z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round"></path>
-                        </svg> Mesa de Servicio
-                    </a>
+                    <!-- Dropdown Mesa de Servicio -->
+                    <div class="relative group">
+                        <button class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition font-medium text-sm uppercase tracking-wide hover:text-brand-primary nav-link flex items-center gap-1">
+                            <span>Mesa de Servicio</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-20">
+                            <div class="p-2">
+                                <a href="https://servicedesk.globalincom.com.mx/" target="_blank" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="building" class="w-5 h-5 text-gray-400"></i>
+                                    <div>
+                                        <p class="font-bold text-black dark:text-white">Global Incom</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Portal General</p>
+                                    </div>
+                                </a>
+                                <a href="https://soporte-aem.com.mx/" target="_blank" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="plane" class="w-5 h-5 text-gray-400"></i>
+                                    <div>
+                                        <p class="font-bold text-black dark:text-white">Mexicana de Aviación</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Portal Dedicado</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Theme Toggle -->
                     <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                        <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i>
-                        <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
+                        <i id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i>
+                        <i id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
                     </button>
 
                     <a href="#contacto" class="btn-primary text-white px-6 py-2.5 rounded font-bold transition shadow-lg transform hover:-translate-y-0.5">
@@ -344,15 +374,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
                 <p class="px-3 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-4">Clientes</p>
                 <a href="https://servicedesk.globalincom.com.mx/" target="_blank" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white border-l-2 border-transparent hover:border-brand-primary pl-4 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-4 h-4 text-brand-primary" aria-labelledby="title" aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-                      <title>Support</title>
-                      <desc>A color styled icon from Orion Icon Library.</desc>
-                      <path data-name="layer2" d="M40 58a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4 4 4 0 0 0 4 4h4a4 4 0 0 0 4-4z" fill="currentColor"></path>
-                      <path data-name="opacity" d="M37 59h-4a4 4 0 0 1-4-3.7 4 4 0 0 0 3 6.7h4a4 4 0 0 0 4-4v-.3a4 4 0 0 1-3 1.3z" fill="#000064" opacity=".14"></path>
-                      <path data-name="layer1" d="M16 44H7.6A3.6 3.6 0 0 1 4 40.4V29.6A3.6 3.6 0 0 1 7.6 26H16zm32 0h8.4a3.6 3.6 0 0 0 3.6-3.6V29.6a3.6 3.6 0 0 0-3.6-3.6H48z" fill="currentColor"></path>
-                      <path data-name="opacity" d="M4 34.4v6A3.6 3.6 0 0 0 7.6 44H16v-6H7.6A3.6 3.6 0 0 1 4 34.4zM56.4 38H48v6h8.4a3.6 3.6 0 0 0 3.6-3.6v-6a3.6 3.6 0 0 1-3.6 3.6z" fill="#000064" opacity=".14"></path>
-                      <path data-name="stroke" d="M12 26v-4c0-11 8-20 19-20h2c11 0 19 9 19 20v4M40 58a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4 4 4 0 0 0 4 4h4a4 4 0 0 0 4-4zm0 0s12 0 12-14m-36 0H7.6A3.6 3.6 0 0 1 4 40.4V29.6A3.6 3.6 0 0 1 7.6 26H16zm32 0h8.4a3.6 3.6 0 0 0 3.6-3.6V29.6a3.6 3.6 0 0 0-3.6-3.6H48z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round"></path>
-                    </svg> Mesa de Servicio
+                    <i data-lucide="building" class="w-4 h-4 text-brand-primary"></i> Global Incom (General)
+                </a>
+                <a href="https://soporte-aem.com.mx/" target="_blank" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white border-l-2 border-transparent hover:border-brand-primary pl-4 flex items-center gap-2">
+                    <i data-lucide="plane" class="w-4 h-4 text-brand-primary"></i> Mexicana de Aviación
                 </a>
 
                 <!-- Mobile Theme Toggle -->
