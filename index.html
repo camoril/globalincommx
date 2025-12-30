@@ -332,13 +332,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
 
                     <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                        <i id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i>
-                        <i id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i id="theme-toggle-dark-icon" class="w-5 h-5"></i>
+                        <i id="theme-toggle-light-icon" class="w-5 h-5"></i>
                     </button>
 
                     <a href="#contacto" class="btn-primary text-white px-6 py-2.5 rounded font-bold transition shadow-lg transform hover:-translate-y-0.5">
-                        Contáctanos
+                        Contactar
                     </a>
                 </div>
 
@@ -987,8 +987,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <!-- IMAGEN CAMBIADA: SOC (Security Operations Center) más moderno -->
                     <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85&fm=webp" alt="Centro de Operaciones de Seguridad (SOC) con múltiples pantallas mostrando monitoreo de sistemas, análisis de amenazas y gestión de eventos en tiempo real" loading="lazy" class="rounded shadow-2xl mt-8">
                 </div>
-            </div>
-        </div>
+            </div        </div>
 
         <!-- ================= PAGE: CONSULTORIA (NUEVA) ================= -->
         <div id="page-consultoria" class="page-section animate-fade-in">
@@ -1598,32 +1597,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         function applyTheme(isDark) {
             if (isDark) {
                 document.documentElement.classList.add('dark');
-                themeToggleLightIcon.classList.remove('hidden');
-                themeToggleDarkIcon.classList.add('hidden');
+                if(themeToggleLightIcon) themeToggleLightIcon.classList.remove('hidden');
+                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.add('hidden');
                 if (mobileThemeToggleLightIcon) mobileThemeToggleLightIcon.classList.remove('hidden');
                 if (mobileThemeToggleDarkIcon) mobileThemeToggleDarkIcon.classList.add('hidden');
             } else {
                 document.documentElement.classList.remove('dark');
-                themeToggleDarkIcon.classList.remove('hidden');
-                themeToggleLightIcon.classList.add('hidden');
+                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.remove('hidden');
+                if(themeToggleLightIcon) themeToggleLightIcon.classList.add('hidden');
                 if (mobileThemeToggleDarkIcon) mobileThemeToggleDarkIcon.classList.remove('hidden');
                 if (mobileThemeToggleLightIcon) mobileThemeToggleLightIcon.classList.add('hidden');
             }
-        }
-
-        // Default to light theme unless 'dark' is explicitly saved
-        if (localStorage.getItem('color-theme') === 'dark') {
-            applyTheme(true);
-        } else {
-            applyTheme(false);
+            // Actualizar los iconos de lucide después de cambiar las clases
+            lucide.createIcons();
         }
         
+        // Función para inicializar el tema al cargar la página
+        function initTheme() {
+            // Asignar los iconos de lucide a los elementos
+            if(themeToggleDarkIcon) themeToggleDarkIcon.setAttribute('data-lucide', 'moon');
+            if(themeToggleLightIcon) themeToggleLightIcon.setAttribute('data-lucide', 'sun');
+            if(mobileThemeToggleDarkIcon) mobileThemeToggleDarkIcon.setAttribute('data-lucide', 'moon');
+            if(mobileThemeToggleLightIcon) mobileThemeToggleLightIcon.setAttribute('data-lucide', 'sun');
+
+            // Aplicar el tema guardado o el predeterminado
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                applyTheme(true);
+            } else {
+                applyTheme(false);
+            }
+        }
+
         function handleThemeToggle() {
             const isCurrentlyDark = document.documentElement.classList.contains('dark');
             localStorage.setItem('color-theme', isCurrentlyDark ? 'light' : 'dark');
             applyTheme(!isCurrentlyDark);
         }
 
+        // Inicializar tema al cargar el DOM
+        document.addEventListener('DOMContentLoaded', initTheme);
+        
         themeToggleBtn.addEventListener('click', handleThemeToggle);
         if (mobileThemeToggleBtn) {
             mobileThemeToggleBtn.addEventListener('click', handleThemeToggle);
