@@ -1,9 +1,17 @@
 CAMBIOS - GlobalIncom
 ==========================================
 Registro de cambios implementados en el sitio web de GlobalIncom
-Período: 28/nov - 29/nov/2025
-Última actualización: 29/nov/2025 - 2:30 PM
+Período: 28/nov - 30/dic/2025
+Última actualización: 30/dic/2025 - 12:00 PM
 ==========================================
+
+Fecha: 30/dic/2025 - 12:00 PM
+DARK MODE EN nacional.html
+- Implementación de modo oscuro en `nacional.html` para consistencia visual con el resto del sitio.
+- La página ahora sincroniza el tema (claro/oscuro) con la página principal usando `localStorage`.
+- Se agregó un botón de toggle (sol/luna) en una barra superior fija para cambiar de tema.
+- Se ajustaron todos los componentes visuales, incluyendo fondos, texto, tarjetas y gráficos, para ser compatibles con ambos temas.
+- Se utilizó la configuración de Tailwind `darkMode: 'class'` y se aplicaron clases `dark:` en todo el documento.
 
 Fecha: 28/nov/2025 - 10:30 AM
 TRADUCCIÓN DE COMENTARIOS Y ANALYTICS

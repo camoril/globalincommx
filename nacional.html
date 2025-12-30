@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infografía: Plan Nacional de Ciberseguridad 2025 | GlobalIncom</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        const brandColors = {
+            black: '#000000',
+            red: '#E31B23',
+            gray: '#A1A1A4',
+            white: '#FFFFFF',
+            offWhite: '#F8F9FA'
+        };
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: brandColors.black, 
+                            primary: brandColors.red,
+                            neutral: brandColors.gray,
+                            light: brandColors.offWhite,
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -19,10 +49,18 @@
             background-image: radial-gradient(#333 1px, transparent 1px);
             background-size: 30px 30px;
         }
+        .dark .hero-pattern {
+            background-color: #000000;
+            background-image: radial-gradient(#444 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(227, 27, 35, 0.15);
             border-color: #E31B23;
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px -5px rgba(227, 27, 35, 0.3);
         }
         .text-brand-red {
             color: #E31B23;
@@ -35,7 +73,15 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-50 transition-colors duration-300">
+
+    <!-- Header with Theme Toggle -->
+    <div class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-6 py-4 flex justify-end">
+        <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+            <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i>
+            <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
+        </button>
+    </div>
 
     <!-- Hero Section -->
     <header class="hero-pattern text-white py-20 px-6 text-center relative overflow-hidden">
@@ -57,38 +103,38 @@
     <section class="max-w-6xl mx-auto -mt-12 px-6 relative z-20">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Card 1 -->
-            <div class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-brand-red card-hover transition-all">
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-t-4 border-brand-red card-hover transition-all">
                 <div class="flex items-center mb-4">
                     <svg class="w-8 h-8 text-brand-red mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    <h3 class="font-bold text-gray-500 uppercase tracking-wider text-sm">Alerta Crítica</h3>
+                    <h3 class="font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-sm">Alerta Crítica</h3>
                 </div>
-                <div class="text-5xl font-bold text-gray-900 mb-2">+78%</div>
-                <p class="text-gray-600">Aumento interanual de ciberataques en México registrado en el último diagnóstico.</p>
+                <div class="text-5xl font-bold text-gray-900 dark:text-white mb-2">+78%</div>
+                <p class="text-gray-600 dark:text-gray-400">Aumento interanual de ciberataques en México registrado en el último diagnóstico.</p>
             </div>
             <!-- Card 2 -->
-            <div class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-gray-800 card-hover transition-all">
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-t-4 border-gray-800 dark:border-gray-700 card-hover transition-all">
                 <div class="flex items-center mb-4">
-                    <svg class="w-8 h-8 text-gray-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    <h3 class="font-bold text-gray-500 uppercase tracking-wider text-sm">Estatus Regional</h3>
+                    <svg class="w-8 h-8 text-gray-800 dark:text-gray-300 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <h3 class="font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-sm">Estatus Regional</h3>
                 </div>
-                <div class="text-5xl font-bold text-gray-900 mb-2">Tier 2</div>
-                <p class="text-gray-600">México se ubica en el nivel "Avanzado" de la UIT, pero con brechas críticas en cooperación.</p>
+                <div class="text-5xl font-bold text-gray-900 dark:text-white mb-2">Tier 2</div>
+                <p class="text-gray-600 dark:text-gray-400">México se ubica en el nivel "Avanzado" de la UIT, pero con brechas críticas en cooperación.</p>
             </div>
             <!-- Card 3 -->
-            <div class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-brand-red card-hover transition-all">
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-t-4 border-brand-red card-hover transition-all">
                 <div class="flex items-center mb-4">
                     <svg class="w-8 h-8 text-brand-red mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-7h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                    <h3 class="font-bold text-gray-500 uppercase tracking-wider text-sm">Incidentes APF</h3>
+                    <h3 class="font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-sm">Incidentes APF</h3>
                 </div>
-                <div class="text-5xl font-bold text-gray-900 mb-2">16</div>
-                <p class="text-gray-600">Eventos de alto impacto detectados en instituciones clave (SEDENA, SICT, CONAGUA).</p>
+                <div class="text-5xl font-bold text-gray-900 dark:text-white mb-2">16</div>
+                <p class="text-gray-600 dark:text-gray-400">Eventos de alto impacto detectados en instituciones clave (SEDENA, SICT, CONAGUA).</p>
             </div>
         </div>
     </section>
 
     <!-- Main Pillars -->
     <section class="max-w-6xl mx-auto py-24 px-6">
-        <h2 class="text-3xl font-bold text-center mb-16 text-gray-900">Pilares Estratégicos del Plan</h2>
+        <h2 class="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">Pilares Estratégicos del Plan</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div class="text-center group">
                 <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
@@ -98,31 +144,31 @@
                 <p class="text-sm text-gray-600 leading-relaxed">Creación de la DGCiber y el CSIRT-APF como rectores técnicos.</p>
             </div>
             <div class="text-center group">
-                <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                <div class="w-20 h-20 bg-red-50 dark:bg-red-950 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
                     <svg class="w-10 h-10 text-brand-red group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 </div>
-                <h4 class="font-bold text-xl mb-3">Normatividad</h4>
-                <p class="text-sm text-gray-600 leading-relaxed">Actualización del marco legal y tipificación de nuevos ciberdelitos.</p>
+                <h4 class="font-bold text-xl mb-3 dark:text-white">Normatividad</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Actualización del marco legal y tipificación de nuevos ciberdelitos.</p>
             </div>
             <div class="text-center group">
-                <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                <div class="w-20 h-20 bg-red-50 dark:bg-red-950 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
                     <svg class="w-10 h-10 text-brand-red group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
-                <h4 class="font-bold text-xl mb-3">Capacitación</h4>
-                <p class="text-sm text-gray-600 leading-relaxed">Cierre de la brecha de talento humano especializado en defensa digital.</p>
+                <h4 class="font-bold text-xl mb-3 dark:text-white">Capacitación</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Cierre de la brecha de talento humano especializado en defensa digital.</p>
             </div>
             <div class="text-center group">
-                <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                <div class="w-20 h-20 bg-red-50 dark:bg-red-950 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-red transition-colors duration-300">
                     <svg class="w-10 h-10 text-brand-red group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                 </div>
-                <h4 class="font-bold text-xl mb-3">Cooperación</h4>
-                <p class="text-sm text-gray-600 leading-relaxed">Vinculación internacional para inteligencia compartida de amenazas.</p>
+                <h4 class="font-bold text-xl mb-3 dark:text-white">Cooperación</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Vinculación internacional para inteligencia compartida de amenazas.</p>
             </div>
         </div>
     </section>
 
     <!-- Global Incom Opportunities -->
-    <section class="bg-black text-white py-24 px-6 border-t border-gray-900">
+    <section class="bg-black dark:bg-gray-950 text-white py-24 px-6 border-t border-gray-900 dark:border-gray-800">
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2">
@@ -137,8 +183,8 @@
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
                             </div>
                             <div>
-                                <h5 class="font-bold text-xl text-white">Infraestructura Crítica Certificada</h5>
-                                <p class="text-gray-500 mt-1">Despliegue de redes de fibra óptica y cableado bajo los nuevos estándares de redundancia gubernamental.</p>
+                                <h5 class="font-bold text-xl text-white dark:text-white">Infraestructura Crítica Certificada</h5>
+                                <p class="text-gray-500 dark:text-gray-400 mt-1">Despliegue de redes de fibra óptica y cableado bajo los nuevos estándares de redundancia gubernamental.</p>
                             </div>
                         </div>
                         <div class="flex gap-5">
@@ -146,8 +192,8 @@
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
                             </div>
                             <div>
-                                <h5 class="font-bold text-xl text-white">SOC como Servicio (SOCaaS)</h5>
-                                <p class="text-gray-500 mt-1">Monitoreo 24/7 para dependencias estatales que requieren cumplimiento con el nuevo CSOC nacional.</p>
+                                <h5 class="font-bold text-xl text-white dark:text-white">SOC como Servicio (SOCaaS)</h5>
+                                <p class="text-gray-500 dark:text-gray-400 mt-1">Monitoreo 24/7 para dependencias estatales que requieren cumplimiento con el nuevo CSOC nacional.</p>
                             </div>
                         </div>
                         <div class="flex gap-5">
@@ -155,28 +201,28 @@
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
                             </div>
                             <div>
-                                <h5 class="font-bold text-xl text-white">CCTV Analítico Convergente</h5>
-                                <p class="text-gray-500 mt-1">Integración de seguridad física y lógica para centros de datos y nodos críticos de red.</p>
+                                <h5 class="font-bold text-xl text-white dark:text-white">CCTV Analítico Convergente</h5>
+                                <p class="text-gray-500 dark:text-gray-400 mt-1">Integración de seguridad física y lógica para centros de datos y nodos críticos de red.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="md:w-1/2 grid grid-cols-2 gap-4">
-                    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800 text-center hover:border-brand-red transition-colors">
+                    <div class="bg-gray-900 dark:bg-gray-800 p-6 rounded-xl border border-gray-800 dark:border-gray-700 text-center hover:border-brand-red transition-colors">
                         <div class="text-brand-red font-bold text-3xl mb-1">DGCiber</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-widest">Cumplimiento</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest">Cumplimiento</div>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800 text-center hover:border-brand-red transition-colors">
+                    <div class="bg-gray-900 dark:bg-gray-800 p-6 rounded-xl border border-gray-800 dark:border-gray-700 text-center hover:border-brand-red transition-colors">
                         <div class="text-brand-red font-bold text-3xl mb-1">ATDT</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-widest">Aliados</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest">Aliados</div>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800 text-center hover:border-brand-red transition-colors">
+                    <div class="bg-gray-900 dark:bg-gray-800 p-6 rounded-xl border border-gray-800 dark:border-gray-700 text-center hover:border-brand-red transition-colors">
                         <div class="text-brand-red font-bold text-3xl mb-1">Resiliencia</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-widest">Objetivo</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest">Objetivo</div>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800 text-center hover:border-brand-red transition-colors">
+                    <div class="bg-gray-900 dark:bg-gray-800 p-6 rounded-xl border border-gray-800 dark:border-gray-700 text-center hover:border-brand-red transition-colors">
                         <div class="text-brand-red font-bold text-3xl mb-1">2026</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-widest">Meta Estratégica</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest">Meta Estratégica</div>
                     </div>
                 </div>
             </div>
@@ -185,21 +231,21 @@
 
     <!-- SWOT Analysis Summary -->
     <section class="max-w-6xl mx-auto py-24 px-6">
-        <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-10 md:p-16 text-white shadow-2xl overflow-hidden relative border border-gray-800">
+        <div class="bg-gradient-to-br from-gray-900 dark:from-gray-900 to-black dark:to-black rounded-3xl p-10 md:p-16 text-white shadow-2xl overflow-hidden relative border border-gray-800 dark:border-gray-700">
             <div class="relative z-10">
-                <h3 class="text-3xl font-bold mb-10 text-center md:text-left">Diagnóstico FODA: Estado de la Ciberseguridad</h3>
+                <h3 class="text-3xl font-bold mb-10 text-center md:text-left dark:text-white">Diagnóstico FODA: Estado de la Ciberseguridad</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div>
-                        <h4 class="font-bold text-xl border-b border-brand-red pb-3 mb-6 text-brand-red">Fortalezas y Oportunidades</h4>
-                        <ul class="space-y-4 text-gray-300">
+                        <h4 class="font-bold text-xl border-b border-brand-red pb-3 mb-6 text-brand-red dark:text-brand-red">Fortalezas y Oportunidades</h4>
+                        <ul class="space-y-4 text-gray-300 dark:text-gray-400">
                             <li class="flex items-start"><span class="mr-3 text-brand-red">•</span> Creación de un ente rector centralizado (ATDT).</li>
                             <li class="flex items-start"><span class="mr-3 text-brand-red">•</span> Posicionamiento como líder en gobernanza regional.</li>
                             <li class="flex items-start"><span class="mr-3 text-brand-red">•</span> Creciente demanda de servicios de protección en el mercado.</li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold text-xl border-b border-gray-700 pb-3 mb-6 text-gray-400">Debilidades y Amenazas</h4>
-                        <ul class="space-y-4 text-gray-400">
+                        <h4 class="font-bold text-xl border-b border-gray-700 dark:border-gray-600 pb-3 mb-6 text-gray-400 dark:text-gray-400">Debilidades y Amenazas</h4>
+                        <ul class="space-y-4 text-gray-400 dark:text-gray-400">
                             <li class="flex items-start"><span class="mr-3">•</span> Escasez crítica de talento humano especializado.</li>
                             <li class="flex items-start"><span class="mr-3">•</span> Falta de presupuesto proporcional al riesgo.</li>
                             <li class="flex items-start"><span class="mr-3">•</span> Sofisticación de ataques mediante IA y Deepfakes.</li>
@@ -213,20 +259,59 @@
     </section>
 
     <!-- Recommendations Footer -->
-    <footer class="bg-white border-t border-gray-200 py-16 px-6">
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-16 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="font-bold text-gray-900 text-xl mb-6">Hacia un Futuro Digital Seguro</h3>
-            <p class="text-gray-600 italic text-lg leading-relaxed mb-10">
+            <h3 class="font-bold text-gray-900 dark:text-white text-xl mb-6">Hacia un Futuro Digital Seguro</h3>
+            <p class="text-gray-600 dark:text-gray-400 italic text-lg leading-relaxed mb-10">
                 "La ciberseguridad ya no es un gasto operativo, es el cimiento de la soberanía digital. Es responsabilidad de todos transitar de la reacción a la prevención, construyendo juntos la arquitectura de la confianza nacional."
             </p>
             <div class="flex justify-center items-center gap-4">
-                <a href="index.html" class="px-6 py-3 bg-black text-white rounded-lg font-bold hover:bg-brand-red transition-colors">Volver al Inicio</a>
+                <a href="index.html" class="px-6 py-3 bg-black dark:bg-gray-800 text-white rounded-lg font-bold hover:bg-brand-red dark:hover:bg-brand-red transition-colors">Volver al Inicio</a>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-100 text-xs text-gray-400 uppercase tracking-widest">
+            <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest">
                 Basado en el Plan Nacional de Ciberseguridad | Diciembre 2025 | ATDT México
             </div>
         </div>
     </footer>
+
+    <script>
+        // ================= THEME TOGGLE LOGIC =================
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Function to apply theme and update icon
+        function applyTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+            }
+        }
+
+        // Load theme preference from localStorage
+        if (localStorage.getItem('color-theme') === 'dark') {
+            applyTheme(true);
+        } else {
+            applyTheme(false);
+        }
+        
+        // Handle theme toggle
+        function handleThemeToggle() {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('color-theme', isCurrentlyDark ? 'light' : 'dark');
+            applyTheme(!isCurrentlyDark);
+        }
+
+        themeToggleBtn.addEventListener('click', handleThemeToggle);
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 
 </body>
 </html>
