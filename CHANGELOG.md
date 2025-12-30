@@ -1,110 +1,53 @@
-CAMBIOS - GlobalIncom
-==========================================
-Registro de cambios implementados en el sitio web de GlobalIncom
-Período: 28/nov - 30/dic/2025
-Última actualización: 30/dic/2025 - 12:00 PM
-==========================================
+# Changelog - GlobalIncom
 
-Fecha: 30/dic/2025 - 12:00 PM
-DARK MODE EN nacional.html
-- Implementación de modo oscuro en `nacional.html` para consistencia visual con el resto del sitio.
-- La página ahora sincroniza el tema (claro/oscuro) con la página principal usando `localStorage`.
-- Se agregó un botón de toggle (sol/luna) en una barra superior fija para cambiar de tema.
-- Se ajustaron todos los componentes visuales, incluyendo fondos, texto, tarjetas y gráficos, para ser compatibles con ambos temas.
-- Se utilizó la configuración de Tailwind `darkMode: 'class'` y se aplicaron clases `dark:` en todo el documento.
+Registro de cambios implementados en el sitio web de GlobalIncom.
 
-Fecha: 28/nov/2025 - 10:30 AM
-TRADUCCIÓN DE COMENTARIOS Y ANALYTICS
-- Traducción de comentarios en inglés a español para mejorar la documentación y mantenimiento
-- Implementación del script de Microsoft Clarity para análisis de comportamiento de usuarios
-  ID de Clarity: rvviylo106
-- No se realizaron cambios en funcionalidad ni estructura visual del sitio
+**Período:** 28/nov - 30/dic/2025
+**Última actualización:** 30/dic/2025 - 12:15 PM
 
-Fecha: 28/nov/2025 - 11:00 AM
-DARK MODE EN presenta.html
-- Implementación de modo oscuro en `presenta.html`
-- La página sincroniza el tema (claro/oscuro) con la página principal usando `localStorage`
-- Se ajustaron estilos y gráficos para ser compatibles con ambos temas
+---
 
-Fecha: 28/nov/2025 - 11:45 AM
-DARK MODE EN seguridad.html
-- Implementación de modo oscuro en `seguridad.html`
-- La página sincroniza el tema (claro/oscuro) con la página principal
-- Se adaptaron todos los componentes visuales para la nueva paleta de colores oscuros
+### 🚀 Mejoras (30 de diciembre de 2025)
 
-Fecha: 28/nov/2025 - 12:15 PM
-LIMPIEZA DE DISEÑO EN seguridad.html
-- Se eliminó la cuadrícula de fondo en `seguridad.html` para un diseño más limpio
+- **`nacional.html` - Corrección de Dark Mode**
+  - Se mejoró el script de dark mode para que detecte la preferencia del sistema operativo (`prefers-color-scheme`) si no hay una selección previa en `localStorage`.
+  - Esto asegura que el tema se sincronice correctamente desde la primera carga.
 
-Fecha: 29/nov/2025 - 10:00 AM
-REEMPLAZAMIENTO DE VIDEO POR SVG ANIMADO - ITERACIÓN 1
-- Reemplazado video estático (`Puntos_en_Bucle.mp4`) en hero section por SVG animado (`puntos-animados.svg`)
-- Se creó archivo SVG con 6 puntos basado en `9Puntos150px.svg`, con animación de opacidad y sombra dinámica
-- Se removió contenedor con fondo degradado, mostrando solo SVG con fondo transparente
-- Tamaño: w-80 h-80 (320px)
-- (Commit: d7621f0)
+- **`nacional.html` - Implementación de Dark Mode**
+  - Se implementó el modo oscuro para consistencia visual con el resto del sitio.
+  - La página ahora sincroniza el tema (claro/oscuro) con la página principal usando `localStorage`.
+  - Se agregó un botón de toggle (sol/luna) en una barra superior fija para cambiar de tema.
+  - Se ajustaron todos los componentes visuales para ser compatibles con ambos temas.
 
-Fecha: 29/nov/2025 - 10:15 AM
-OPTIMIZACIÓN SVG - ITERACIÓN 2
-- Eliminado fondo y recuadro del SVG animado en hero section
-- El SVG se renderiza directamente sobre el fondo transparente del hero, con efecto de hover y sombra sutil
-- (Commit: e4db77b)
+---
 
-Fecha: 29/nov/2025 - 10:30 AM
-MEJORÍA SVG: GRID 2x3 CON CASCADA - ITERACIÓN 3
-- Mejorado SVG animado con estructura grid 2x3 (6 puntos en total)
-- Se implementó animación de rebote en cascada con retrasos de 0.15s entre cada punto
-- Animación: duración 1.8s, easing ease-in-out, escalado 70%-120%, opacidad 30%-100%
-- (Commit: 886793c)
+### 📜 Historial de Cambios Anteriores
 
-Fecha: 29/nov/2025 - 10:45 AM
-RESTAURACIÓN ESTRUCTURA ORIGINAL SVG - ITERACIÓN 4
-- Restaurada estructura original de `9Puntos150px.svg` en `puntos-animados.svg`
-- Se mantienen todos los 6 paths (368-373) con transformaciones exactas, añadiendo solo CSS `@keyframes`
-- Cada punto se anima con retrasos de 0.2s para efecto de cascada
-- Duración: 1.8s, opacidad + sombra dinámica
-- (Commit: 443b883)
+#### 29 de noviembre de 2025
 
-Fecha: 29/nov/2025 - 11:00 AM
-OPTIMIZACIÓN VELOCIDAD Y OPACIDAD SVG - ITERACIÓN 5
-- Ajustada animación SVG: duración aumentada a 3.5s (más lenta)
-- Iluminación reducida (sombra: 0.2mm → 0.05mm/0.3mm)
-- Movimiento aumentado con escalado a 1.3
-- Opacidad: 0.4-1 → 0.5-0.9 para efecto más natural
-- (Commit: 03d1985)
+- **`cableado.html` - Reparación de Iconos**
+  - Se reemplazaron los iconos de Phosphor por SVG inline para mayor confiabilidad. (Commit: `b7bd365`)
 
-Fecha: 29/nov/2025 - 11:15 AM
-CORRECCIÓN LOOP CONTINUO SVG - ITERACIÓN 6 (FINAL)
-- Corregida animación SVG para loop continuo sin interrupciones
-- Removido `transform: scale()` que causaba desaparición de puntos
-- Keyframes ahora usan 3 puntos (0%, 50%, 100%) en lugar de 2, garantizando loop infinito
-- Opacidad: 0.4 → 1 → 0.4, sombra variable de 0.05mm a 0.3mm
-- Duración final: 3.5s
-- (Commit: e08bc18)
+- **`cableado.html` - Rediseño y Dark Mode**
+  - Se aplicó el diseño visual y modo oscuro de `seguridad.html` para unificar la apariencia. (Commit: `2874849`)
 
-Fecha: 29/nov/2025 - 12:30 PM
-REDISEÑO Y DARK MODE DE cableado.html
-- Actualizado `cableado.html`: Aplicado diseño visual y modo oscuro de `seguridad.html`
-- Implementadas características de diseño consistente:
-  * Modo oscuro con localStorage (clave: 'color-theme')
-  * Configuración Tailwind darkMode: 'class'
-  * Componentes card-institutional con efectos hover y transiciones
-  * Sistema de colores consistente: rojo (#E31B23), gradientes y paleta de slate
-  * Tarjetas de métricas con colores distintivos (rojo, azul, púrpura, verde)
-  * Comparativa de categorías Cat 5e / Cat 6 / Cat 6A* / Cat 8 con diseño uniforme
-  * Sección de componentes esenciales con card-institutional
-  * Calculadora de ahorro con formateo de moneda USD
-  * Tipografía Inter, transiciones smooth 0.3s, bordes y espaciado mejorados
-- Todos los contenidos originales preservados y remozados con nuevo diseño
-- (Commit: 2874849)
+- **Hero Section - Optimización de Animación SVG (Iteraciones 1-6)**
+  - Se reemplazó el video estático por una animación SVG optimizada, mejorando el rendimiento y la estética. (Commits: `d7621f0` a `e08bc18`)
 
-Fecha: 29/nov/2025 - 12:45 PM
-REPARACIÓN DE ICONOS EN cableado.html
-- Removido script de Phosphor icons (@phosphor-icons/web) que no cargaba correctamente
-- Reemplazados todos los iconos <i> con SVG inline para mayor confiabilidad
-- Iconos actualizados: check-circle, cable (×5), lightning, book-bookmark, shield, palette
-- SVG escalados correctamente con Tailwind y mantienen efectos hover y animaciones
-- (Commit: b7bd365)
+#### 28 de noviembre de 2025
+
+- **`seguridad.html` - Limpieza de Diseño**
+  - Se eliminó la cuadrícula de fondo para un diseño más limpio.
+
+- **`seguridad.html` - Implementación de Dark Mode**
+  - Se implementó el modo oscuro, sincronizado con `localStorage`.
+
+- **`presenta.html` - Implementación de Dark Mode**
+  - Se implementó el modo oscuro, sincronizado con `localStorage`.
+
+- **General - Analytics y Comentarios**
+  - Se implementó Microsoft Clarity para análisis de comportamiento.
+  - Se tradujeron comentarios del código a español.
 
 Fecha: 29/nov/2025 - 1:00 PM
 AÑADIR BOTÓN MODAL DE CABLEADO EN index.html
