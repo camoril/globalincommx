@@ -14,6 +14,7 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
   - La página principal ahora pasa el tema activo como un parámetro en la URL (`?theme=dark`) al abrir un modal.
   - Los modales ahora priorizan este parámetro para garantizar una sincronización del 100%, eliminando cualquier inconsistencia.
 
+- **Feature**: Se añadió una sección de "Casos de Éxito" en la página de inicio con un diseño de línea de tiempo vertical para destacar los hitos importantes de la empresa.
 - **Fix**: Se implementó una solución robusta para la sincronización del tema (claro/oscuro) entre la página principal y los modales que cargan contenido externo (`nacional.html`).
   - La función `openModal` en `index.html` ahora detecta el tema actual y lo pasa como un parámetro en la URL (`?theme=dark` o `?theme=light`).
   - Las páginas dentro de los modales (`nacional.html`) ahora priorizan este parámetro de URL para establecer su tema inicial, asegurando consistencia visual inmediata.
