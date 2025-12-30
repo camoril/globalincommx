@@ -9,6 +9,10 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ### 🚀 Mejoras (30 de diciembre de 2025)
 
+- **`nacional.html` - Corrección de FOUC en Dark Mode**
+  - Se movió el script de detección de tema al `<head>` para eliminar el parpadeo (Flash of Unstyled Content) al cargar la página en modo oscuro.
+  - La lógica ahora es consistente con `seguridad.html`, asegurando una carga instantánea y sin saltos visuales.
+
 - **`nacional.html` - Corrección de Dark Mode**
   - Se mejoró el script de dark mode para que detecte la preferencia del sistema operativo (`prefers-color-scheme`) si no hay una selección previa en `localStorage`.
   - Esto asegura que el tema se sincronice correctamente desde la primera carga.

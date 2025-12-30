@@ -36,6 +36,14 @@
             }
         }
     </script>
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -280,31 +288,32 @@
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-        // Function to apply theme and update icon
-        function applyTheme(isDark) {
+        // Function to update icon based on current theme
+        function updateIcon(isDark) {
             if (isDark) {
-                document.documentElement.classList.add('dark');
                 themeToggleLightIcon.classList.remove('hidden');
                 themeToggleDarkIcon.classList.add('hidden');
             } else {
-                document.documentElement.classList.remove('dark');
                 themeToggleDarkIcon.classList.remove('hidden');
                 themeToggleLightIcon.classList.add('hidden');
             }
         }
 
-        // Change the icons inside the button based on previous settings
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            applyTheme(true);
-        } else {
-            applyTheme(false);
-        }
+        // Set initial icon state
+        updateIcon(document.documentElement.classList.contains('dark'));
         
         // Handle theme toggle
         function handleThemeToggle() {
-            const isCurrentlyDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('color-theme', isCurrentlyDark ? 'light' : 'dark');
-            applyTheme(!isCurrentlyDark);
+            const isDark = !document.documentElement.classList.contains('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            updateIcon(isDark);
         }
 
         themeToggleBtn.addEventListener('click', handleThemeToggle);
