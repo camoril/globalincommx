@@ -9,6 +9,11 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ### 🚀 Mejoras (30 de diciembre de 2025)
 
+- **Sincronización de Tema en Modales (Dark Mode)**
+  - Se implementó un método robusto para sincronizar el tema (claro/oscuro) entre la página principal y los modales (`nacional.html`, `seguridad.html`, etc.).
+  - La página principal ahora pasa el tema activo como un parámetro en la URL (`?theme=dark`) al abrir un modal.
+  - Los modales ahora priorizan este parámetro para garantizar una sincronización del 100%, eliminando cualquier inconsistencia.
+
 - **`nacional.html` - Corrección de FOUC en Dark Mode**
   - Se movió el script de detección de tema al `<head>` para eliminar el parpadeo (Flash of Unstyled Content) al cargar la página en modo oscuro.
   - La lógica ahora es consistente con `seguridad.html`, asegurando una carga instantánea y sin saltos visuales.
