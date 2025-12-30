@@ -9,6 +9,28 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ### 🚀 Mejoras (30 de diciembre de 2025)
 
+- **CRITICAL FIX: Corrección de Error de Sintaxis HTML**
+  - Se corrigió un error crítico de sintaxis HTML (`</div        </div>`) en la línea 1033 que causaba que las páginas de Consultoría y Servicios se mostraran vacías.
+  - El tag malformado rompía la estructura del documento, causando que las secciones posteriores quedaran mal anidadas dentro de la sección de Ciberseguridad.
+  - Este fix restaura la navegación correcta a todas las páginas del sitio.
+
+- **Feature: Menú de Empleados Oculto**
+  - Se implementó un menú oculto para empleados accesible haciendo click 5 veces en el logo de GlobalIncom.
+  - Requiere contraseña para activación y persiste durante la sesión.
+  - Incluye enlaces a: Webmail, cPanel, Calculadora IPv4, Calculadora IPv6.
+
+- **Feature: Casos de Éxito Timeline**
+  - Se añadió una sección de "Casos de Éxito" con diseño de línea de tiempo vertical.
+  - Destaca proyectos importantes: Mexicana de Aviación, CAPUFE, Hospital Infantil de México.
+
+- **Feature: Mesa de Servicio Dropdown**
+  - Se convirtió el enlace único de "Mesa de Servicio" en un menú desplegable.
+  - Ahora incluye dos portales: GlobalIncom y Mexicana de Aviación.
+
+- **Fix: Visibilidad del Toggle de Tema**
+  - Se corrigió la inicialización de los iconos de sol/luna en el botón de cambio de tema.
+  - Los iconos ahora se muestran correctamente en ambos modos (claro/oscuro).
+
 - **Sincronización de Tema en Modales (Dark Mode)**
   - Se implementó un método robusto para sincronizar el tema (claro/oscuro) entre la página principal y los modales (`nacional.html`, `seguridad.html`, etc.).
   - La página principal ahora pasa el tema activo como un parámetro en la URL (`?theme=dark`) al abrir un modal.

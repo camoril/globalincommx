@@ -331,6 +331,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
                     </div>
 
+                    <!-- Dropdown Empleados (Oculto por defecto) -->
+                    <div id="employee-menu-desktop" class="relative group employee-only-item hidden">
+                        <button class="text-brand-primary dark:text-yellow-400 transition font-medium text-sm uppercase tracking-wide nav-link flex items-center gap-1">
+                            <span>Empleados</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-20">
+                            <div class="p-2">
+                                <a href="https://globalincom.com.mx/webmail" target="_blank" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="mail" class="w-5 h-5 text-gray-400"></i>
+                                    <span>Webmail</span>
+                                </a>
+                                <a href="https://globalincom.com.mx/cpanel" target="_blank" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="database" class="w-5 h-5 text-gray-400"></i>
+                                    <span>cPanel</span>
+                                </a>
+                                <div class="h-px bg-gray-100 dark:bg-gray-700 my-1"></div>
+                                <a href="https://globalincom.com.mx/subnet" target="_blank" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="binary" class="w-5 h-5 text-gray-400"></i>
+                                    <span>Calculadora IPv4</span>
+                                </a>
+                                <a href="https://globalincom.com.mx/subnet6" target="_blank" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                    <i data-lucide="network" class="w-5 h-5 text-gray-400"></i>
+                                    <span>Calculadora IPv6</span>
+                                </a>
+                                <div class="h-px bg-gray-100 dark:bg-gray-700 my-1"></div>
+                                <a href="javascript:void(0)" id="employee-logout-desktop" class="flex items-center gap-3 px-4 py-3 text-sm text-red-600 dark:text-red-500 rounded-md hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors">
+                                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Theme Toggle -->
                     <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                         <i id="theme-toggle-dark-icon" class="w-5 h-5"></i>
@@ -379,6 +413,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <a href="https://soporte-aem.com.mx/" target="_blank" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white border-l-2 border-transparent hover:border-brand-primary pl-4 flex items-center gap-2">
                     <i data-lucide="plane" class="w-4 h-4 text-brand-primary"></i> Mexicana de Aviación
                 </a>
+
+                <!-- Menú Empleados (Móvil, oculto por defecto) -->
+                <div id="employee-menu-mobile" class="employee-only-item hidden bg-yellow-50 dark:bg-yellow-500/10 rounded-md my-1 border-l-2 border-yellow-400">
+                    <p class="px-3 pt-3 pb-1 text-xs font-bold text-yellow-600 dark:text-yellow-400 uppercase tracking-widest">Empleados</p>
+                    <a href="https://globalincom.com.mx/webmail" target="_blank" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white pl-4">Webmail</a>
+                    <a href="https://globalincom.com.mx/cpanel" target="_blank" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white pl-4">cPanel</a>
+                    <a href="https://globalincom.com.mx/subnet" target="_blank" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white pl-4">Calculadora IPv4</a>
+                    <a href="https://globalincom.com.mx/subnet6" target="_blank" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white pl-4">Calculadora IPv6</a>
+                    <a href="javascript:void(0)" id="employee-logout-mobile" class="block px-3 py-2 text-base font-medium text-red-600 dark:text-red-500 hover:text-black dark:hover:text-white pl-4">Cerrar Sesión</a>
+                </div>
 
                 <!-- Mobile Theme Toggle -->
                 <a href="javascript:void(0)" id="mobile-theme-toggle" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white border-l-2 border-transparent hover:border-brand-primary pl-4 flex items-center gap-2">
@@ -987,7 +1031,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <!-- IMAGEN CAMBIADA: SOC (Security Operations Center) más moderno -->
                     <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85&fm=webp" alt="Centro de Operaciones de Seguridad (SOC) con múltiples pantallas mostrando monitoreo de sistemas, análisis de amenazas y gestión de eventos en tiempo real" loading="lazy" class="rounded shadow-2xl mt-8">
                 </div>
-            </div        </div>
+            </div>
+        </div>
 
         <!-- ================= PAGE: CONSULTORIA (NUEVA) ================= -->
         <div id="page-consultoria" class="page-section animate-fade-in">
@@ -1388,6 +1433,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </div>
 
+    <!-- ======================= MODAL PARA CONTRASEÑA DE EMPLEADO ======================= -->
+    <div id="employee-modal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm w-full h-full z-[1000] flex items-center justify-center p-4 hidden opacity-0" role="dialog" aria-modal="true" aria-labelledby="employee-modal-title">
+        <div class="w-full max-w-sm bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6">
+            <h3 id="employee-modal-title" class="font-bold text-lg text-gray-800 dark:text-white mb-4">Acceso de Empleado</h3>
+            <form id="employee-form">
+                <input type="password" id="employee-password" placeholder="Contraseña" required class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition dark:text-white">
+                <div class="flex justify-end gap-3 mt-4">
+                    <button type="button" id="employee-cancel" class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-brand-primary rounded-md hover:bg-red-700 transition">Acceder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <script>
         lucide.createIcons();
@@ -1479,7 +1538,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 // Actualizar URL hash sin recargar (para que funcione el botón atrás)
                 try {
                     if(pageId === 'home') {
-                        history.pushState(null, null, ' ');
+                        history.pushState(null, null, window.location.pathname);
                     } else {
                         history.pushState(null, null, `#${pageId}`);
                     }
@@ -1583,6 +1642,85 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
         });
 
+
+        // ================= EMPLOYEE MODE LOGIC =================
+        const employeePassword = 'Qwerty1234';
+        const employeeModal = document.getElementById('employee-modal');
+        const employeeForm = document.getElementById('employee-form');
+        const employeeCancelBtn = document.getElementById('employee-cancel');
+        const logoContainer = document.querySelector('.flex-shrink-0');
+        
+        let clickCount = 0;
+        let clickTimer = null;
+
+        logoContainer.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 1) {
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                }, 2000); // Reset after 2 seconds
+            }
+            if (clickCount === 5) {
+                clearTimeout(clickTimer);
+                clickCount = 0;
+                openEmployeeModal();
+            }
+        });
+
+        function openEmployeeModal() {
+            employeeModal.classList.remove('hidden');
+            setTimeout(() => employeeModal.classList.remove('opacity-0'), 10);
+            document.getElementById('employee-password').focus();
+        }
+
+        function closeEmployeeModal() {
+            employeeModal.classList.add('opacity-0');
+            setTimeout(() => employeeModal.classList.add('hidden'), 300);
+        }
+
+        employeeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const passwordInput = document.getElementById('employee-password');
+            if (passwordInput.value === employeePassword) {
+                sessionStorage.setItem('isEmployee', 'true');
+                showEmployeeMenu();
+                closeEmployeeModal();
+                passwordInput.value = '';
+            } else {
+                alert('Contraseña incorrecta.');
+                passwordInput.value = '';
+            }
+        });
+
+        employeeCancelBtn.addEventListener('click', closeEmployeeModal);
+
+        function showEmployeeMenu() {
+            document.querySelectorAll('.employee-only-item').forEach(item => {
+                item.classList.remove('hidden');
+            });
+        }
+
+        function hideEmployeeMenu() {
+            document.querySelectorAll('.employee-only-item').forEach(item => {
+                item.classList.add('hidden');
+            });
+        }
+
+        function employeeLogout() {
+            sessionStorage.removeItem('isEmployee');
+            hideEmployeeMenu();
+        }
+
+        document.getElementById('employee-logout-desktop').addEventListener('click', employeeLogout);
+        document.getElementById('employee-logout-mobile').addEventListener('click', () => {
+            employeeLogout();
+            toggleMobileMenu(); // Opcional: cerrar el menú móvil al salir
+        });
+
+        // Check on page load if user is already logged in
+        if (sessionStorage.getItem('isEmployee') === 'true') {
+            showEmployeeMenu();
+        }
 
         // ================= THEME TOGGLE LOGIC =================
         const themeToggleBtn = document.getElementById('theme-toggle');
