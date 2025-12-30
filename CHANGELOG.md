@@ -14,9 +14,20 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
   - La página principal ahora pasa el tema activo como un parámetro en la URL (`?theme=dark`) al abrir un modal.
   - Los modales ahora priorizan este parámetro para garantizar una sincronización del 100%, eliminando cualquier inconsistencia.
 
-- **`nacional.html` - Corrección de FOUC en Dark Mode**
-  - Se movió el script de detección de tema al `<head>` para eliminar el parpadeo (Flash of Unstyled Content) al cargar la página en modo oscuro.
-  - La lógica ahora es consistente con `seguridad.html`, asegurando una carga instantánea y sin saltos visuales.
+- **Fix**: Se implementó una solución robusta para la sincronización del tema (claro/oscuro) entre la página principal y los modales que cargan contenido externo (`nacional.html`).
+  - La función `openModal` en `index.html` ahora detecta el tema actual y lo pasa como un parámetro en la URL (`?theme=dark` o `?theme=light`).
+  - Las páginas dentro de los modales (`nacional.html`) ahora priorizan este parámetro de URL para establecer su tema inicial, asegurando consistencia visual inmediata.
+  - Esta solución reemplaza el método anterior que dependía únicamente de `localStorage` y no funcionaba de manera fiable con iframes.
+- **Fix**: Se corrigió un problema de "flash of unstyled content" (FOUC) en `nacional.html` al mover el script de detección de tema al `<head>` del documento.
+- **Feature**: Se añadió el modo oscuro a la página `nacional.html`.
+
+## [1.0.0] - 2025-12-29
+- **Feature**: Implementación inicial del sitio SPA.
+- **Feature**: Secciones Home, Infraestructura, Ciberseguridad, Consultoría y Servicios.
+- **Feature**: Router basado en Hash y navegación dinámica.
+- **Feature**: Modo oscuro persistente con `localStorage`.
+- **Feature**: Formulario de contacto con CAPTCHA lógico y envío AJAX.
+- **Feature**: Componentes modales para iframes y video.
 
 - **`nacional.html` - Corrección de Dark Mode**
   - Se mejoró el script de dark mode para que detecte la preferencia del sistema operativo (`prefers-color-scheme`) si no hay una selección previa en `localStorage`.

@@ -1433,17 +1433,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         const modalContentBox = document.getElementById('modal-content-box');
         const modalBody = document.getElementById('modal-body');
 
-        function openModal(url, title, type = 'page') {
-            iframe.src = url;
+        function openModal(src, title, type = 'iframe') {
+            // Detectar el tema actual del documento principal
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            
+            // Construir la URL y añadir el tema como parámetro SOLO para iframes
+            const url = new URL(src, window.location.href);
+            if (type === 'iframe') {
+                url.searchParams.set('theme', currentTheme);
+            }
+
+            iframe.src = url.href; // Usar la URL modificada
             modalTitle.textContent = title;
 
+            // Lógica existente para ajustar el tamaño del modal
             if (type === 'video') {
-                modalTitle.textContent = 'Video Corporativo';
                 modalContentBox.classList.add('video-aspect');
                 modalContentBox.classList.remove('max-h-[90vh]', 'h-full');
                 modalBody.classList.add('aspect-video');
-            } else { // page
-                modalTitle.textContent = 'Presentación Interactiva';
+            } else { // iframe o page
                 modalContentBox.classList.remove('video-aspect');
                 modalContentBox.classList.add('max-h-[90vh]', 'h-full');
                 modalBody.classList.remove('aspect-video');
