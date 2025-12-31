@@ -9,6 +9,10 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ### 🚀 Mejoras (30 de diciembre de 2025)
 
+- **Mejora de Contenido en `cableado.html`**
+  - Se añadió una sección comparativa de tipos de Fibra Óptica (Multimodo OM1/OM4/OM5 y Monomodo OS2).
+  - Se clarificó el origen del costo por hora en la calculadora de inversión, citando análisis de la industria.
+
 - **CRITICAL FIX: Corrección de Error de Sintaxis HTML**
   - Se corrigió un error crítico de sintaxis HTML (`</div        </div>`) en la línea 1033 que causaba que las páginas de Consultoría y Servicios se mostraran vacías.
   - El tag malformado rompía la estructura del documento, causando que las secciones posteriores quedaran mal anidadas dentro de la sección de Ciberseguridad.
