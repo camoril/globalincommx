@@ -7,7 +7,22 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ---
 
-### 🆕 Nuevos Documentos de Análisis Estratégico (31 de diciembre de 2025)
+### � Integración de Documentos Estratégicos en SPA (31 de diciembre de 2025)
+
+- **Feature: Botón "Análisis XDR/EDR" en Sección Ciberseguridad**
+  - Agregado botón interactivo debajo del item "Monitoreo y SIEM" en la página de Ciberseguridad Lógica.
+  - Al hacer clic, abre el documento `xdr.html` en modal con título "Análisis XDR/EDR".
+  - Ícono de rayo (zap) con estilo azul para diferenciación visual.
+  - Implementado con ancho completo y alineación consistente con el resto de la interfaz.
+
+- **Feature: Enlace "Arquitectura Mexicana" en Menú Empleados**
+  - Agregado enlace en el menú oculto de empleados (both desktop y mobile).
+  - Ubicado entre "Calculadora IPv6" y "Cerrar Sesión" con separador visual.
+  - Al hacer clic, abre `mexicana.html` en modal con título "Arquitectura de Defensa - Mexicana".
+  - Ícono de maletín (briefcase) para identificación rápida.
+  - En mobile, automáticamente cierra el menú después de activar el modal.
+
+### �🆕 Nuevos Documentos de Análisis Estratégico (31 de diciembre de 2025)
 
 - **Feature: `mexicana.html` - Arquitectura de Defensa y Continuidad Operativa**
   - Nuevo documento técnico interactivo para Mexicana de Aviación.
