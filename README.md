@@ -34,7 +34,10 @@ Para ver el sitio en producción, visita [https://globalincom.com.mx](https://gl
 
 -   `index.html`: El archivo principal que contiene toda la estructura de la SPA.
 -   `presenta.html` / `cableado.html` / `seguridad.html`: Contenido informativo (presentaciones, infografías) que se carga en modales.
+-   `mexicana.html`: Documento estratégico de arquitectura de defensa y continuidad operativa para Mexicana de Aviación. Incluye análisis de Sophos MDR, ManageEngine Suite y Tenable.
+-   `xdr.html`: Análisis comparativo de arquitecturas XDR/EDR (Sophos vs CrowdStrike vs Legacy). Documento técnico para evaluación de soluciones de ciberseguridad.
 -   `CAMBIOS.txt`: Registro cronológico y detallado de todas las modificaciones y nuevas características implementadas.
+-   `CHANGELOG.md`: Changelog estructurado con todas las mejoras, nuevas características y correcciones.
 -   `TODO.md`: Lista de mejoras técnicas y de rendimiento pendientes.
 -   `robots.txt`: Directivas para los crawlers de los motores de búsqueda.
 -   `sitemap.xml`: Mapa del sitio para ayudar a la indexación.

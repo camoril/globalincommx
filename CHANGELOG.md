@@ -2,10 +2,26 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov - 30/dic/2025
-**Última actualización:** 30/dic/2025 - 12:15 PM
+**Período:** 28/nov - 31/dic/2025
+**Última actualización:** 31/dic/2025
 
 ---
+
+### 🆕 Nuevos Documentos de Análisis Estratégico (31 de diciembre de 2025)
+
+- **Feature: `mexicana.html` - Arquitectura de Defensa y Continuidad Operativa**
+  - Nuevo documento técnico interactivo para Mexicana de Aviación.
+  - Arquitectura de resiliencia integrada en tres fases: Mitigación (Sophos MDR), Visibilidad (ManageEngine Suite) y Cumplimiento (Tenable).
+  - Incluye tabs navegables para: Visión General, Sophos MDR Complete, ManageEngine Suite, Sinergia con Tenable y Visión Completa del Ecosistema.
+  - Diseño responsivo con Tailwind CSS y componentes interactivos con JavaScript vanilla.
+  - Incorpora tablas comparativas, planes de implementación y requisitos de infraestructura.
+
+- **Feature: `xdr.html` - Análisis Comparativo de Arquitecturas XDR/EDR**
+  - Nuevo documento de análisis estratégico que evalúa modelos de ciberseguridad.
+  - Comparativa entre: Protección Tradicional (Legacy EPP), EDR/XDR Puro (CrowdStrike Falcon) y Seguridad Sincronizada (Sophos Intercept X).
+  - Incluye tablas técnicas detalladas, análisis de arquitectura de próxima generación y veredicto estratégico.
+  - Diseño profesional con gradientes, análisis boxes y tipografía especializada (Urbanist + Inter).
+  - Documentación exhaustiva sobre criterios técnicos, motores de detección y servicios MDR.
 
 ### 🚀 Mejoras (30 de diciembre de 2025)
 

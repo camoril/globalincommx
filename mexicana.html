@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura de Defensa y Continuidad Operativa - Global Incom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+        .req-card { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem; border-radius: 0.5rem; }
+        .plan-card { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 1rem; border-radius: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Header / Hero -->
+    <header class="hero-gradient text-white py-12 px-6 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+                <span class="text-sm font-bold tracking-widest uppercase text-blue-400">Estrategia Global Incom 2025</span>
+                <span class="bg-red-600 text-xs font-bold px-3 py-1 rounded-full text-white uppercase animate-pulse">Alerta: Mitigación de Brecha Expirada (Kaspersky)</span>
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Arquitectura de defensa y <span class="text-blue-400">continuidad operativa</span></h1>
+            <p class="text-xl text-slate-300 max-w-3xl">Protección de servicios corporativos y gestión de movilidad segura bajo un esquema de respuesta gestionada.</p>
+        </div>
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-blue-600 rounded-full opacity-10"></div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass shadow-sm border-b overflow-x-auto">
+        <div class="max-w-6xl mx-auto flex whitespace-nowrap px-4">
+            <button onclick="showSection('resumen')" id="tab-resumen" class="px-6 py-4 font-semibold tab-active">Visión General</button>
+            <button onclick="showSection('sophos')" id="tab-sophos" class="px-6 py-4 font-semibold text-slate-500 hover:text-blue-600">Sophos MDR (Prioridad 1)</button>
+            <button onclick="showSection('manageengine')" id="tab-manageengine" class="px-6 py-4 font-semibold text-slate-500 hover:text-blue-600">ManageEngine Suite</button>
+            <button onclick="showSection('tenable')" id="tab-tenable" class="px-6 py-4 font-semibold text-slate-500 hover:text-blue-600">Sinergia con Tenable</button>
+            <button onclick="showSection('vision')" id="tab-vision" class="px-6 py-4 font-semibold text-slate-500 hover:text-blue-600">Visión Completa</button>
+        </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <main class="max-w-6xl mx-auto p-6 mt-8">
+
+        <!-- SECTION: RESUMEN -->
+        <section id="resumen" class="section-content">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold mb-4">Estrategia de Resiliencia Mexicana</h2>
+                <p class="text-slate-600 max-w-4xl leading-relaxed">
+                    La propuesta para Mexicana integra tres capas críticas de ciberseguridad: **Respuesta (Sophos)**, **Operación (ManageEngine)** y **Auditoría (Tenable)**. Debido al vencimiento de las licencias de Kaspersky el pasado 21 de diciembre, el enfoque inicial es la recuperación inmediata de la seguridad en el punto final (Endpoint), seguida por la implementación de una inteligencia centralizada para el control de activos y logs corporativos.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-lg mb-2 text-indigo-600">1. Fase de Mitigación</h3>
+                    <p class="text-sm text-slate-500 italic">Despliegue de Sophos MDR para eliminar el riesgo de estaciones desprotegidas.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-lg mb-2 text-blue-600">2. Fase de Visibilidad</h3>
+                    <p class="text-sm text-slate-500 italic">Centralización de salud de red y logs de AD mediante ManageEngine.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-600">3. Fase de Cumplimiento</h3>
+                    <p class="text-sm text-slate-500 italic">Validación continua de brechas mediante la sinergia con Tenable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SOPHOS -->
+        <section id="sophos" class="section-content hidden">
+            <div class="flex flex-col gap-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Sophos MDR Complete: Blindaje Inmediato</h2>
+                    <p class="text-slate-500">Servicio de respuesta gestionada ante amenazas para la flota corporativa y de movilidad.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
+                            <h4 class="font-bold text-blue-400 mb-4 uppercase text-xs tracking-widest">Bondades y Características</h4>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-emerald-400 mr-2">✔</span>
+                                    <div><strong>Monitoreo Humano 24/7:</strong> Un equipo de expertos interviene activamente si se detecta un ataque a medianoche.</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-emerald-400 mr-2">✔</span>
+                                    <div><strong>Tecnología XDR:</strong> Correlaciona datos de red y endpoints para detener movimientos laterales.</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-emerald-400 mr-2">✔</span>
+                                    <div><strong>Sophos Mobile (MDM):</strong> Control absoluto de los iPads operativos, garantizando aplicaciones seguras y borrado remoto.</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="req-card">
+                            <h4 class="font-bold text-emerald-800 mb-2">Requerimientos para Mexicana</h4>
+                            <ul class="text-xs text-emerald-700 space-y-1 list-disc pl-4">
+                                <li>Acceso a dominios *.sophos.com en el firewall corporativo.</li>
+                                <li><strong>Equipos Windows:</strong> Conexión a AD para despliegue vía GPO.</li>
+                                <li><strong>Equipos macOS:</strong> Credenciales administrativas para habilitar permisos de "Acceso Total al Disco".</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="plan-card">
+                            <h4 class="font-bold text-blue-800 mb-4">Plan de Implementación (Fase 1)</h4>
+                            <div class="space-y-4 text-xs">
+                                <div class="flex gap-4">
+                                    <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0">1</div>
+                                    <p><strong>Limpieza de Antivirus Previo:</strong> Desinstalación controlada de Kaspersky desde su consola central para evitar conflictos de kernel.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0">2</div>
+                                    <p><strong>Reinicio de Estaciones:</strong> Paso crítico para liberar controladores de sistema antes de instalar el agente de Sophos.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0">3</div>
+                                    <p><strong>Despliegue Masivo:</strong> Ejecución de instaladores MSI vía GPO para estaciones Windows.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0">4</div>
+                                    <p><strong>Configuración MDM:</strong> Enrolamiento de iPads mediante perfiles de configuración para el personal operativo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MANAGEENGINE -->
+        <section id="manageengine" class="section-content hidden">
+            <div class="flex flex-col gap-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">ManageEngine Suite: El Cerebro Operativo</h2>
+                    <p class="text-slate-500">Gestión de infraestructura, SIEM y remediación de vulnerabilidades.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Log360 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-orange-600 mb-2">Log360 (SIEM)</h3>
+                            <p class="text-xs text-slate-500 mb-4 italic">"Auditoría Forense en Tiempo Real"</p>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-4">Monitorea cada cambio en el AD de Mexicana. Detecta ataques de fuerza bruta y exfiltración de datos analizando comportamientos (UEBA).</p>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded text-[10px] text-slate-400">Bondad: Cumplimiento normativo automatizado.</div>
+                    </div>
+                    <!-- OpManager -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-2">OpManager Plus</h3>
+                            <p class="text-xs text-slate-500 mb-4 italic">"Salud de Infraestructura 24/7"</p>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-4">Evita caídas de servicios corporativos monitoreando switches, routers y servidores. Alertas proactivas ante saturación de enlaces.</p>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded text-[10px] text-slate-400">Bondad: Reducción de tiempos de inactividad técnica.</div>
+                    </div>
+                    <!-- VMP -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-emerald-600 mb-2">Vulnerability Manager</h3>
+                            <p class="text-xs text-slate-500 mb-4 italic">"Higiene Digital y Parchado"</p>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-4">Automatiza la instalación de parches de seguridad de Windows y 350+ aplicaciones de terceros. Cierra puertas antes de que sean explotadas.</p>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded text-[10px] text-slate-400">Bondad: Automatización de tareas rutinarias de TI.</div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="plan-card">
+                        <h4 class="font-bold text-blue-800 mb-4">Plan de Implementación (Fase 2)</h4>
+                        <ul class="text-xs text-blue-700 space-y-3">
+                            <li class="flex gap-2"><span>1.</span> <strong>Configuración del Core:</strong> Instalación de consolas en servidores virtuales y bases de datos PostgreSQL integradas.</li>
+                            <li class="flex gap-2"><span>2.</span> <strong>Mapeo de Red:</strong> Descubrimiento de activos IP en los segmentos de oficina de Mexicana.</li>
+                            <li class="flex gap-2"><span>3.</span> <strong>Integración AD:</strong> Conexión con los Controladores de Dominio para auditoría de logs.</li>
+                            <li class="flex gap-2"><span>4.</span> <strong>Dashboarding:</strong> Creación de vistas personalizadas para el monitoreo en tiempo real.</li>
+                        </ul>
+                    </div>
+
+                    <div class="req-card">
+                        <h4 class="font-bold text-emerald-800 mb-4">Requerimientos de Infraestructura</h4>
+                        <p class="text-xs text-emerald-700 mb-4"><strong>Nota:</strong> Los servidores pueden ser 100% <strong>VIRTUALES</strong> (VMware, Hyper-V, etc.).</p>
+                        <ul class="text-[11px] text-emerald-700 space-y-2">
+                            <li class="flex justify-between border-b border-emerald-100 pb-1"><span>2 Servidores Windows Server 2019+</span> <span>Mín. 16GB RAM / 8 vCPUs</span></li>
+                            <li class="flex justify-between border-b border-emerald-100 pb-1"><span>Almacenamiento SSD</span> <span>500 GB Mín.</span></li>
+                            <li class="flex justify-between border-b border-emerald-100 pb-1"><span>Privilegios</span> <span>Domain Admin para despliegue</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: TENABLE -->
+        <section id="tenable" class="section-content hidden">
+            <h2 class="text-3xl font-bold mb-8">Sinergia Estratégica con Tenable</h2>
+            <div class="bg-amber-50 border border-amber-200 p-8 rounded-3xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-amber-900 mb-4">Convivencia de Alta Fidelidad</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed mb-6">
+                            Mexicana ya posee **Tenable**, el estándar de oro en descubrimiento de brechas. En nuestro ecosistema, Tenable actúa como el **Auditor Externo** que valida la efectividad de las herramientas de ManageEngine.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-amber-100">
+                                <h4 class="font-bold text-xs text-amber-800 uppercase">Flujo de Trabajo:</h4>
+                                <p class="text-xs text-slate-500 italic mt-1">"Tenable diagnostica la enfermedad -> Vulnerability Manager Plus aplica la cura -> Tenable verifica la sanación".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-2xl border border-amber-100 shadow-sm">
+                            <h4 class="font-bold text-amber-900 mb-2 flex items-center"><span class="w-2 h-2 bg-amber-500 rounded-full mr-2"></span> Auditoría vs Remediación</h4>
+                            <p class="text-xs text-slate-600">Tenable identifica hallazgos de configuración profunda. ManageEngine ejecuta la solución técnica de forma masiva en segundos.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-amber-100 shadow-sm">
+                            <h4 class="font-bold text-amber-900 mb-2 flex items-center"><span class="w-2 h-2 bg-amber-500 rounded-full mr-2"></span> Alimentación del SIEM</h4>
+                            <p class="text-xs text-slate-600">Los escaneos de Tenable alimentan a Log360 para tener un mapa de riesgo real basado en activos vivos de Mexicana.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: VISION COMPLETA -->
+        <section id="vision" class="section-content hidden">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-slate-900 pl-4">Visión Completa: El Ecosistema de Defensa</h2>
+            <div class="bg-slate-900 text-white rounded-3xl p-10 shadow-2xl relative overflow-hidden">
+                <div class="relative z-10 text-center mb-12">
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-2">Arquitectura Propuesta</p>
+                    <h3 class="text-3xl font-bold">Resiliencia Corporativa Mexicana</h3>
+                </div>
+
+                <!-- Ecosystem Diagram Visual Representation (Using Cards for Logic) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+                        <span class="text-xs font-bold text-blue-400 uppercase">Capa 1: Auditoría</span>
+                        <h4 class="text-xl font-bold mt-2">Tenable</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 italic">Descubrimiento de brechas en toda la superficie IP corporativa.</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md ring-2 ring-blue-500">
+                        <span class="text-xs font-bold text-blue-400 uppercase">Capa 2: Inteligencia</span>
+                        <h4 class="text-xl font-bold mt-2">ManageEngine Log360</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 italic">Análisis de logs y correlación de eventos institucionales.</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+                        <span class="text-xs font-bold text-blue-400 uppercase">Capa 3: Acción</span>
+                        <h4 class="text-xl font-bold mt-2">Sophos MDR Complete</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 italic">Respuesta inmediata y cacería de amenazas por expertos.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-white/10 text-slate-300">
+                            <tr>
+                                <th class="px-6 py-4">Solución</th>
+                                <th class="px-6 py-4">Objetivo Operativo</th>
+                                <th class="px-6 py-4">Beneficio Clave</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/10 text-slate-400">
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-white">Sophos MDR/MDM</td>
+                                <td class="px-6 py-4 italic">724+ Endpoints / 150+ iPads</td>
+                                <td class="px-6 py-4 text-emerald-400">Protección Humana 24x7</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-5 font-bold text-white">ManageEngine Suite</td>
+                                <td class="px-6 py-5 italic">Infraestructura Corporativa</td>
+                                <td class="px-6 py-5 text-emerald-400">Visibilidad y Control Total de Logs</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-5 font-bold text-white">Tenable</td>
+                                <td class="px-6 py-5 italic">Superficie IP Completa</td>
+                                <td class="px-6 py-5 text-emerald-400">Validación Continua de Riesgo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-50 py-16 border-t mt-12 text-slate-500 text-sm">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="text-left">
+                <p class="font-bold text-slate-700 text-lg mb-2">Global Incom, S.A. de C.V.</p>
+                <p>"Clients are first and foremost"</p>
+                <p class="mt-4">Euler No. 152, Polanco V Sección, CDMX</p>
+            </div>
+            <div class="md:text-right">
+                <p class="font-bold text-slate-700">Implementación Estratégica Mexicana</p>
+                <p>Confidencialidad: Corporativo Institucional</p>
+                <p class="mt-4 text-[10px] italic">Documento técnico actualizado el 19/12/2025.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('nav button').forEach(b => {
+                b.classList.remove('tab-active');
+                b.classList.add('text-slate-500');
+            });
+            document.getElementById('tab-' + id).classList.add('tab-active');
+            document.getElementById('tab-' + id).classList.remove('text-slate-500');
+        }
+    </script>
+</body>
+</html>
