@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de firma GlobalIncom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --accent: #0070c0;
+      --brand-red: #e31b23;
+      --border: #d6d6d6;
+      --text: #222222;
+      --muted: #555555;
+      --bg: #f6f7f9;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      width: 70%;
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 16px 40px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0 0 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    button.secondary {
+      background: #444444;
+    }
+
+    button.danger {
+      background: var(--brand-red);
+    }
+
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 180px;
+      resize: vertical;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .preview {
+      background: #ffffff;
+      border: 1px dashed var(--border);
+      padding: 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .page {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Generador de firma GlobalIncom</h1>
+
+    <div class="grid">
+      <div class="panel">
+        <label for="name">Nombre completo</label>
+        <input id="name" type="text" value="Ernesto Pineda Batalla">
+
+        <label for="role">Puesto</label>
+        <input id="role" type="text" value="Gerente Ingenieria y Desarrollo">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" value="ernesto.p@globalincom.com.mx">
+
+        <label for="phone">Telefono fijo</label>
+        <input id="phone" type="text" value="+52 55 5514 5730 / 29">
+
+        <label for="ext">Extension</label>
+        <input id="ext" type="text" value="393">
+
+        <label for="mobile">Celular (WhatsApp)</label>
+        <input id="mobile" type="text" value="55 3043 4222">
+
+        <label for="waCountry">Codigo pais WhatsApp</label>
+        <input id="waCountry" type="text" value="+52">
+
+        <label for="waNumber">Numero WhatsApp (sin espacios)</label>
+        <input id="waNumber" type="text" value="5530434222">
+
+        <label for="pgp">Link PGP</label>
+        <input id="pgp" type="text" value="https://drive.google.com/file/d/0B-_YTaHHunhGbTMycGpvTGl4Tjg/view?usp=sharing">
+
+        <div class="buttons">
+          <button type="button" id="copySignature" class="danger">Copiar firma</button>
+          <button type="button" id="copyHtml" class="secondary">Copiar HTML</button>
+          <button type="button" id="copyFullHtml" class="secondary">Copiar HTML completo</button>
+        </div>
+        <div class="note" id="status"></div>
+      </div>
+
+      <div class="panel">
+        <div class="preview" id="preview"></div>
+        <div class="note">Pega la firma en Outlook (o cliente similar) desde el portapapeles.</div>
+
+        <label for="htmlOutput" style="margin-top: 14px;">HTML generado</label>
+        <textarea id="htmlOutput" readonly></textarea>
+      </div>
+    </div>
+  </div>
+
+  <script src="generador_firma_globalincom.js"></script>
+</body>
+</html>

@@ -2,8 +2,16 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov - 31/dic/2025
-**Última actualización:** 31/dic/2025
+**Período:** 28/nov/2025 - 10/feb/2026
+**Última actualización:** 10/feb/2026
+
+---
+
+### Generador de firmas de correo (10 de febrero de 2026)
+
+- Feature: Se agrego el generador de firmas en `/firmas/` con vista previa, copia de firma y copia de HTML.
+- Feature: Campos opcionales para telefono fijo y link PGP.
+- Feature: Generacion automatica del link de WhatsApp con codigo de pais y numero.
 
 ---
 

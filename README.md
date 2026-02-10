@@ -41,5 +41,6 @@ Para ver el sitio en producción, visita [https://globalincom.com.mx](https://gl
 -   `TODO.md`: Lista de mejoras técnicas y de rendimiento pendientes.
 -   `robots.txt`: Directivas para los crawlers de los motores de búsqueda.
 -   `sitemap.xml`: Mapa del sitio para ayudar a la indexación.
+-   `/firmas/`: Generador de firmas de correo (HTML + JS).
 -   `/img/`: Contiene imágenes locales como el fondo del hero y el SVG animado.
 -   `/brands/`: Contiene los logos de los partners tecnológicos.
