@@ -1,6 +1,6 @@
 # GlobalIncom - Sitio Web Corporativo
 
-Este repositorio contiene el código fuente del sitio web corporativo de GlobalIncom, una Single Page Application (SPA) desarrollada con HTML, Tailwind CSS y JavaScript puro. El sitio presenta las soluciones de la empresa en infraestructura, ciberseguridad y gobierno de TI.
+Este repositorio contiene el código fuente del sitio web corporativo de GlobalIncom, una Single Page Application (SPA) desarrollada con HTML, Tailwind CSS y JavaScript puro. El sitio presenta las soluciones de la empresa en infraestructura, ciberseguridad, normatividad aeronáutica y gobierno de TI.
 
 Para ver el sitio en producción, visita [https://globalincom.com.mx](https://globalincom.com.mx).
 

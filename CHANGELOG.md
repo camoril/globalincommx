@@ -2,8 +2,16 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov/2025 - 10/feb/2026
-**Última actualización:** 10/feb/2026
+**Período:** 28/nov/2025 - 18/abr/2026
+**Última actualización:** 18/abr/2026
+
+---
+
+### Restauración de sección AFAC y aeronáutica (18 de abril de 2026)
+
+- Fix: Se restauró la visibilidad de la sección de Normatividad Aeronáutica dentro de la SPA.
+- Fix: Se reactivaron los accesos desde navegación principal, menú móvil y tarjeta de inicio.
+- Fix: Se recuperó la página interna de AFAC para navegación normal por hash.
 
 ---
 
