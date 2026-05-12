@@ -405,22 +405,22 @@
     <script>
         const employeeCatalog = {
             'alejandro-garcia': {
-                firstName: 'Alejandro',
-                lastName: 'García',
-                fullName: 'Ing. Alejandro García',
-                title: 'Director de Infraestructura',
-                company: 'Global Incom S.A. de C.V.',
-                phone: '+521234567890',
-                email: 'contacto@globalincom.com.mx',
+                firstName: 'Sergio I.',
+                lastName: 'Huerta Luna',
+                fullName: 'Sergio I. Huerta Luna',
+                title: 'Director General',
+                company: 'Global Incom',
+                phone: '+525515108044',
+                email: 'shuerta@globalincom.com.mx',
                 website: 'https://globalincom.com.mx',
                 websiteLabel: 'globalincom.com.mx',
                 location: 'Los Mochis, Sinaloa, MX',
                 address: 'Callejón Hermenegildo Galeana Poniente 175;Los Mochis;Sinaloa;81200;Mexico',
-                photoSeed: 'Felix',
+                photoSeed: 'Sergio',
                 social: {
-                    linkedin: 'https://www.linkedin.com',
-                    twitter: 'https://x.com',
-                    instagram: 'https://www.instagram.com'
+                    linkedin: '',
+                    twitter: '',
+                    instagram: ''
                 }
             }
         };
@@ -534,7 +534,7 @@
         }
 
         elements.departmentChip.textContent = employee.title;
-        elements.photo.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(employee.photoSeed)}`;
+        elements.photo.src = `../assets/images/SergioHuerta.png`;
         elements.photo.alt = employee.fullName;
         elements.name.textContent = employee.fullName;
         elements.title.textContent = employee.title;
