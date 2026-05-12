@@ -7,6 +7,16 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ---
 
+### Portal de vCards digitales para colaboradores (11 de mayo de 2026)
+
+- Feature: Se añadió el subproyecto `vcard/demo/` como tarjeta de presentación digital móvil para colaboradores.
+- Feature: La plantilla incorpora perfil dinámico, descarga de contactos en `.vcf`, QR de acceso y acciones rápidas de llamada, WhatsApp y correo.
+- Feature: Se agregó selector de tema claro/oscuro con persistencia en `localStorage`.
+- Tweak: Se ajustó la paleta a rojo corporativo y se alineó la tipografía y fondos con el lenguaje visual de Global Incom.
+- Tweak: Se reforzó la interacción con animaciones, ripple táctil y tilt suave de la tarjeta.
+
+---
+
 ### Restauración de sección AFAC y aeronáutica (18 de abril de 2026)
 
 - Fix: Se restauró la visibilidad de la sección de Normatividad Aeronáutica dentro de la SPA.

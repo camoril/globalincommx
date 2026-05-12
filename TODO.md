@@ -3,6 +3,7 @@
 Este archivo documenta las mejoras técnicas y de rendimiento que se han identificado para el sitio web `index.html`.
 
 Actualizacion 10/feb/2026: Se agrego el generador de firmas en `/firmas/`. No cambia las tareas pendientes del sitio principal.
+Actualizacion 11/may/2026: Se agrego el subproyecto `vcard/demo/` como portal de tarjetas de presentacion digitales. Mantenerlo como modulo aislado dentro del mismo repositorio.
 
 ---
 

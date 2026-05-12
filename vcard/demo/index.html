@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="vCards digitales móviles para colaboradores de Global Incom.">
+    <meta name="theme-color" content="#0f172a">
+    <title>vCard Digital | Global Incom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --global-navy: #0f172a;
+            --global-red: #e31b23;
+            --page-bg: #000000;
+            --page-bg-alt: #050505;
+            --card-bg: #ffffff;
+            --card-border: rgba(255, 255, 255, 0.72);
+            --hero-bg: #0f172a;
+            --panel-bg: #f8fafc;
+            --panel-border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-soft: #94a3b8;
+            --button-neutral-bg: #f8fafc;
+            --button-neutral-text: #334155;
+            --button-neutral-border: #e2e8f0;
+            --button-accent-bg: #fef2f2;
+            --button-accent-text: var(--global-red);
+            --button-accent-border: #fecaca;
+            --footer-badge-bg: #ffffff;
+            --footer-badge-text: #94a3b8;
+        }
+
+        body[data-theme='dark'] {
+            --page-bg: #050505;
+            --page-bg-alt: #090909;
+            --card-bg: #0f172a;
+            --card-border: rgba(148, 163, 184, 0.18);
+            --hero-bg: #020617;
+            --panel-bg: #111827;
+            --panel-border: rgba(148, 163, 184, 0.16);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --text-soft: #94a3b8;
+            --button-neutral-bg: #111827;
+            --button-neutral-text: #e2e8f0;
+            --button-neutral-border: rgba(148, 163, 184, 0.2);
+            --button-accent-bg: rgba(227, 27, 35, 0.18);
+            --button-accent-text: #fecdd3;
+            --button-accent-border: rgba(227, 27, 35, 0.4);
+            --footer-badge-bg: #111827;
+            --footer-badge-text: #cbd5e1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(227, 27, 35, 0.1), transparent 28%),
+                linear-gradient(180deg, var(--page-bg) 0%, var(--page-bg-alt) 100%);
+            color: var(--text-main);
+        }
+
+        .bg-global-navy { background-color: var(--global-navy); }
+        .text-global-red { color: var(--global-red); }
+        .bg-global-red { background-color: var(--global-red); }
+        .glass-effect { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); }
+        .safe-bottom {
+            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+        }
+
+        .theme-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+        }
+
+        .theme-hero {
+            background-color: var(--hero-bg);
+        }
+
+        .theme-panel {
+            background-color: var(--panel-bg);
+            border-color: var(--panel-border);
+        }
+
+        .theme-panel-soft {
+            background-color: color-mix(in srgb, var(--panel-bg) 78%, white 22%);
+        }
+
+        .theme-text-main {
+            color: var(--text-main);
+        }
+
+        .theme-text-muted {
+            color: var(--text-muted);
+        }
+
+        .theme-text-soft {
+            color: var(--text-soft);
+        }
+
+        .theme-button-neutral {
+            background-color: var(--button-neutral-bg);
+            border-color: var(--button-neutral-border);
+            color: var(--button-neutral-text);
+        }
+
+        .theme-button-accent {
+            background-color: var(--button-accent-bg);
+            border-color: var(--button-accent-border);
+            color: var(--button-accent-text);
+        }
+
+        .theme-footer-badge {
+            background-color: var(--footer-badge-bg);
+            color: var(--footer-badge-text);
+            border-color: var(--button-neutral-border);
+        }
+
+        body[data-theme='dark'] .shine::after {
+            background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.12) 50%, transparent 80%);
+        }
+
+        body[data-theme='dark'] .avatar-ring {
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        body[data-theme='dark'] .status-pill {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        body[data-theme='dark'] .text-slate-900,
+        body[data-theme='dark'] .text-slate-800,
+        body[data-theme='dark'] .text-slate-700,
+        body[data-theme='dark'] .text-slate-600,
+        body[data-theme='dark'] .text-slate-500,
+        body[data-theme='dark'] .text-slate-400 {
+            color: inherit !important;
+        }
+
+        body[data-theme='dark'] .bg-white {
+            background-color: var(--card-bg) !important;
+        }
+
+        body[data-theme='dark'] .border-white,
+        body[data-theme='dark'] .border-white\/70 {
+            border-color: var(--card-border) !important;
+        }
+
+        body[data-theme='dark'] .bg-slate-50,
+        body[data-theme='dark'] .bg-slate-100 {
+            background-color: var(--panel-bg) !important;
+        }
+
+        body[data-theme='dark'] .border-slate-100,
+        body[data-theme='dark'] .border-slate-200 {
+            border-color: var(--panel-border) !important;
+        }
+
+        body[data-theme='dark'] .shadow-slate-900\/10,
+        body[data-theme='dark'] .shadow-slate-900\/15 {
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .card-shell {
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            animation: card-enter 700ms cubic-bezier(.2,.8,.2,1) both;
+        }
+
+        .floating-orb {
+            animation: float-y 7s ease-in-out infinite;
+        }
+
+        .floating-orb.delay-1 {
+            animation-delay: -2s;
+        }
+
+        .floating-orb.delay-2 {
+            animation-delay: -4s;
+        }
+
+        .tilt-surface {
+            transition: transform 180ms ease, box-shadow 180ms ease;
+            will-change: transform;
+        }
+
+        .pressable {
+            transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+            will-change: transform;
+        }
+
+        .pressable:hover {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .pressable:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        .pressable-icon {
+            transition: transform 180ms ease, filter 180ms ease;
+        }
+
+        .pressable:hover .pressable-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+
+        .pressable:active .pressable-icon {
+            transform: scale(0.95);
+        }
+
+        .avatar-ring {
+            animation: pulse-ring 4.5s ease-in-out infinite;
+        }
+
+        .status-pill {
+            animation: subtle-bounce 5s ease-in-out infinite;
+        }
+
+        .shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.28) 50%, transparent 80%);
+            transform: translateX(-120%);
+            animation: sheen 6.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes card-enter {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(.98);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes float-y {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 50px rgba(15,23,42,.18); }
+            50% { transform: scale(1.025); box-shadow: 0 24px 60px rgba(15,23,42,.25); }
+        }
+
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        @keyframes sheen {
+            0%, 35% { transform: translateX(-120%); }
+            60% { transform: translateX(120%); }
+            100% { transform: translateX(120%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-900" data-theme="dark">
+    <main class="min-h-screen">
+        <section class="min-h-screen px-4 py-4 flex items-center justify-center overflow-x-hidden">
+            <div class="w-full max-w-md">
+                <div id="card-shell" class="card-shell rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-900/10 bg-white border border-white/70 tilt-surface theme-card">
+                    <div class="h-36 bg-global-navy relative shine theme-hero">
+                        <div class="floating-orb absolute -top-16 -right-8 w-40 h-40 rounded-full bg-red-500/15 blur-3xl"></div>
+                        <div class="floating-orb delay-1 absolute top-8 -left-10 w-28 h-28 rounded-full bg-sky-300/15 blur-3xl"></div>
+                        <div class="floating-orb delay-2 absolute bottom-0 right-16 w-24 h-24 rounded-full bg-white/10 blur-2xl"></div>
+                        <div class="absolute inset-0 opacity-20">
+                            <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path d="M0 100 L100 0 L100 100 Z" fill="white"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4 text-white/90 text-xs font-semibold uppercase tracking-[0.25em]">
+                            <span id="profile-department-chip" class="status-pill inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur">
+                                <span class="w-2 h-2 rounded-full bg-red-400 shadow-[0_0_12px_rgba(248,113,113,.9)]"></span>
+                                vCard móvil
+                            </span>
+                            <button id="theme-toggle-top" type="button" class="pressable inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur text-white/90">
+                                <i data-lucide="sun-moon" class="w-3.5 h-3.5"></i>
+                                Tema
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center -mt-16 relative px-4">
+                        <div class="avatar-ring w-32 h-32 rounded-full border-[6px] border-white shadow-[0_20px_50px_rgba(15,23,42,0.18)] overflow-hidden bg-slate-200">
+                            <img id="profile-photo" src="https://api.dicebear.com/7.x/avataaars/svg?seed=GlobalIncom" alt="Perfil" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4 px-6">
+                        <h1 id="profile-name" class="text-3xl font-extrabold tracking-tight theme-text-main">Ing. Alejandro García</h1>
+                        <p id="profile-title" class="mt-2 text-global-red font-bold tracking-[0.24em] uppercase text-[11px]">Director de Infraestructura</p>
+                        <p class="theme-text-muted mt-3 flex items-center justify-center gap-2 text-sm">
+                            <i data-lucide="building-2" class="w-4 h-4"></i>
+                            <span id="profile-company">Global Incom S.A. de C.V.</span>
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2 px-5 mt-8">
+                        <a id="action-call" href="tel:+521234567890" class="flex flex-col items-center group">
+                            <div class="pressable pressable-icon w-12 h-12 theme-button-neutral rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <span class="theme-text-soft text-[10px] mt-1 font-medium">Llamar</span>
+                        </a>
+                        <a id="action-whatsapp" href="https://wa.me/521234567890" class="flex flex-col items-center group">
+                            <div class="pressable pressable-icon w-12 h-12 theme-button-neutral rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            </div>
+                            <span class="theme-text-soft text-[10px] mt-1 font-medium">WhatsApp</span>
+                        </a>
+                        <a id="action-email" href="mailto:contacto@globalincom.com.mx" class="flex flex-col items-center group">
+                            <div class="pressable pressable-icon w-12 h-12 theme-button-accent rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <span class="theme-text-soft text-[10px] mt-1 font-medium">Email</span>
+                        </a>
+                        <button id="action-save" type="button" class="flex flex-col items-center group">
+                            <div class="pressable pressable-icon w-12 h-12 bg-global-red text-white rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border border-red-700/10">
+                                <i data-lucide="user-plus" class="w-5 h-5"></i>
+                            </div>
+                            <span class="theme-text-soft text-[10px] mt-1 font-medium">Guardar</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-8 px-5 space-y-3">
+                        <div class="flex items-center p-3 bg-slate-50 rounded-2xl border border-slate-100 theme-panel">
+                            <div class="bg-white p-2.5 rounded-xl shadow-sm mr-3 theme-card">
+                                <i data-lucide="globe" class="w-5 h-5 theme-text-soft"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="theme-text-soft text-[10px] uppercase font-bold tracking-[0.2em]">Sitio Web</p>
+                                <a id="profile-website" href="https://globalincom.com.mx" target="_blank" rel="noreferrer" class="text-sm font-semibold theme-text-muted hover:text-global-red break-all">globalincom.com.mx</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-slate-50 rounded-2xl border border-slate-100 theme-panel">
+                            <div class="bg-white p-2.5 rounded-xl shadow-sm mr-3 theme-card">
+                                <i data-lucide="map-pin" class="w-5 h-5 theme-text-soft"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="theme-text-soft text-[10px] uppercase font-bold tracking-[0.2em]">Ubicación</p>
+                                <p id="profile-location" class="text-sm font-semibold theme-text-muted">Los Mochis, Sinaloa, MX</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-3 px-5 mt-6">
+                        <a id="share-link" href="#" class="pressable flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 active:scale-[0.99]">
+                            <i data-lucide="share-2" class="w-4 h-4"></i>
+                            Compartir perfil
+                        </a>
+                        <button id="copy-link" type="button" class="pressable inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 active:scale-[0.99]">
+                            <i data-lucide="link" class="w-4 h-4 mr-2"></i>
+                            Copiar
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-5 flex flex-col items-center text-center mt-6 border-t border-slate-100 safe-bottom theme-panel">
+                        <p class="theme-text-soft text-[10px] font-bold uppercase mb-4 tracking-[0.35em]">Escanea para Compartir</p>
+                        <div id="qrcode" class="bg-white p-4 rounded-[1.5rem] shadow-inner border border-slate-100 theme-card">
+                            <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://globalincom.com.mx" alt="QR" class="w-32 h-32">
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="mt-5 text-center px-6 pb-3">
+                    <button id="theme-toggle" type="button" class="theme-footer-badge mx-auto mb-2 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]">
+                        <i data-lucide="moon-star" class="w-3.5 h-3.5"></i>
+                        <span id="theme-toggle-label">Modo claro</span>
+                    </button>
+                </footer>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const employeeCatalog = {
+            'alejandro-garcia': {
+                firstName: 'Alejandro',
+                lastName: 'García',
+                fullName: 'Ing. Alejandro García',
+                title: 'Director de Infraestructura',
+                company: 'Global Incom S.A. de C.V.',
+                phone: '+521234567890',
+                email: 'contacto@globalincom.com.mx',
+                website: 'https://globalincom.com.mx',
+                websiteLabel: 'globalincom.com.mx',
+                location: 'Los Mochis, Sinaloa, MX',
+                address: 'Callejón Hermenegildo Galeana Poniente 175;Los Mochis;Sinaloa;81200;Mexico',
+                photoSeed: 'Felix',
+                social: {
+                    linkedin: 'https://www.linkedin.com',
+                    twitter: 'https://x.com',
+                    instagram: 'https://www.instagram.com'
+                }
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const employeeKey = params.get('employee') || 'alejandro-garcia';
+        const employee = employeeCatalog[employeeKey] || employeeCatalog['alejandro-garcia'];
+
+        const profileUrl = new URL(window.location.href);
+        profileUrl.searchParams.set('employee', employeeKey in employeeCatalog ? employeeKey : 'alejandro-garcia');
+
+        const cardShell = document.getElementById('card-shell');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleTop = document.getElementById('theme-toggle-top');
+        const themeToggleLabel = document.getElementById('theme-toggle-label');
+
+        function getPreferredTheme() {
+            const savedTheme = window.localStorage.getItem('globalincom-vcard-theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                return savedTheme;
+            }
+
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function setTheme(theme) {
+            document.body.dataset.theme = theme;
+            window.localStorage.setItem('globalincom-vcard-theme', theme);
+
+            const isDark = theme === 'dark';
+            themeToggleLabel.textContent = isDark ? 'Modo claro' : 'Modo oscuro';
+            themeToggle.innerHTML = isDark
+                ? '<i data-lucide="sun-medium" class="w-3.5 h-3.5"></i><span id="theme-toggle-label">Modo claro</span>'
+                : '<i data-lucide="moon-star" class="w-3.5 h-3.5"></i><span id="theme-toggle-label">Modo oscuro</span>';
+            themeToggleTop.innerHTML = isDark
+                ? '<i data-lucide="sun-medium" class="w-3.5 h-3.5"></i> Tema'
+                : '<i data-lucide="moon-star" class="w-3.5 h-3.5"></i> Tema';
+            lucide.createIcons();
+        }
+
+        const elements = {
+            departmentChip: document.getElementById('profile-department-chip'),
+            photo: document.getElementById('profile-photo'),
+            name: document.getElementById('profile-name'),
+            title: document.getElementById('profile-title'),
+            company: document.getElementById('profile-company'),
+            website: document.getElementById('profile-website'),
+            location: document.getElementById('profile-location'),
+            call: document.getElementById('action-call'),
+            whatsapp: document.getElementById('action-whatsapp'),
+            email: document.getElementById('action-email'),
+            save: document.getElementById('action-save'),
+            share: document.getElementById('share-link'),
+            copy: document.getElementById('copy-link'),
+            qr: document.getElementById('qr-image'),
+        };
+
+        function normalizePhone(phone) {
+            return phone.replace(/[^\d+]/g, '');
+        }
+
+        function buildVCard(data) {
+            return [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                `N:${data.lastName};${data.firstName};;;`,
+                `FN:${data.fullName}`,
+                `ORG:${data.company}`,
+                `TITLE:${data.title}`,
+                `TEL;TYPE=WORK,VOICE:${data.phone}`,
+                `EMAIL:${data.email}`,
+                `URL:${data.website}`,
+                `ADR;TYPE=WORK:;;${data.address}`,
+                'END:VCARD'
+            ].join('\r\n');
+        }
+
+        function downloadVCard(data) {
+            const blob = new Blob([buildVCard(data)], { type: 'text/vcard;charset=utf-8' });
+            const objectUrl = window.URL.createObjectURL(blob);
+            const anchor = document.createElement('a');
+            anchor.style.display = 'none';
+            anchor.href = objectUrl;
+            anchor.download = `${data.fullName.replace(/\s+/g, '_')}_GlobalIncom.vcf`;
+            document.body.appendChild(anchor);
+            anchor.click();
+            anchor.remove();
+            window.URL.revokeObjectURL(objectUrl);
+        }
+
+        function shareProfile(data) {
+            const shareData = {
+                title: data.fullName,
+                text: `${data.fullName} - ${data.title}`,
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+                return;
+            }
+
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                elements.share.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Enlace copiado';
+                lucide.createIcons();
+                setTimeout(() => {
+                    elements.share.innerHTML = '<i data-lucide="share-2" class="w-4 h-4"></i> Compartir perfil';
+                    lucide.createIcons();
+                }, 1800);
+            });
+        }
+
+        elements.departmentChip.textContent = employee.title;
+        elements.photo.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(employee.photoSeed)}`;
+        elements.photo.alt = employee.fullName;
+        elements.name.textContent = employee.fullName;
+        elements.title.textContent = employee.title;
+        elements.company.textContent = employee.company;
+        elements.website.href = employee.website;
+        elements.website.textContent = employee.websiteLabel;
+        elements.location.textContent = employee.location;
+        elements.call.href = `tel:${normalizePhone(employee.phone)}`;
+        elements.whatsapp.href = `https://wa.me/${normalizePhone(employee.phone).replace(/^\+/, '')}`;
+        elements.email.href = `mailto:${employee.email}`;
+        elements.share.href = window.location.href;
+        elements.qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.href)}`;
+        elements.save.addEventListener('click', () => downloadVCard(employee));
+        elements.share.addEventListener('click', (event) => {
+            event.preventDefault();
+            shareProfile(employee);
+        });
+        elements.copy.addEventListener('click', async () => {
+            await navigator.clipboard.writeText(window.location.href);
+            elements.copy.innerHTML = '<i data-lucide="check" class="w-4 h-4 mr-2"></i> Copiado';
+            lucide.createIcons();
+            setTimeout(() => {
+                elements.copy.innerHTML = '<i data-lucide="link" class="w-4 h-4 mr-2"></i> Copiar';
+                lucide.createIcons();
+            }, 1800);
+        });
+
+        function addRipple(target, clientX, clientY) {
+            const bounds = target.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(bounds.width, bounds.height);
+            const x = clientX - bounds.left - size / 2;
+            const y = clientY - bounds.top - size / 2;
+
+            ripple.style.position = 'absolute';
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.style.borderRadius = '9999px';
+            ripple.style.background = 'rgba(255,255,255,0.32)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.transition = 'transform 550ms ease, opacity 550ms ease';
+            ripple.style.opacity = '0.9';
+
+            target.style.position = 'relative';
+            target.style.overflow = 'hidden';
+            target.appendChild(ripple);
+
+            requestAnimationFrame(() => {
+                ripple.style.transform = 'scale(1)';
+                ripple.style.opacity = '0';
+            });
+
+            window.setTimeout(() => ripple.remove(), 600);
+        }
+
+        function attachRipple(element) {
+            element.addEventListener('pointerdown', (event) => {
+                addRipple(element, event.clientX, event.clientY);
+            });
+        }
+
+        [elements.call, elements.whatsapp, elements.email, elements.save, elements.share, elements.copy].forEach(attachRipple);
+
+        if (cardShell) {
+            let tiltResetFrame = null;
+
+            cardShell.addEventListener('pointermove', (event) => {
+                const bounds = cardShell.getBoundingClientRect();
+                const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+                const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+                const rotateY = x * 8;
+                const rotateX = -y * 8;
+                cardShell.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+                cardShell.style.boxShadow = '0 28px 60px rgba(15, 23, 42, 0.18)';
+                if (tiltResetFrame) {
+                    cancelAnimationFrame(tiltResetFrame);
+                }
+            });
+
+            const resetTilt = () => {
+                cardShell.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0)';
+                cardShell.style.boxShadow = '';
+            };
+
+            cardShell.addEventListener('pointerleave', resetTilt);
+            cardShell.addEventListener('pointercancel', resetTilt);
+            cardShell.addEventListener('pointerup', resetTilt);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
+        });
+
+        themeToggleTop.addEventListener('click', () => {
+            setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
+        });
+
+        setTheme(getPreferredTheme());
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
