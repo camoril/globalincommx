@@ -874,7 +874,8 @@
         const layoutOrder = ['aura', 'executive', 'focus', 'bold', 'ultra-minimal', 'tech-grid'];
 
         function getPreferredLayout() {
-            const savedLayout = window.localStorage.getItem('globalincom-vcard-layout');
+            const urlLayout = params.get('layout');
+            const savedLayout = urlLayout || window.localStorage.getItem('globalincom-vcard-layout');
             return layoutOrder.includes(savedLayout) ? savedLayout : 'aura';
         }
 
@@ -894,7 +895,8 @@
         }
 
         function getPreferredTheme() {
-            const savedTheme = window.localStorage.getItem('globalincom-vcard-theme');
+            const urlTheme = params.get('theme');
+            const savedTheme = urlTheme || window.localStorage.getItem('globalincom-vcard-theme');
             if (savedTheme === 'light' || savedTheme === 'dark') {
                 return savedTheme;
             }
