@@ -3,7 +3,17 @@
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
 **Período:** 28/nov/2025 - 18/abr/2026
-**Última actualización:** 18/abr/2026
+**Última actualización:** 25/may/2026
+
+---
+
+### Plantillas extendidas para portal vCard (25 de mayo de 2026)
+
+- Feature: Se amplió el selector de estilos en `vcard/demo/index.html` con 6 plantillas verticales (`Aura`, `Executive`, `Focus`, `Bold`, `Ultra Minimal`, `Tech Grid`).
+- Feature: Se agregó botón rápido "Estilo" dentro del header de la tarjeta para iterar layouts sin abrir el selector.
+- Tweak: Cada plantilla ahora redefine composición visual (hero, avatar, densidad, bloques de acción, paneles y QR) para ofrecer variantes realmente distintas.
+- Tweak: Se mantiene la paleta corporativa base y la compatibilidad con tema claro/oscuro.
+- Tweak: Persistencia de layout seleccionada en `localStorage` con la llave `globalincom-vcard-layout`.
 
 ---
 

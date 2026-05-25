@@ -4,7 +4,7 @@ Este repositorio contiene el código fuente del sitio web corporativo de GlobalI
 
 Para ver el sitio en producción, visita [https://globalincom.com.mx](https://globalincom.com.mx).
 
-También incluye subproyectos corporativos aislados, como el portal de vCards digitales ubicado en `vcard/demo/`, pensado para publicar tarjetas de presentación móviles por colaborador con descarga de contacto, QR y cambio de tema.
+También incluye subproyectos corporativos aislados, como el portal de vCards digitales ubicado en `vcard/demo/`, pensado para publicar tarjetas de presentación móviles por colaborador con descarga de contacto, QR y cambio de tema. Actualmente integra 6 plantillas visuales verticales (`Aura`, `Executive`, `Focus`, `Bold`, `Ultra Minimal`, `Tech Grid`) con persistencia de estilo en `localStorage`.
 
 ---
 
@@ -39,6 +39,9 @@ También incluye subproyectos corporativos aislados, como el portal de vCards di
 -   `mexicana.html`: Documento estratégico de arquitectura de defensa y continuidad operativa para Mexicana de Aviación. Incluye análisis de Sophos MDR, ManageEngine Suite y Tenable.
 -   `xdr.html`: Análisis comparativo de arquitecturas XDR/EDR (Sophos vs CrowdStrike vs Legacy). Documento técnico para evaluación de soluciones de ciberseguridad.
 -   `vcard/demo/`: Plantilla de vCard digital para colaboradores, con perfil dinámico, descarga de `.vcf`, QR de acceso y modo claro/oscuro.
+    -   Selector de estilos con 6 layouts verticales de presentación.
+    -   Botón rápido "Estilo" para alternar plantilla en tiempo real.
+    -   Persistencia de plantilla y tema en `localStorage`.
 -   `CAMBIOS.txt`: Registro cronológico y detallado de todas las modificaciones y nuevas características implementadas.
 -   `CHANGELOG.md`: Changelog estructurado con todas las mejoras, nuevas características y correcciones.
 -   `TODO.md`: Lista de mejoras técnicas y de rendimiento pendientes.

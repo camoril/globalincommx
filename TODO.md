@@ -4,6 +4,12 @@ Este archivo documenta las mejoras técnicas y de rendimiento que se han identif
 
 Actualizacion 10/feb/2026: Se agrego el generador de firmas en `/firmas/`. No cambia las tareas pendientes del sitio principal.
 Actualizacion 11/may/2026: Se agrego el subproyecto `vcard/demo/` como portal de tarjetas de presentacion digitales. Mantenerlo como modulo aislado dentro del mismo repositorio.
+Actualizacion 25/may/2026: El subproyecto `vcard/demo/` se amplio con 6 layouts verticales y selector de estilos persistente.
+
+### Seguimiento vCard
+
+-   **[x] Ampliar plantillas de vCard a variantes claramente distintas** (`Aura`, `Executive`, `Focus`, `Bold`, `Ultra Minimal`, `Tech Grid`).
+-   **[ ] Agregar preseleccion de layout por URL** (`?layout=...`) para compartir tarjetas con estilo predeterminado.
 
 ---
 
