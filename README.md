@@ -6,6 +6,8 @@ Para ver el sitio en producción, visita [https://globalincom.com.mx](https://gl
 
 También incluye subproyectos corporativos aislados, como el portal de vCards digitales ubicado en `vcard/demo/`, pensado para publicar tarjetas de presentación móviles por colaborador con descarga de contacto, QR y cambio de tema. Actualmente integra 6 plantillas visuales verticales (`Aura`, `Executive`, `Focus`, `Bold`, `Ultra Minimal`, `Tech Grid`) con persistencia de estilo en `localStorage`.
 
+Actualización reciente (jun/2026): se refinó el contenido de la sección de Normatividad Aeronáutica (4 fases más generales, mejora de redacción en ciclos de implementación) y se añadieron enlaces externos directos para normas y estándares aplicados.
+
 ---
 
 ## ➤ Tecnologías y Características

@@ -2,8 +2,18 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov/2025 - 18/abr/2026
-**Última actualización:** 25/may/2026
+**Período:** 28/nov/2025 - 05/jun/2026
+**Última actualización:** 05/jun/2026
+
+---
+
+### Ajustes de contenido en Normatividad Aeronáutica (05 de junio de 2026)
+
+- Tweak: El distintivo rojo "Circular CO-SA-17.18/24" en la cabecera AFAC ahora abre el PDF oficial en una pestaña nueva.
+- Tweak: La sección "Fases de Evaluación Normativa" se simplificó de 6 a 4 etapas con redacción más general.
+- Tweak: Se eliminó la redundancia de la palabra "FASE" en los títulos de las tarjetas, conservando la numeración visual.
+- Tweak: La sección "Ciclos Típicos de Implementación" fue reescrita con texto más claro y explicativo.
+- Tweak: Se agregaron enlaces externos a "Normas y Estándares Aplicados" (ISO/IEC 27001, NIST, IEC 62443, OACI Anexo 17 y LFPDPPP).
 
 ---
 

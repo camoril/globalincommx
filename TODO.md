@@ -5,6 +5,7 @@ Este archivo documenta las mejoras técnicas y de rendimiento que se han identif
 Actualizacion 10/feb/2026: Se agrego el generador de firmas en `/firmas/`. No cambia las tareas pendientes del sitio principal.
 Actualizacion 11/may/2026: Se agrego el subproyecto `vcard/demo/` como portal de tarjetas de presentacion digitales. Mantenerlo como modulo aislado dentro del mismo repositorio.
 Actualizacion 25/may/2026: El subproyecto `vcard/demo/` se amplio con 6 layouts verticales y selector de estilos persistente.
+Actualizacion 05/jun/2026: Se actualizaron contenidos de Normatividad Aeronautica en `index.html` y se agregaron enlaces externos en "Normas y Estandares Aplicados". Sin cambios en tareas pendientes.
 
 ### Seguimiento vCard
 
