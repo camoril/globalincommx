@@ -3,7 +3,17 @@
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
 **Período:** 28/nov/2025 - 05/jun/2026
-**Última actualización:** 05/jun/2026
+**Última actualización:** 13/ago/2026
+
+---
+
+### vCard final de Sergio Huerta y refinamiento de plantillas (13 de agosto de 2026)
+
+- Feature: Se creó la tarjeta final de colaborador en `vcard/sergio-huerta/index.html` con datos públicos de contacto, URL canónica y descarga de vCard.
+- Tweak: Se ajustó el layout `Executive` como opción predeterminada para la tarjeta final.
+- Tweak: Se removieron controles superiores de demo (chip y botones de estilo/tema) para dejar una presentación final más limpia.
+- Tweak: Se incrementó el tamaño de la foto de perfil para aprovechar mejor el espacio superior en la tarjeta final.
+- Tweak: El subproyecto `vcard/demo/index.html` quedó anonimizado como plantilla genérica sin datos personales reales.
 
 ---
 

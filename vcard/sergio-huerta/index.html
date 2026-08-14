@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plantilla demo de vCard digital móvil para perfiles profesionales.">
+    <meta name="description" content="vCard digital móvil de Sergio I. Huerta Luna.">
     <meta name="theme-color" content="#0f172a">
-    <title>vCard Digital | Demo</title>
+    <title>vCard Digital | Sergio Ivan Huerta Luna</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -144,7 +144,7 @@
 
         #card-shell[data-layout='executive'] .theme-hero {
             background: linear-gradient(90deg, #0f172a 0%, #1f2937 58%, #111827 100%);
-            height: 7.25rem;
+            height: 6.35rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.22);
         }
 
@@ -157,14 +157,14 @@
         }
 
         #card-shell[data-layout='executive'] > div:nth-child(2) {
-            justify-content: flex-start;
+            justify-content: flex-end;
             margin-top: -2.35rem;
-            padding-left: 1.25rem;
+            padding-right: 1.25rem;
         }
 
         #card-shell[data-layout='executive'] .avatar-ring {
-            width: 5.75rem;
-            height: 5.75rem;
+            width: 6.4rem;
+            height: 6.4rem;
             border-width: 3px;
             border-radius: 1rem;
         }
@@ -241,8 +241,8 @@
         }
 
         #card-shell[data-layout='focus'] .avatar-ring {
-            width: 4.85rem;
-            height: 4.85rem;
+            width: 5.35rem;
+            height: 5.35rem;
             border-width: 3px;
         }
 
@@ -371,8 +371,8 @@
         }
 
         #card-shell[data-layout='ultra-minimal'] .avatar-ring {
-            width: 3.9rem;
-            height: 3.9rem;
+            width: 4.4rem;
+            height: 4.4rem;
             border-width: 2px;
             border-radius: 0.75rem;
             animation: none;
@@ -489,8 +489,8 @@
         }
 
         #card-shell[data-layout='tech-grid'] .avatar-ring {
-            width: 5rem;
-            height: 5rem;
+            width: 5.6rem;
+            height: 5.6rem;
             border-width: 3px;
             border-radius: 0.85rem;
         }
@@ -714,53 +714,37 @@
                                 <path d="M0 100 L100 0 L100 100 Z" fill="white"></path>
                             </svg>
                         </div>
-                        <div class="absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4 text-white/90 text-xs font-semibold uppercase tracking-[0.25em]">
-                            <span id="profile-department-chip" class="status-pill inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur">
-                                <span class="w-2 h-2 rounded-full bg-red-400 shadow-[0_0_12px_rgba(248,113,113,.9)]"></span>
-                                vCard móvil
-                            </span>
-                            <div class="flex items-center gap-2">
-                                <button id="layout-toggle-top" type="button" class="pressable inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur text-white/90">
-                                    <i data-lucide="palette" class="w-3.5 h-3.5"></i>
-                                    Estilo
-                                </button>
-                                <button id="theme-toggle-top" type="button" class="pressable inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur text-white/90">
-                                    <i data-lucide="sun-moon" class="w-3.5 h-3.5"></i>
-                                    Tema
-                                </button>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="flex justify-center -mt-16 relative px-4">
-                        <div class="avatar-ring w-32 h-32 rounded-full border-[6px] border-white shadow-[0_20px_50px_rgba(15,23,42,0.18)] overflow-hidden bg-slate-200">
+                    <div class="flex justify-center -mt-20 relative px-4">
+                        <div class="avatar-ring w-36 h-36 rounded-full border-[6px] border-white shadow-[0_20px_50px_rgba(15,23,42,0.18)] overflow-hidden bg-slate-200">
                             <img id="profile-photo" src="https://api.dicebear.com/7.x/avataaars/svg?seed=DemoProfile" alt="Perfil" class="w-full h-full object-cover">
                         </div>
                     </div>
 
                     <div class="text-center mt-4 px-6">
-                        <h1 id="profile-name" class="text-3xl font-extrabold tracking-tight theme-text-main">Nombre Apellido</h1>
-                        <p id="profile-title" class="mt-2 text-global-red font-bold tracking-[0.24em] uppercase text-[11px]">Puesto Profesional</p>
+                        <h1 id="profile-name" class="text-3xl font-extrabold tracking-tight theme-text-main">Sergio Ivan Huerta Luna</h1>
+                        <p id="profile-title" class="mt-2 text-global-red font-bold tracking-[0.24em] uppercase text-[11px]">Director General / CEO</p>
                         <p class="theme-text-muted mt-3 flex items-center justify-center gap-2 text-sm">
                             <i data-lucide="building-2" class="w-4 h-4"></i>
-                            <span id="profile-company">Nombre de la Empresa</span>
+                            <span id="profile-company">Global Incom</span>
                         </p>
                     </div>
 
                     <div class="grid grid-cols-4 gap-2 px-5 mt-8">
-                        <a id="action-call" href="tel:+521234567890" class="flex flex-col items-center group">
+                        <a id="action-call" href="tel:+525515108044" class="flex flex-col items-center group">
                             <div class="pressable pressable-icon w-12 h-12 theme-button-neutral rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border">
                                 <i data-lucide="phone" class="w-5 h-5"></i>
                             </div>
                             <span class="theme-text-soft text-[10px] mt-1 font-medium">Llamar</span>
                         </a>
-                        <a id="action-whatsapp" href="https://wa.me/521234567890" class="flex flex-col items-center group">
+                        <a id="action-whatsapp" href="https://wa.me/525515108044" class="flex flex-col items-center group">
                             <div class="pressable pressable-icon w-12 h-12 theme-button-neutral rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border">
                                 <i data-lucide="message-circle" class="w-5 h-5"></i>
                             </div>
                             <span class="theme-text-soft text-[10px] mt-1 font-medium">WhatsApp</span>
                         </a>
-                        <a id="action-email" href="mailto:usuario@empresa.com" class="flex flex-col items-center group">
+                        <a id="action-email" href="mailto:shuerta@globalincom.com.mx" class="flex flex-col items-center group">
                             <div class="pressable pressable-icon w-12 h-12 theme-button-accent rounded-full flex items-center justify-center group-active:scale-95 shadow-sm border">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
@@ -781,7 +765,7 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <p class="theme-text-soft text-[10px] uppercase font-bold tracking-[0.2em]">Sitio Web</p>
-                                <a id="profile-website" href="https://example.com" target="_blank" rel="noreferrer" class="text-sm font-semibold theme-text-muted hover:text-global-red break-all">example.com</a>
+                                <a id="profile-website" href="https://globalincom.com.mx" target="_blank" rel="noreferrer" class="text-sm font-semibold theme-text-muted hover:text-global-red break-all">globalincom.com.mx</a>
                             </div>
                         </div>
 
@@ -791,7 +775,7 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <p class="theme-text-soft text-[10px] uppercase font-bold tracking-[0.2em]">Ubicación</p>
-                                <p id="profile-location" class="text-sm font-semibold theme-text-muted">Ciudad, Estado, MX</p>
+                                <p id="profile-location" class="text-sm font-semibold theme-text-muted">Polanco, CDMX</p>
                             </div>
                         </div>
                     </div>
@@ -810,7 +794,7 @@
                     <div class="bg-slate-50 p-5 flex flex-col items-center text-center mt-6 border-t border-slate-100 safe-bottom theme-panel">
                         <p class="theme-text-soft text-[10px] font-bold uppercase mb-4 tracking-[0.35em]">Escanea para Compartir</p>
                         <div id="qrcode" class="bg-white p-4 rounded-[1.5rem] shadow-inner border border-slate-100 theme-card">
-                            <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com" alt="QR" class="w-32 h-32">
+                            <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://globalincom.com.mx" alt="QR" class="w-32 h-32">
                         </div>
                     </div>
                 </div>
@@ -837,19 +821,18 @@
 
     <script>
         const employeeCatalog = {
-            'demo-user': {
-                firstName: 'Nombre',
-                lastName: 'Apellido',
-                fullName: 'Nombre Apellido',
-                title: 'Puesto Profesional',
-                company: 'Nombre de la Empresa',
-                phone: '+520000000000',
-                email: 'usuario@empresa.com',
-                website: 'https://example.com',
-                websiteLabel: 'example.com',
-                location: 'Ciudad, Estado, MX',
-                address: 'Calle Ejemplo 123;Ciudad;Estado;00000;Mexico',
-                photoSeed: 'DemoProfile',
+            'sergio-huerta': {
+                firstName: 'Sergio I.',
+                lastName: 'Huerta Luna',
+                fullName: 'Sergio Ivan Huerta Luna',
+                title: 'Director General / CEO',
+                company: 'Global Incom',
+                phone: '+525515108044',
+                email: 'shuerta@globalincom.com.mx',
+                website: 'https://globalincom.com.mx/',
+                websiteLabel: 'globalincom.com.mx',
+                location: 'Polanco, CDMX',
+                photoSeed: 'Sergio',
                 social: {
                     linkedin: '',
                     twitter: '',
@@ -859,16 +842,13 @@
         };
 
         const params = new URLSearchParams(window.location.search);
-        const employeeKey = params.get('employee') || 'demo-user';
-        const employee = employeeCatalog[employeeKey] || employeeCatalog['demo-user'];
+        const employeeKey = params.get('employee') || 'sergio-huerta';
+        const employee = employeeCatalog[employeeKey] || employeeCatalog['sergio-huerta'];
 
-        const profileUrl = new URL(window.location.href);
-        profileUrl.searchParams.set('employee', employeeKey in employeeCatalog ? employeeKey : 'demo-user');
+        const publicProfileUrl = 'https://globalincom.com.mx/vcard/sergio-huerta';
 
         const cardShell = document.getElementById('card-shell');
         const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleTop = document.getElementById('theme-toggle-top');
-        const layoutToggleTop = document.getElementById('layout-toggle-top');
         const themeToggleLabel = document.getElementById('theme-toggle-label');
         const layoutSelect = document.getElementById('layout-select');
         const layoutOrder = ['aura', 'executive', 'focus', 'bold', 'ultra-minimal', 'tech-grid'];
@@ -876,7 +856,7 @@
         function getPreferredLayout() {
             const urlLayout = params.get('layout');
             const savedLayout = urlLayout || window.localStorage.getItem('vcard-demo-layout');
-            return layoutOrder.includes(savedLayout) ? savedLayout : 'aura';
+            return layoutOrder.includes(savedLayout) ? savedLayout : 'executive';
         }
 
         function setLayout(layout) {
@@ -889,7 +869,7 @@
         }
 
         function cycleLayout() {
-            const currentLayout = cardShell.dataset.layout || 'aura';
+            const currentLayout = cardShell.dataset.layout || 'executive';
             const nextIndex = (layoutOrder.indexOf(currentLayout) + 1) % layoutOrder.length;
             setLayout(layoutOrder[nextIndex]);
         }
@@ -913,14 +893,10 @@
             themeToggle.innerHTML = isDark
                 ? '<i data-lucide="sun-medium" class="w-3.5 h-3.5"></i><span id="theme-toggle-label">Modo claro</span>'
                 : '<i data-lucide="moon-star" class="w-3.5 h-3.5"></i><span id="theme-toggle-label">Modo oscuro</span>';
-            themeToggleTop.innerHTML = isDark
-                ? '<i data-lucide="sun-medium" class="w-3.5 h-3.5"></i> Tema'
-                : '<i data-lucide="moon-star" class="w-3.5 h-3.5"></i> Tema';
             lucide.createIcons();
         }
 
         const elements = {
-            departmentChip: document.getElementById('profile-department-chip'),
             photo: document.getElementById('profile-photo'),
             name: document.getElementById('profile-name'),
             title: document.getElementById('profile-title'),
@@ -951,7 +927,6 @@
                 `TEL;TYPE=WORK,VOICE:${data.phone}`,
                 `EMAIL:${data.email}`,
                 `URL:${data.website}`,
-                `ADR;TYPE=WORK:;;${data.address}`,
                 'END:VCARD'
             ].join('\r\n');
         }
@@ -973,7 +948,7 @@
             const shareData = {
                 title: data.fullName,
                 text: `${data.fullName} - ${data.title}`,
-                url: window.location.href
+                url: publicProfileUrl
             };
 
             if (navigator.share) {
@@ -981,7 +956,7 @@
                 return;
             }
 
-            navigator.clipboard.writeText(window.location.href).then(() => {
+            navigator.clipboard.writeText(publicProfileUrl).then(() => {
                 elements.share.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Enlace copiado';
                 lucide.createIcons();
                 setTimeout(() => {
@@ -991,8 +966,7 @@
             });
         }
 
-        elements.departmentChip.textContent = employee.title;
-        elements.photo.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(employee.photoSeed || employee.fullName)}`;
+        elements.photo.src = `../assets/images/SergioHuerta.png`;
         elements.photo.alt = employee.fullName;
         elements.name.textContent = employee.fullName;
         elements.title.textContent = employee.title;
@@ -1003,15 +977,15 @@
         elements.call.href = `tel:${normalizePhone(employee.phone)}`;
         elements.whatsapp.href = `https://wa.me/${normalizePhone(employee.phone).replace(/^\+/, '')}`;
         elements.email.href = `mailto:${employee.email}`;
-        elements.share.href = window.location.href;
-        elements.qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.href)}`;
+        elements.share.href = publicProfileUrl;
+        elements.qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(publicProfileUrl)}`;
         elements.save.addEventListener('click', () => downloadVCard(employee));
         elements.share.addEventListener('click', (event) => {
             event.preventDefault();
             shareProfile(employee);
         });
         elements.copy.addEventListener('click', async () => {
-            await navigator.clipboard.writeText(window.location.href);
+            await navigator.clipboard.writeText(publicProfileUrl);
             elements.copy.innerHTML = '<i data-lucide="check" class="w-4 h-4 mr-2"></i> Copiado';
             lucide.createIcons();
             setTimeout(() => {
@@ -1089,11 +1063,6 @@
             setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
         });
 
-        themeToggleTop.addEventListener('click', () => {
-            setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
-        });
-
-        layoutToggleTop.addEventListener('click', cycleLayout);
         layoutSelect.addEventListener('change', (event) => {
             setLayout(event.target.value);
         });

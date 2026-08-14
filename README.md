@@ -4,7 +4,9 @@ Este repositorio contiene el código fuente del sitio web corporativo de GlobalI
 
 Para ver el sitio en producción, visita [https://globalincom.com.mx](https://globalincom.com.mx).
 
-También incluye subproyectos corporativos aislados, como el portal de vCards digitales ubicado en `vcard/demo/`, pensado para publicar tarjetas de presentación móviles por colaborador con descarga de contacto, QR y cambio de tema. Actualmente integra 6 plantillas visuales verticales (`Aura`, `Executive`, `Focus`, `Bold`, `Ultra Minimal`, `Tech Grid`) con persistencia de estilo en `localStorage`.
+También incluye subproyectos corporativos aislados, como el portal de vCards digitales ubicado en `vcard/demo/`, pensado como plantilla genérica para publicar tarjetas de presentación móviles por colaborador con descarga de contacto, QR y cambio de tema. Actualmente integra 6 plantillas visuales verticales (`Aura`, `Executive`, `Focus`, `Bold`, `Ultra Minimal`, `Tech Grid`) con persistencia de estilo en `localStorage`.
+
+Además se incluye una tarjeta final publicada para colaborador en `vcard/sergio-huerta/`, optimizada para uso directo (layout `Executive` por defecto y controles de demo simplificados).
 
 Actualización reciente (jun/2026): se refinó el contenido de la sección de Normatividad Aeronáutica (4 fases más generales, mejora de redacción en ciclos de implementación) y se añadieron enlaces externos directos para normas y estándares aplicados.
 
@@ -40,10 +42,11 @@ Actualización reciente (jun/2026): se refinó el contenido de la sección de No
 -   `presenta.html` / `cableado.html` / `seguridad.html`: Contenido informativo (presentaciones, infografías) que se carga en modales.
 -   `mexicana.html`: Documento estratégico de arquitectura de defensa y continuidad operativa para Mexicana de Aviación. Incluye análisis de Sophos MDR, ManageEngine Suite y Tenable.
 -   `xdr.html`: Análisis comparativo de arquitecturas XDR/EDR (Sophos vs CrowdStrike vs Legacy). Documento técnico para evaluación de soluciones de ciberseguridad.
--   `vcard/demo/`: Plantilla de vCard digital para colaboradores, con perfil dinámico, descarga de `.vcf`, QR de acceso y modo claro/oscuro.
+-   `vcard/demo/`: Plantilla genérica de vCard digital para colaboradores, con perfil dinámico, descarga de `.vcf`, QR de acceso y modo claro/oscuro.
     -   Selector de estilos con 6 layouts verticales de presentación.
     -   Botón rápido "Estilo" para alternar plantilla en tiempo real.
     -   Persistencia de plantilla y tema en `localStorage`.
+-   `vcard/sergio-huerta/`: Tarjeta final de colaborador para despliegue, con URL pública y datos de contacto listos para compartir.
 -   `CAMBIOS.txt`: Registro cronológico y detallado de todas las modificaciones y nuevas características implementadas.
 -   `CHANGELOG.md`: Changelog estructurado con todas las mejoras, nuevas características y correcciones.
 -   `TODO.md`: Lista de mejoras técnicas y de rendimiento pendientes.
