@@ -13,6 +13,7 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 - Tweak: Se ajustó el layout `Executive` como opción predeterminada para la tarjeta final.
 - Tweak: Se removieron controles superiores de demo (chip y botones de estilo/tema) para dejar una presentación final más limpia.
 - Tweak: Se incrementó el tamaño de la foto de perfil para aprovechar mejor el espacio superior en la tarjeta final.
+- Tweak: Se actualizó la fotografía final a `vcard/assets/images/SergioHuerta2_cropped.jpg` y se aplicó un zoom suave global para mejorar el encuadre.
 - Tweak: El subproyecto `vcard/demo/index.html` quedó anonimizado como plantilla genérica sin datos personales reales.
 
 ---

@@ -637,6 +637,11 @@
             animation: pulse-ring 4.5s ease-in-out infinite;
         }
 
+        #profile-photo {
+            transform: scale(1.08);
+            transform-origin: center center;
+        }
+
         .status-pill {
             animation: subtle-bounce 5s ease-in-out infinite;
         }
@@ -966,7 +971,7 @@
             });
         }
 
-        elements.photo.src = `../assets/images/SergioHuerta.png`;
+        elements.photo.src = `../assets/images/SergioHuerta2_cropped.jpg`;
         elements.photo.alt = employee.fullName;
         elements.name.textContent = employee.fullName;
         elements.title.textContent = employee.title;

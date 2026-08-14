@@ -47,6 +47,7 @@ Actualización reciente (jun/2026): se refinó el contenido de la sección de No
     -   Botón rápido "Estilo" para alternar plantilla en tiempo real.
     -   Persistencia de plantilla y tema en `localStorage`.
 -   `vcard/sergio-huerta/`: Tarjeta final de colaborador para despliegue, con URL pública y datos de contacto listos para compartir.
+    -   Incluye retrato final en `vcard/assets/images/SergioHuerta2_cropped.jpg` con ajuste de encuadre por zoom suave.
 -   `CAMBIOS.txt`: Registro cronológico y detallado de todas las modificaciones y nuevas características implementadas.
 -   `CHANGELOG.md`: Changelog estructurado con todas las mejoras, nuevas características y correcciones.
 -   `TODO.md`: Lista de mejoras técnicas y de rendimiento pendientes.
