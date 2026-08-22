@@ -253,16 +253,6 @@
 
         <button type="button" id="testWhatsapp" class="btn-test">Probar link WhatsApp</button>
 
-        <!-- Checkbox para PGP -->
-        <div class="checkbox-group">
-          <input type="checkbox" id="enablePgp">
-          <label for="enablePgp">Incluir clave PGP</label>
-        </div>
-        <div id="pgpField" class="conditional-field">
-          <label for="pgp">Link PGP</label>
-          <input id="pgp" type="text" placeholder="https://drive.google.com/...">
-        </div>
-
         <!-- Checkbox para vCard -->
         <div class="checkbox-group">
           <input type="checkbox" id="enableVcard">
@@ -273,6 +263,16 @@
           <input id="vcardSlug" type="text" placeholder="Ej: juan-perez">
           <div class="input-hint">Se genera automaticamente desde tu nombre, o escribelo en minusculas con guiones.</div>
           <div class="vcard-preview" id="vcardPreview"></div>
+        </div>
+
+        <!-- Checkbox para GPG -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="enableGpg">
+          <label for="enableGpg">Incluir clave publica GPG</label>
+        </div>
+        <div id="gpgField" class="conditional-field">
+          <div class="input-hint" style="margin-top: 0;">La URL se genera automaticamente usando el mismo slug de vCard.</div>
+          <div class="vcard-preview" id="gpgPreview"></div>
         </div>
 
         <div class="buttons" style="margin-top: 14px;">

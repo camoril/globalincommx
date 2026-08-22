@@ -6,16 +6,16 @@ var state = {
   phone: document.getElementById("phone"),
   ext: document.getElementById("ext"),
   mobile: document.getElementById("mobile"),
-  pgp: document.getElementById("pgp"),
   vcardSlug: document.getElementById("vcardSlug")
 };
 
 // Elementos adicionales
-var enablePgp = document.getElementById("enablePgp");
 var enableVcard = document.getElementById("enableVcard");
-var pgpField = document.getElementById("pgpField");
+var enableGpg = document.getElementById("enableGpg");
 var vcardField = document.getElementById("vcardField");
+var gpgField = document.getElementById("gpgField");
 var vcardPreview = document.getElementById("vcardPreview");
+var gpgPreview = document.getElementById("gpgPreview");
 
 var preview = document.getElementById("preview");
 var htmlOutput = document.getElementById("htmlOutput");
@@ -23,6 +23,7 @@ var toastEl = document.getElementById("toast");
 
 // Constantes
 var VCARD_BASE_URL = "https://globalincom.com.mx/vcard/vcard2/";
+var GPG_BASE_URL = "https://globalincom.com.mx/gpg/";
 
 // ============================================
 // UTILIDADES
@@ -67,6 +68,18 @@ function buildVcardUrl(slug) {
     return "";
   }
   return VCARD_BASE_URL + "?employee=" + encodeURIComponent(slug.trim());
+}
+
+/**
+ * Construye la URL de GPG a partir del slug del empleado
+ * @param {string} slug - Slug del empleado (ej: ernesto-pineda)
+ * @returns {string} URL completa de GPG
+ */
+function buildGpgUrl(slug) {
+  if (!slug || !slug.trim()) {
+    return "";
+  }
+  return GPG_BASE_URL + encodeURIComponent(slug.trim()) + ".asc";
 }
 
 /**
@@ -115,7 +128,6 @@ function buildTable() {
   var phone = state.phone.value.trim();
   var ext = state.ext.value.trim();
   var mobile = state.mobile.value.trim() || "55 0000 0000";
-  var pgp = state.pgp.value.trim();
   var vcardSlug = state.vcardSlug.value.trim();
 
   var extText = ext ? " Ext. " + ext : "";
@@ -144,15 +156,16 @@ function buildTable() {
     "      <span style=\"font-weight: bold; color: #555555;\">Email. </span><a href=\"mailto:" + email + "\" style=\"color: #0070c0; text-decoration: none;\">" + email + "</a>"
   );
   
-  // Agregar PGP si esta habilitado
-  if (enablePgp.checked && pgp) {
-    lines.push("      <br><span style=\"font-weight: bold; color: #555555;\">Key. </span><a href=\"" + pgp + "\" style=\"color: #0070c0; text-decoration: none;\">PGP</a>");
-  }
-  
   // Agregar vCard si esta habilitado
   if (enableVcard.checked && vcardSlug) {
     var vcardUrl = buildVcardUrl(vcardSlug);
     lines.push("      <br><span style=\"font-weight: bold; color: #555555;\">vCard. </span><a href=\"" + vcardUrl + "\" style=\"color: #0070c0; text-decoration: none;\">Contacto</a>");
+  }
+  
+  // Agregar GPG si esta habilitado (usa el mismo slug de vCard)
+  if (enableGpg.checked && vcardSlug) {
+    var gpgUrl = buildGpgUrl(vcardSlug);
+    lines.push("      <br><span style=\"font-weight: bold; color: #555555;\">Key. </span><a href=\"" + gpgUrl + "\" style=\"color: #0070c0; text-decoration: none;\">GPG</a>");
   }
   
   lines.push(
@@ -183,18 +196,31 @@ function update() {
   var tableHtml = buildTable();
   htmlOutput.value = tableHtml;
   preview.innerHTML = tableHtml;
-  updateVcardPreview();
+  updatePreviews();
 }
 
 /**
- * Actualiza la vista previa de la URL de vCard
+ * Actualiza las vistas previas de vCard y GPG
  */
-function updateVcardPreview() {
+function updatePreviews() {
   var slug = state.vcardSlug.value.trim();
-  if (slug) {
+  
+  // Actualizar preview de vCard
+  if (slug && enableVcard.checked) {
+    vcardPreview.textContent = buildVcardUrl(slug);
+  } else if (slug) {
     vcardPreview.textContent = buildVcardUrl(slug);
   } else {
     vcardPreview.textContent = "";
+  }
+  
+  // Actualizar preview de GPG
+  if (slug && enableGpg.checked) {
+    gpgPreview.textContent = buildGpgUrl(slug);
+  } else if (slug) {
+    gpgPreview.textContent = buildGpgUrl(slug);
+  } else {
+    gpgPreview.textContent = "";
   }
 }
 
@@ -277,13 +303,13 @@ for (var key in state) {
 }
 
 // Checkboxes para mostrar/ocultar campos
-enablePgp.addEventListener("change", function() {
-  pgpField.classList.toggle("visible", this.checked);
+enableVcard.addEventListener("change", function() {
+  vcardField.classList.toggle("visible", this.checked);
   update();
 });
 
-enableVcard.addEventListener("change", function() {
-  vcardField.classList.toggle("visible", this.checked);
+enableGpg.addEventListener("change", function() {
+  gpgField.classList.toggle("visible", this.checked);
   update();
 });
 
