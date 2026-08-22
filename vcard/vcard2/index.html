@@ -509,7 +509,7 @@
         const params = new URLSearchParams(window.location.search);
         const employeeKey = params.get('employee') || 'rosa-vejero';
         const employee = employeeCatalog[employeeKey] || employeeCatalog['rosa-vejero'];
-        const publicProfileUrl = `https://globalincom.com.mx/vcard2/?employee=${employeeKey}`;
+        const publicProfileUrl = `./?employee=${employeeKey}`;
 
         /* ============ REFERENCIAS DOM ============ */
         const cardShell = document.getElementById('card-shell');
