@@ -509,7 +509,9 @@
         const params = new URLSearchParams(window.location.search);
         const employeeKey = params.get('employee') || 'rosa-vejero';
         const employee = employeeCatalog[employeeKey] || employeeCatalog['rosa-vejero'];
-        const publicProfileUrl = `./?employee=${employeeKey}`;
+        // Construir URL completa dinámicamente (funciona en cualquier dominio/ruta)
+        const basePath = window.location.pathname.replace(/index\.html$/, '').replace(/\/$/, '');
+        const publicProfileUrl = `${window.location.origin}${basePath}/?employee=${employeeKey}`;
 
         /* ============ REFERENCIAS DOM ============ */
         const cardShell = document.getElementById('card-shell');
