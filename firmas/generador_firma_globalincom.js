@@ -1,3 +1,4 @@
+// Estado de la aplicacion - solo campos necesarios
 var state = {
   name: document.getElementById("name"),
   role: document.getElementById("role"),
@@ -5,29 +6,120 @@ var state = {
   phone: document.getElementById("phone"),
   ext: document.getElementById("ext"),
   mobile: document.getElementById("mobile"),
-  waCountry: document.getElementById("waCountry"),
-  waNumber: document.getElementById("waNumber"),
-  pgp: document.getElementById("pgp")
+  pgp: document.getElementById("pgp"),
+  vcardSlug: document.getElementById("vcardSlug")
 };
+
+// Elementos adicionales
+var enablePgp = document.getElementById("enablePgp");
+var enableVcard = document.getElementById("enableVcard");
+var pgpField = document.getElementById("pgpField");
+var vcardField = document.getElementById("vcardField");
+var vcardPreview = document.getElementById("vcardPreview");
 
 var preview = document.getElementById("preview");
 var htmlOutput = document.getElementById("htmlOutput");
-var status = document.getElementById("status");
+var toastEl = document.getElementById("toast");
+
+// Constantes
+var VCARD_BASE_URL = "https://globalincom.com.mx/vcard/vcard2/";
+
+// ============================================
+// UTILIDADES
+// ============================================
+
+/**
+ * Extrae solo los digitos de un string (elimina espacios, guiones, parentesis, signos, etc.)
+ * Ejemplo: "+52 55 3043-4222" => "525530434222"
+ */
+function extractDigits(str) {
+  return String(str || "").replace(/\D/g, "");
+}
+
+/**
+ * Construye el link de WhatsApp a partir del numero de celular
+ * Auto-detecta si el numero incluye codigo de pais (10+ digitos)
+ * Si solo tiene 10 digitos, asume Mexico (+52)
+ */
+function buildWhatsappLink(mobileNumber) {
+  var digits = extractDigits(mobileNumber);
+  
+  if (!digits) {
+    return "https://wa.me/";
+  }
+  
+  // Si tiene 10 digitos, es un numero de Mexico sin codigo de pais
+  if (digits.length === 10) {
+    return "https://wa.me/52" + digits;
+  }
+  
+  // Si tiene 11 o mas digitos, se asume que ya incluye el codigo de pais
+  return "https://wa.me/" + digits;
+}
+
+/**
+ * Construye la URL de vCard a partir del slug del empleado
+ * @param {string} slug - Slug del empleado (ej: ernesto-pineda)
+ * @returns {string} URL completa de vCard
+ */
+function buildVcardUrl(slug) {
+  if (!slug || !slug.trim()) {
+    return "";
+  }
+  return VCARD_BASE_URL + "?employee=" + encodeURIComponent(slug.trim());
+}
+
+/**
+ * Genera un slug a partir del nombre completo
+ * Convierte a minusculas, reemplaza espacios con guiones, elimina caracteres especiales
+ * @param {string} fullName - Nombre completo
+ * @returns {string} Slug generado
+ */
+function generateSlugFromName(fullName) {
+  return fullName
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Eliminar acentos
+    .replace(/[^a-z0-9\s-]/g, "")    // Solo letras, numeros, espacios y guiones
+    .trim()
+    .replace(/\s+/g, "-")            // Reemplazar espacios con guiones
+    .replace(/-+/g, "-");            // Evitar guiones multiples
+}
+
+/**
+ * Muestra una notificacion toast
+ * @param {string} message - Mensaje a mostrar
+ * @param {string} type - Tipo: 'success', 'error', 'info'
+ * @param {number} duration - Duracion en ms (default 3000)
+ */
+function showToast(message, type, duration) {
+  type = type || "info";
+  duration = duration || 3000;
+  
+  toastEl.textContent = message;
+  toastEl.className = "toast " + type + " show";
+  
+  setTimeout(function() {
+    toastEl.className = "toast";
+  }, duration);
+}
+
+// ============================================
+// GENERACION DE FIRMA
+// ============================================
 
 function buildTable() {
-  var name = state.name.value.trim() || "Nombre Apellido";
-  var role = state.role.value.trim() || "Puesto";
-  var email = state.email.value.trim() || "correo@globalincom.com.mx";
+  var name = state.name.value.trim() || "Tu Nombre Aqui";
+  var role = state.role.value.trim() || "Tu Puesto Aqui";
+  var email = state.email.value.trim() || "tu.email@globalincom.com.mx";
   var phone = state.phone.value.trim();
   var ext = state.ext.value.trim();
   var mobile = state.mobile.value.trim() || "55 0000 0000";
-  var waCountry = state.waCountry.value.trim() || "+52";
-  var waNumber = state.waNumber.value.trim();
   var pgp = state.pgp.value.trim();
+  var vcardSlug = state.vcardSlug.value.trim();
 
   var extText = ext ? " Ext. " + ext : "";
-
-  var wa = buildWhatsappLink(waCountry, waNumber);
+  var wa = buildWhatsappLink(mobile);
 
   var lines = [
     "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 15px; color: #333333;\">",
@@ -42,31 +134,34 @@ function buildTable() {
     "    <td style=\"border-right: 1px solid #CCCCCC; padding: 0 15px 0 0;\"></td>",
     "    <td style=\"padding-left: 15px;\">"
   ];
+  
   if (phone) {
     lines.push("      <span style=\"font-weight: bold; color: #555555;\">Tel. </span>" + phone + extText + "<br>");
   }
+  
   lines.push(
     "      <span style=\"font-weight: bold; color: #555555;\">Cel. </span><a href=\"" + wa + "\" style=\"color: #0070c0; text-decoration: none;\">" + mobile + "</a><br>",
     "      <span style=\"font-weight: bold; color: #555555;\">Email. </span><a href=\"mailto:" + email + "\" style=\"color: #0070c0; text-decoration: none;\">" + email + "</a>"
   );
-  if (pgp) {
+  
+  // Agregar PGP si esta habilitado
+  if (enablePgp.checked && pgp) {
     lines.push("      <br><span style=\"font-weight: bold; color: #555555;\">Key. </span><a href=\"" + pgp + "\" style=\"color: #0070c0; text-decoration: none;\">PGP</a>");
   }
+  
+  // Agregar vCard si esta habilitado
+  if (enableVcard.checked && vcardSlug) {
+    var vcardUrl = buildVcardUrl(vcardSlug);
+    lines.push("      <br><span style=\"font-weight: bold; color: #555555;\">vCard. </span><a href=\"" + vcardUrl + "\" style=\"color: #0070c0; text-decoration: none;\">Contacto</a>");
+  }
+  
   lines.push(
     "    </td>",
     "  </tr>",
     "</table>"
   );
+  
   return lines.join("\n");
-}
-
-function buildWhatsappLink(countryCode, phoneNumber) {
-  var cc = String(countryCode || "").replace(/\D/g, "");
-  var number = String(phoneNumber || "").replace(/\D/g, "");
-  if (!cc && !number) {
-    return "https://wa.me/";
-  }
-  return "https://wa.me/" + cc + number;
 }
 
 function buildSignatureHtml(tableHtml) {
@@ -88,39 +183,52 @@ function update() {
   var tableHtml = buildTable();
   htmlOutput.value = tableHtml;
   preview.innerHTML = tableHtml;
+  updateVcardPreview();
 }
 
-function setStatus(message) {
-  status.textContent = message;
+/**
+ * Actualiza la vista previa de la URL de vCard
+ */
+function updateVcardPreview() {
+  var slug = state.vcardSlug.value.trim();
+  if (slug) {
+    vcardPreview.textContent = buildVcardUrl(slug);
+  } else {
+    vcardPreview.textContent = "";
+  }
 }
+
+// ============================================
+// FUNCIONES DE COPIADO
+// ============================================
 
 function copyHtml() {
   var html = htmlOutput.value;
   if (!navigator.clipboard || !navigator.clipboard.writeText) {
-    setStatus("No se pudo copiar. Selecciona y copia manualmente.");
+    showToast("No se pudo copiar. Selecciona y copia manualmente.", "error");
     return;
   }
 
   navigator.clipboard.writeText(html).then(function () {
-    setStatus("HTML copiado al portapapeles.");
+    showToast("HTML copiado al portapapeles", "success");
   }).catch(function () {
-    setStatus("No se pudo copiar. Selecciona y copia manualmente.");
+    showToast("No se pudo copiar. Selecciona y copia manualmente.", "error");
   });
 }
 
 function copySignature() {
   var html = htmlOutput.value;
   if (!navigator.clipboard || !window.ClipboardItem) {
-    setStatus("No se pudo copiar la firma. Usa Copiar HTML.");
+    showToast("No se pudo copiar la firma. Usa Copiar HTML.", "error");
     return;
   }
 
   var blob = new Blob([html], { type: "text/html" });
   var item = new ClipboardItem({ "text/html": blob });
   navigator.clipboard.write([item]).then(function () {
-    setStatus("Firma copiada. Pega directo en Outlook.");
+    showToast("Firma copiada. Pega directo en Outlook", "success");
   }).catch(function () {
-    setStatus("No se pudo copiar la firma. Usa Copiar HTML.");
+    showToast("No se pudo copiar la firma. Usa Copiar HTML.", "error");
   });
 }
 
@@ -128,25 +236,78 @@ function copyFullHtml() {
   var tableHtml = buildTable();
   var html = buildSignatureHtml(tableHtml);
   if (!navigator.clipboard || !navigator.clipboard.writeText) {
-    setStatus("No se pudo copiar. Selecciona y copia manualmente.");
+    showToast("No se pudo copiar. Selecciona y copia manualmente.", "error");
     return;
   }
 
   navigator.clipboard.writeText(html).then(function () {
-    setStatus("HTML completo copiado al portapapeles.");
+    showToast("HTML completo copiado al portapapeles", "success");
   }).catch(function () {
-    setStatus("No se pudo copiar. Selecciona y copia manualmente.");
+    showToast("No se pudo copiar. Selecciona y copia manualmente.", "error");
   });
 }
 
+// ============================================
+// PROBAR WHATSAPP
+// ============================================
+
+function testWhatsapp() {
+  var mobile = state.mobile.value.trim();
+  var link = buildWhatsappLink(mobile);
+  
+  if (!mobile || extractDigits(mobile).length < 10) {
+    showToast("Ingresa un numero de celular valido (minimo 10 digitos)", "error");
+    return;
+  }
+  
+  // Abrir el link en una nueva pestaña
+  window.open(link, "_blank");
+  showToast("Abriendo WhatsApp...", "info", 2000);
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+// Actualizar firma en tiempo real
 for (var key in state) {
   if (Object.prototype.hasOwnProperty.call(state, key)) {
     state[key].addEventListener("input", update);
   }
 }
 
+// Checkboxes para mostrar/ocultar campos
+enablePgp.addEventListener("change", function() {
+  pgpField.classList.toggle("visible", this.checked);
+  update();
+});
+
+enableVcard.addEventListener("change", function() {
+  vcardField.classList.toggle("visible", this.checked);
+  update();
+});
+
+// Auto-generar slug cuando cambia el nombre
+state.name.addEventListener("input", function() {
+  // Solo auto-generar si el campo vcardSlug esta vacio o si nunca se ha editado manualmente
+  var currentSlug = state.vcardSlug.value.trim();
+  var generatedSlug = generateSlugFromName(this.value);
+  
+  // Si el slug actual coincide con el generado anteriormente o esta vacio, actualizarlo
+  if (!currentSlug || currentSlug === state.vcardSlug.dataset.lastAutoGenerated) {
+    state.vcardSlug.value = generatedSlug;
+    state.vcardSlug.dataset.lastAutoGenerated = generatedSlug;
+    update();
+  }
+});
+
+// Botones de copiado
 document.getElementById("copyHtml").addEventListener("click", copyHtml);
 document.getElementById("copySignature").addEventListener("click", copySignature);
 document.getElementById("copyFullHtml").addEventListener("click", copyFullHtml);
 
+// Boton probar WhatsApp
+document.getElementById("testWhatsapp").addEventListener("click", testWhatsapp);
+
+// Inicializar
 update();

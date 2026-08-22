@@ -115,6 +115,107 @@
       margin-top: 8px;
     }
 
+    .input-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: -8px;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    /* Checkbox styles */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 8px;
+      padding: 10px 12px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .conditional-field {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .conditional-field.visible {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .vcard-preview {
+      font-size: 11px;
+      color: var(--accent);
+      margin-top: -8px;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+
+    .btn-test {
+      background: #25D366;
+      margin-top: 4px;
+    }
+
+    .btn-test:hover {
+      background: #1da851;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #333;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success {
+      background: #28a745;
+    }
+
+    .toast.error {
+      background: #dc3545;
+    }
+
+    .toast.info {
+      background: #0070c0;
+    }
+
     @media (max-width: 900px) {
       .grid {
         grid-template-columns: 1fr;
@@ -132,38 +233,53 @@
     <div class="grid">
       <div class="panel">
         <label for="name">Nombre completo</label>
-        <input id="name" type="text" value="Ernesto Pineda Batalla">
+        <input id="name" type="text" placeholder="Ej: Juan Perez Garcia">
 
         <label for="role">Puesto</label>
-        <input id="role" type="text" value="Gerente Ingenieria y Desarrollo">
+        <input id="role" type="text" placeholder="Ej: Gerente de Ventas">
 
         <label for="email">Email</label>
-        <input id="email" type="email" value="ernesto.p@globalincom.com.mx">
+        <input id="email" type="email" placeholder="Ej: juan.perez@globalincom.com.mx">
 
         <label for="phone">Telefono fijo</label>
-        <input id="phone" type="text" value="+52 55 5514 5730 / 29">
+        <input id="phone" type="text" placeholder="Ej: +52 55 5514 5730 (opcional)">
 
         <label for="ext">Extension</label>
-        <input id="ext" type="text" value="393">
+        <input id="ext" type="text" placeholder="Ej: 393 (opcional)">
 
         <label for="mobile">Celular (WhatsApp)</label>
-        <input id="mobile" type="text" value="55 3043 4222">
+        <input id="mobile" type="text" placeholder="Ej: 55 3043 4222 o +52 55 3043 4222">
+        <div class="input-hint">El link de WhatsApp se genera automaticamente. Solo incluye el numero con codigo de pais.</div>
 
-        <label for="waCountry">Codigo pais WhatsApp</label>
-        <input id="waCountry" type="text" value="+52">
+        <button type="button" id="testWhatsapp" class="btn-test">Probar link WhatsApp</button>
 
-        <label for="waNumber">Numero WhatsApp (sin espacios)</label>
-        <input id="waNumber" type="text" value="5530434222">
+        <!-- Checkbox para PGP -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="enablePgp">
+          <label for="enablePgp">Incluir clave PGP</label>
+        </div>
+        <div id="pgpField" class="conditional-field">
+          <label for="pgp">Link PGP</label>
+          <input id="pgp" type="text" placeholder="https://drive.google.com/...">
+        </div>
 
-        <label for="pgp">Link PGP</label>
-        <input id="pgp" type="text" value="https://drive.google.com/file/d/0B-_YTaHHunhGbTMycGpvTGl4Tjg/view?usp=sharing">
+        <!-- Checkbox para vCard -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="enableVcard">
+          <label for="enableVcard">Incluir enlace vCard</label>
+        </div>
+        <div id="vcardField" class="conditional-field">
+          <label for="vcardSlug">Slug del empleado</label>
+          <input id="vcardSlug" type="text" placeholder="Ej: juan-perez">
+          <div class="input-hint">Se genera automaticamente desde tu nombre, o escribelo en minusculas con guiones.</div>
+          <div class="vcard-preview" id="vcardPreview"></div>
+        </div>
 
-        <div class="buttons">
+        <div class="buttons" style="margin-top: 14px;">
           <button type="button" id="copySignature" class="danger">Copiar firma</button>
           <button type="button" id="copyHtml" class="secondary">Copiar HTML</button>
           <button type="button" id="copyFullHtml" class="secondary">Copiar HTML completo</button>
         </div>
-        <div class="note" id="status"></div>
       </div>
 
       <div class="panel">
@@ -175,6 +291,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
 
   <script src="generador_firma_globalincom.js"></script>
 </body>
