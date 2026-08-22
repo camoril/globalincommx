@@ -2,8 +2,18 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov/2025 - 05/jun/2026
-**Última actualización:** 13/ago/2026
+**Período:** 28/nov/2025 - 21/ago/2026
+**Última actualización:** 21/ago/2026
+
+---
+
+### Mejoras en vCard2 - Catálogo unificado y URL dinámicas (21 de agosto de 2026)
+
+- Tweak: Se eliminó el botón "Disponible" de la esquina superior derecha para una presentación más limpia.
+- Tweak: La URL pública del perfil ahora se construye dinámicamente usando `window.location.origin` + `window.location.pathname`, funcionando correctamente en cualquier dominio o ruta.
+- Tweak: Se actualizó el catálogo de empleados en `vcard/vcard2/index.html` con la información real de Sergio Huerta y Ricardo Rangel (nombres completos, títulos, teléfonos y fotos).
+- Tweak: Se eliminó el empleado por defecto. Ahora, al acceder sin el parámetro `?employee=`, se muestra información genérica indicando que se debe seleccionar un empleado específico.
+- Tweak: Los botones de acción (Guardar, Compartir) ahora se deshabilitan cuando no hay un empleado seleccionado.
 
 ---
 
