@@ -1,3 +1,65 @@
+// ============================================
+// CATALOGO DE EMPLEADOS (sincronizado con vCard)
+// ============================================
+var employeeCatalog = {
+  "rosa-vejero": {
+    fullName: "Rosa Maria Vejero",
+    title: "Asistente Ejecutiva",
+    email: "rosad@globalincom.com.mx",
+    phone: "+525586887461",
+    mobile: "5586887461"
+  },
+  "ricardo-rangel": {
+    fullName: "Ricardo Rangel Vazquez",
+    title: "Director Comercial",
+    email: "rrangel@globalincom.com.mx",
+    phone: "+525544718091",
+    mobile: "5544718091"
+  },
+  "sergio-huerta": {
+    fullName: "Sergio Ivan Huerta Luna",
+    title: "Director General / CEO",
+    email: "shuerta@globalincom.com.mx",
+    phone: "+525515108044",
+    mobile: "5515108044"
+  },
+  "ernesto-pineda": {
+    fullName: "Ernesto Pineda Batalla",
+    title: "Ingenieria y Desarrollo",
+    email: "ernesto.p@globalincom.com.mx",
+    phone: "+525530434222",
+    mobile: "5530434222"
+  },
+  "aldo-ruiz": {
+    fullName: "Aldo Raul Ruiz Castro",
+    title: "Ingeniería y Soporte Técnico",
+    email: "aldor@globalincom.com.mx",
+    phone: "+525529629378",
+    mobile: "5529629378"
+  },
+  "ricardo-fernandez": {
+    fullName: "Ricardo Fernandez Dominguez",
+    title: "Director de Operaciones",
+    email: "rfernandez@globalincom.com.mx",
+    phone: "+525520991583",
+    mobile: "5520991583"
+  },
+  "luis-romero": {
+    fullName: "Luis Miguel Romero Solis",
+    title: "Ingeniería y Redes",
+    email: "lromero@globalincom.com.mx",
+    phone: "+525575080204",
+    mobile: "5575080204"
+  },
+  "graciela-gonzalez": {
+    fullName: "Graciela Gonzalez Mejia",
+    title: "Gerente de Operaciones",
+    email: "graciela.g@globalincom.com.mx",
+    phone: "+525578880782",
+    mobile: "5578880782"
+  }
+};
+
 // Estado de la aplicacion - solo campos necesarios
 var state = {
   name: document.getElementById("name"),
@@ -8,6 +70,9 @@ var state = {
   mobile: document.getElementById("mobile"),
   vcardSlug: document.getElementById("vcardSlug")
 };
+
+// Elemento del selector de empleado
+var employeeSelect = document.getElementById("employeeSelect");
 
 // Elementos adicionales
 var enableVcard = document.getElementById("enableVcard");
@@ -335,5 +400,98 @@ document.getElementById("copyFullHtml").addEventListener("click", copyFullHtml);
 // Boton probar WhatsApp
 document.getElementById("testWhatsapp").addEventListener("click", testWhatsapp);
 
+// ============================================
+// SELECTOR DE EMPLEADO - LLENAR DROPDOWN
+// ============================================
+
+/**
+ * Llena el dropdown de empleados con los datos del catalogo
+ */
+function populateEmployeeDropdown() {
+  // Limpiar opciones existentes (excepto la primera)
+  while (employeeSelect.options.length > 1) {
+    employeeSelect.remove(1);
+  }
+  
+  // Agregar cada empleado del catalogo
+  Object.keys(employeeCatalog).forEach(function(slug) {
+    var emp = employeeCatalog[slug];
+    var option = document.createElement("option");
+    option.value = slug;
+    option.textContent = emp.fullName + " - " + emp.title;
+    employeeSelect.add(option);
+  });
+}
+
+/**
+ * Autocompleta los campos del formulario con los datos del empleado seleccionado
+ * @param {string} slug - Slug del empleado seleccionado
+ */
+function autoFillFromEmployee(slug) {
+  if (!slug || !employeeCatalog[slug]) {
+    return;
+  }
+  
+  var emp = employeeCatalog[slug];
+  
+  // Llenar los campos
+  state.name.value = emp.fullName;
+  state.role.value = emp.title;
+  state.email.value = emp.email;
+  state.phone.value = emp.phone;
+  state.mobile.value = emp.mobile;
+  state.vcardSlug.value = slug;
+  
+  // Marcar el checkbox de vCard como activado
+  enableVcard.checked = true;
+  vcardField.classList.add("visible");
+  
+  // Actualizar la vista previa
+  update();
+  
+  showToast("Datos de " + emp.fullName + " cargados correctamente", "success", 2500);
+}
+
+// Event listener para el selector de empleado
+employeeSelect.addEventListener("change", function() {
+  autoFillFromEmployee(this.value);
+});
+
+// ============================================
+// LIMPIAR FORMULARIO
+// ============================================
+
+/**
+ * Limpia todos los campos del formulario y resetea el selector
+ */
+function clearForm() {
+  // Resetear selector
+  employeeSelect.value = "";
+  
+  // Limpiar campos
+  state.name.value = "";
+  state.role.value = "";
+  state.email.value = "";
+  state.phone.value = "";
+  state.ext.value = "";
+  state.mobile.value = "";
+  state.vcardSlug.value = "";
+  
+  // Desmarcar checkboxes
+  enableVcard.checked = false;
+  enableGpg.checked = false;
+  vcardField.classList.remove("visible");
+  gpgField.classList.remove("visible");
+  
+  // Actualizar vista
+  update();
+  
+  showToast("Formulario limpiado", "info", 2000);
+}
+
+// Boton limpiar formulario
+document.getElementById("clearForm").addEventListener("click", clearForm);
+
 // Inicializar
+populateEmployeeDropdown();
 update();

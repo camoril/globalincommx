@@ -229,9 +229,19 @@
 <body>
   <div class="page">
     <h1>Generador de firma GlobalIncom</h1>
+    <p style="color: var(--muted); font-size: 13px; margin-bottom: 20px;">
+      ¿Ya tienes tu vCard? <a href="../vcard/" style="color: var(--accent);">Ver mi vCard digital</a>
+    </p>
 
     <div class="grid">
       <div class="panel">
+        <!-- Selector de empleado desde vCard -->
+        <label for="employeeSelect">Seleccionar empleado (desde vCard)</label>
+        <select id="employeeSelect" style="width: 100%; box-sizing: border-box; padding: 10px 12px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; background: #fff; cursor: pointer;">
+          <option value="">-- Selecciona tu empleado --</option>
+        </select>
+        <div class="input-hint">Al seleccionar un empleado, se llenan los campos automaticamente. Puedes editarlos despues si necesitas ajustes.</div>
+
         <label for="name">Nombre completo</label>
         <input id="name" type="text" placeholder="Ej: Juan Perez Garcia">
 
@@ -279,6 +289,7 @@
           <button type="button" id="copySignature" class="danger">Copiar firma</button>
           <button type="button" id="copyHtml" class="secondary">Copiar HTML</button>
           <button type="button" id="copyFullHtml" class="secondary">Copiar HTML completo</button>
+          <button type="button" id="clearForm" class="secondary" style="background: #888;">Limpiar</button>
         </div>
       </div>
 
