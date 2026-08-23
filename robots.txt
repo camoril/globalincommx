@@ -12,6 +12,11 @@ Disallow: /node_modules/
 Disallow: *.pdf
 Disallow: *.zip
 
+# Bloquear carpetas de información privada de empleados
+Disallow: /vcard/
+Disallow: /firmas/
+Disallow: /gpg/
+
 # Referencia al Sitemap XML
 Sitemap: https://globalincom.com.mx/sitemap.xml
 
