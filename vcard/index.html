@@ -460,6 +460,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/RosaVejero.png',
                 bio: 'Asistente ejecutiva con amplia experiencia en coordinación administrativa y atención a clientes. Comprometida con la excelencia y el servicio.',
+                whatsappMessage: 'Hola Rosa, me gustaría obtener más información sobre los servicios de Global Incom.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -479,6 +480,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/RicardoRangel.jpeg',
                 bio: 'Director Comercial con amplia experiencia en desarrollo de negocios y estrategias de ventas.',
+                whatsappMessage: 'Hola Ricardo, me interesa conocer las soluciones comerciales que ofrece Global Incom.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -498,6 +500,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/SergioHuerta2_cropped.jpg',
                 bio: 'Director General con visión estratégica y liderazgo en soluciones tecnológicas integrales.',
+                whatsappMessage: 'Hola Sergio, me gustaría explorar oportunidades de colaboración con Global Incom.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -517,6 +520,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/ErnestoPineda.png',
                 bio: 'Especialista en ciberseguridad y diseño de soluciones tecnologicas y gestion de proyectos.',
+                whatsappMessage: 'Hola Ernesto, me interesa conocer más sobre los servicios de ciberseguridad y desarrollo.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -536,6 +540,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/AldoRuiz.png',
                 bio: 'Especialista en ingeniería y soporte técnico con experiencia en implementación de soluciones tecnológicas, mantenimiento de infraestructura y atención técnica especializada.',
+                whatsappMessage: 'Hola Aldo, necesito soporte técnico y me gustaría conocer más sobre tus servicios.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -555,6 +560,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/RicardoFernandez.png',
                 bio: 'Director de operaciones con amplia experiencia en gestión de procesos, logística y optimización de recursos para garantizar la excelencia en el servicio.',
+                whatsappMessage: 'Hola Ricardo, me gustaría conocer más sobre los servicios operativos de Global Incom.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -574,6 +580,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/LuisRomero.png',
                 bio: 'Especialista en ingeniería y despliegue de redes inalámbricas, con experiencia en diseño, implementación y optimización de infraestructura de conectividad.',
+                whatsappMessage: 'Hola Luis, me interesa conocer más sobre los servicios de redes y conectividad.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -593,6 +600,7 @@
                 location: 'Polanco, CDMX',
                 photo: 'assets/images/GracielaGonzalez.png',
                 bio: 'Gerente de operaciones con amplia experiencia en coordinación de equipos, gestión de procesos y optimización de recursos para garantizar la excelencia en el servicio.',
+                whatsappMessage: 'Hola Graciela, me gustaría conocer más sobre los servicios de Global Incom.',
                 social: {
                     linkedin: '',
                     facebook: '',
@@ -809,7 +817,8 @@
             elements.website.textContent = data.websiteLabel;
             elements.location.textContent = data.location;
             elements.call.href = `tel:${normalizePhone(data.phone)}`;
-            elements.whatsapp.href = `https://wa.me/${normalizePhone(data.phone).replace(/^\+/, '')}?text=${encodeURIComponent(`Hola ${data.firstName}, te contacto desde tu vCard digital.`)}`;
+            const whatsappMessage = data.whatsappMessage || `Hola ${data.firstName}, te contacto desde tu vCard digital.`;
+            elements.whatsapp.href = `https://wa.me/${normalizePhone(data.phone).replace(/^\+/, '')}?text=${encodeURIComponent(whatsappMessage)}`;
             elements.email.href = `mailto:${data.email}`;
             elements.qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(publicProfileUrl)}`;
             renderSocial(data);
