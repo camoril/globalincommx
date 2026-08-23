@@ -33,7 +33,7 @@ var employeeCatalog = {
   "aldo-ruiz": {
     fullName: "Aldo Raul Ruiz Castro",
     title: "Ingeniería y Soporte Técnico",
-    email: "aldor@globalincom.com.mx",
+    email: "aldo.r@globalincom.com.mx",
     phone: "+525529629378",
     mobile: "5529629378"
   },
