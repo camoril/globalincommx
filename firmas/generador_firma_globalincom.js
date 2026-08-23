@@ -22,7 +22,7 @@ var htmlOutput = document.getElementById("htmlOutput");
 var toastEl = document.getElementById("toast");
 
 // Constantes
-var VCARD_BASE_URL = "https://globalincom.com.mx/vcard/vcard2/";
+var VCARD_BASE_URL = "https://globalincom.com.mx/vcard/";
 var GPG_BASE_URL = "https://globalincom.com.mx/gpg/";
 
 // ============================================
