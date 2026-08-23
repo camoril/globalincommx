@@ -74,6 +74,9 @@ var state = {
 // Elemento del selector de empleado
 var employeeSelect = document.getElementById("employeeSelect");
 
+// Elemento del enlace a vCard (se actualiza dinámicamente)
+var vcardLink = document.getElementById("vcardLink");
+
 // Elementos adicionales
 var enableVcard = document.getElementById("enableVcard");
 var enableGpg = document.getElementById("enableGpg");
@@ -429,22 +432,27 @@ function populateEmployeeDropdown() {
  */
 function autoFillFromEmployee(slug) {
   if (!slug || !employeeCatalog[slug]) {
+    // Si no hay empleado seleccionado, resetear el enlace de vCard
+    vcardLink.href = "../vcard/";
     return;
   }
   
   var emp = employeeCatalog[slug];
   
-  // Llenar los campos
+  // Llenar los campos (solo celular/WhatsApp, no telefono fijo)
   state.name.value = emp.fullName;
   state.role.value = emp.title;
   state.email.value = emp.email;
-  state.phone.value = emp.phone;
+  // state.phone.value = emp.phone;  // No llenar telefono fijo automaticamente
   state.mobile.value = emp.mobile;
   state.vcardSlug.value = slug;
   
   // Marcar el checkbox de vCard como activado
   enableVcard.checked = true;
   vcardField.classList.add("visible");
+  
+  // Actualizar el enlace de vCard con el slug del empleado
+  vcardLink.href = "../vcard/?employee=" + encodeURIComponent(slug);
   
   // Actualizar la vista previa
   update();
@@ -482,6 +490,9 @@ function clearForm() {
   enableGpg.checked = false;
   vcardField.classList.remove("visible");
   gpgField.classList.remove("visible");
+  
+  // Resetear el enlace de vCard
+  vcardLink.href = "../vcard/";
   
   // Actualizar vista
   update();
