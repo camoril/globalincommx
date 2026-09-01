@@ -57,6 +57,13 @@ var employeeCatalog = {
     email: "graciela.g@globalincom.com.mx",
     phone: "+525578880782",
     mobile: "5578880782"
+  },
+  "ricardo-moreno": {
+    fullName: "Ricardo Moreno Acosta",
+    title: "Gerente Desarrollo Nuevos Negocios",
+    email: "rmoreno@global-incom.mx",
+    phone: "+525544697416",
+    mobile: "5544697416"
   }
 };
 
