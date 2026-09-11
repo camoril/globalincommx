@@ -2,8 +2,50 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov/2025 - 21/ago/2026
-**Última actualización:** 21/ago/2026
+**Período:** 28/nov/2025 - 11/sep/2026
+**Última actualización:** 11/sep/2026
+
+---
+
+### Refactor de identidad visual en /servicios/ (11 de septiembre de 2026)
+
+- **Feature:** Se creó la página dedicada `servicios/index.html` para mostrar la oferta de Servicios Administrados de TI y Ciberseguridad (NOC, SOC, redes LAN-to-LAN, mesa de ayuda 24/7).
+- **Refactor:** Se reemplazó la paleta inventada (`gi-navy`/`gi-orange`/`gi-blue`) por la paleta canónica del sitio público (`brand-dark`/`brand-primary`/`brand-neutral`/`brand-light`) basada en `#E31B23`, `#000000`, `#A1A1A4` y `#F8F9FA`.
+- **Refactor:** Se adoptó la tipografía dual Inter + Montserrat (esta última para headings) alineada con `index.html`.
+- **Refactor:** Se migraron los 24 íconos FontAwesome a Lucide (mismo set que el resto del sitio).
+- **Feature:** Se agregó el `<head>` completo con SEO meta (description, keywords, canonical), Open Graph, Twitter Cards, favicon SVG con los 3 círculos rojos, Google Analytics (`G-FFF66HX4FX`), Google Tag Manager (`GTM-WQ4XW6DC`) y Microsoft Clarity (`rvviylo106`).
+- **Feature:** Se agregaron tres bloques JSON-LD: `LocalBusiness`, `WebSite` y `Service`.
+- **Feature:** Se reescribió el header con el patrón del sitio: top utility bar negra, logo SVG "Global**Incom**", dropdown Soluciones, link activo "Servicios Administrados", CTA `btn-primary` con gradiente rojo, botón de cambio de tema (dark/light) y menú móvil colapsable con cierre automático al hacer clic en un enlace.
+- **Feature:** Se agregó soporte de dark mode toggleable (clase `dark` + persistencia en `localStorage` + lectura de `prefers-color-scheme`), idéntico al patrón de `nacional.html`.
+- **Feature:** Se mejoró la accesibilidad del modal de éxito: `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, `aria-describedby`, cierre con tecla `Esc` y soporte dark mode.
+- **Tweak:** Se reemplazaron los colores hardcodeados en `Chart.js` (`#FF5B00`, `#0066CC`) por la paleta de marca.
+- **Tweak:** Se inicializó `lucide.createIcons()` al final del body para renderizar los 71 íconos migrados.
+- **Tweak:** Se eliminaron las tildes/acentos en selectores y atributos para evitar problemas de encoding en `sed`.
+
+### Rework de copy para sector gobierno + paraestatal (11 de septiembre de 2026)
+
+- **Tweak:** Badge del hero: "Modelo MSP / MSSP" → "Cumplimiento CO-SA-17.18/24 · NOM-151 · ISO 27001" (ancla el H1 en regulación, no en buzzwords).
+- **Tweak:** H1 del hero: "Tu Infraestructura Gestionada 24/7" → "Cumplir con la normatividad TI ya no requiere operar tu propio NOC / sin sacrificar la continuidad 24/7/365" (dolor regulatorio, no técnico).
+- **Tweak:** Subtitulo del hero reescrito con énfasis en bitácora auditable, SLAs contractuales, reportes ejecutivos mensuales para el Órgano Interno de Control y la ASF.
+- **Tweak:** Los 4 bullets del hero pasaron de "feature/feature/feature/feature" a pares "dolor → solución" con subtexto explicativo (ej. "Bitácora auditable 24/7/365 / Cada evento queda registrado para el OIC").
+- **Tweak:** CTAs del hero: "Cotizar Plan Modular" / "¿Cómo Funciona LAN-to-LAN?" → "Armar cotización con mi presupuesto" / "Ver caso de cumplimiento normativo".
+- **Tweak:** Sección `arquitectura` (3 pasos): títulos reescritos con verbos directos ("Conectamos tu sede en 48 h" / "Asumimos la operación diaria" / "Bloqueamos amenazas y auditamos") y bullets más concretos.
+- **Tweak:** Sección `modulos`: subtítulo pasa de "Oferta Modular Integrada" a "Oferta Modular Auditada" y agrega mención explícita de bitácora auditable.
+- **Tweak:** Sección `cumplimiento`: las 4 tarjetas ahora mencionan regulación específica mexicana (CO-SA-17.18/24 AFAC, NOM-151, ANSI/TIA, NIST CSF) y se agrega párrafo introductorio sobre evidencia documental para OIC/ASF.
+- **Limitación intencional:** No se agregaron métricas duras propias (tickets/mes, años promedio de experiencia, % resolución en primer contacto) porque el cliente indicó no tener datos exactos; quedó registrado en TODO.md para cuando estén disponibles.
+
+### Corrección visual de botones e íconos Lucide sin tamaño (11 de septiembre de 2026)
+
+- **Fix:** Hero CTA "Armar cotización con mi presupuesto": ícono `arrow-right` ahora tiene `w-5 h-5` (antes salía gigante y desalineado). Botón ahora usa `inline-flex items-center justify-center gap-2` en vez de `text-center`.
+- **Fix:** Hero CTA secundario "Ver caso de cumplimiento normativo": mismo tratamiento (`inline-flex items-center justify-center`).
+- **Fix:** Badge "Túnel Seguro LAN-to-LAN" en topología: ícono `lock` ahora con `w-3 h-3` y badge con `inline-flex items-center gap-1.5` (antes el candado salía arriba del texto).
+- **Fix:** Botón submit "Solicitar Diagnóstico Gratuito": ícono `send` con `w-4 h-4`, agregada `inline-flex items-center justify-center gap-2`, eliminada redundancia `hover:bg-brand-primary` y agregada `btn-primary` con gradiente consistente.
+- **Fix:** 6 íconos de módulos (network, shield, users, bug-off, phone-call, wifi) ahora con `w-7 h-7` (estaban vacíos y se renderizaban a tamaño default del navegador).
+- **Fix:** 2 íconos de topología (building, server) con `w-6 h-6`.
+- **Tweak:** Modal "Entendido": ahora con `inline-flex items-center justify-center gap-2`, ícono `check w-4 h-4`, sombra y transición consistentes.
+- **Tweak:** Botón del mobile menu: ahora `inline-flex items-center justify-center w-full` (antes era `block` con `text-center`).
+- **Tweak:** Botón del header desktop: `items-center` reordenado antes del `gap-2` para seguir orden canónico de Tailwind.
+- **Resultado:** 0 íconos Lucide sin tamaño (`<i data-lucide="X"></i>`) en todo el archivo, 10 botones con `inline-flex items-center` correcto.
 
 ---
 
