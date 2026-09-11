@@ -20,9 +20,46 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 - **Feature:** Se mejoró la accesibilidad del modal de éxito: `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, `aria-describedby`, cierre con tecla `Esc` y soporte dark mode.
 - **Tweak:** Se reemplazaron los colores hardcodeados en `Chart.js` (`#FF5B00`, `#0066CC`) por la paleta de marca.
 - **Tweak:** Se inicializó `lucide.createIcons()` al final del body para renderizar los 71 íconos migrados.
+
+### Fixed - Modo oscuro completo (2026-09-11)
+- **Hero gradient**: `via-white` ahora es `dark:via-gray-900` (antes quedaba blanco en medio del hero oscuro).
+- **20 cards** `bg-white` ahora tienen `dark:bg-gray-800` (módulos, arquitectura, cotizador, modal).
+- **2 contenedores** `bg-slate-50` ahora tienen `dark:bg-gray-900`.
+- **9 textos** `text-gray-500` ahora tienen `dark:text-gray-400` (suman legibilidad).
+- **3 textos** `text-brand-dark` (títulos de cards en body) ahora tienen `dark:text-white`.
+- **0 textos** `text-gray-900` sin dark: en body (todos ya estaban correctos).
+- **3 overlays** `bg-white/10` y `bg-white/20` quedan sin dark: (son decorativos sobre fondo rojo, se ven bien en ambos modos).
+- **Chart.js**: ya tenía colores oscuros hardcoded (slate-800 grid + slate-500 labels), no requirió cambios.
+- Validación visual: 2 screenshots completos en `?theme=dark` (1280×8000) confirman consistencia total.
+
+### Added - Centro de costos privado (2026-09-11)
+- **Estructura**: Carpeta `_privado/` creada y agregada a `.gitignore` (junto al `.gitignore` raíz del repo).
+- **Archivo**: `_privado/centro_costos_servicios_administrados.csv` con 6 secciones (variables base, módulos con márgenes, descuentos por volumen, proyecciones por tipo de cliente, variables faltantes recomendadas, y la fórmula actual del cotizador para referencia).
+- **Decisión consciente**: el JS del cotizador NO consume este CSV (sería publicar centro de costos). El CSV es solo para uso interno/operativo.
+- **117 líneas**, comillas balanceadas, abre correctamente en Excel/LibreOffice.
+- **Próxima iteración sugerida**: convertir el CSV en un script Python que calcule el desglose de costo real por cotización.
+
 - **Tweak:** Se eliminaron las tildes/acentos en selectores y atributos para evitar problemas de encoding en `sed`.
 
 ### Rework de copy para sector gobierno + paraestatal (11 de septiembre de 2026)
+
+### Added - Centro de costos en Excel con formulas vivas (2026-09-11)
+- **Archivo**: `_privado/centro_costos_servicios_administrados.xlsx` (NO se sube a git). 8 hojas, formato rico, formulas vivas.
+- **Script generador**: `_privado/scripts/generar_excel.py` para regenerar el Excel desde codigo (454 lineas, openpyxl).
+- **Hojas del Excel**:
+  - `Portada`: indice visual con leyenda de colores.
+  - `1-Variables`: 4 variables base con celdas amarillas editables (tu_costo).
+  - `2-Modulos`: 6 modulos con desglose de licencia + horas + infra + overhead + margen. 12 columnas.
+  - `3-Descuentos`: 5 rangos de descuento por volumen.
+  - `4-Proyecciones`: 6 tipos de cliente con cotizacion tipica.
+  - `5-Recomendaciones`: 5 variables que faltan en el cotizador publico.
+  - `6-Formula`: 5 pasos de la formula JS del cotizador.
+  - `7-Calculadora`: Calculadora interactiva con formulas vivas (5 formulas). Inputs en amarillo, calculos en verde.
+- **Validado**: LibreOffice evalua las formulas correctamente. Subtotal base = $14,900 MXN con valores por defecto (40 endpoints, 5 servidores, 1 site). Contrato anual = $178,800 MXN.
+- **Decision consciente**: el JS del cotizador publico NO consume este Excel (seria publicar centro de costos). El Excel es solo para uso interno/operativo.
+- **Estilos**: paleta GlobalIncom (rojo #E31B23, negro, gris claro), formato moneda MXN, porcentajes, zebra striping, paneles congelados, bordes.
+- **Migrado desde CSV**: el CSV anterior fue reemplazado por Excel porque el formato plano limitaba tablas multiples y formulas.
+
 
 - **Tweak:** Badge del hero: "Modelo MSP / MSSP" → "Cumplimiento CO-SA-17.18/24 · NOM-151 · ISO 27001" (ancla el H1 en regulación, no en buzzwords).
 - **Tweak:** H1 del hero: "Tu Infraestructura Gestionada 24/7" → "Cumplir con la normatividad TI ya no requiere operar tu propio NOC / sin sacrificar la continuidad 24/7/365" (dolor regulatorio, no técnico).

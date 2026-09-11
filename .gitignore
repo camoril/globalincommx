@@ -1,0 +1,5 @@
+# ===== Privado / No publicar =====
+# Carpeta con informacion sensible (centro de costos, datos de clientes, etc.)
+# que NO debe subirse al repositorio publico.
+_privado/
+_privado/**
