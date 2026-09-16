@@ -61,3 +61,66 @@ Actualizacion 11/sep/2026: Se creo `servicios/index.html` con refactor de identi
 - **[ ] Accesibilidad de los toggles del cotizador:** Agregar `aria-pressed` y `role="switch"` en los 6 toggles de módulos.
 - **[ ] Glosario / normalización de términos:** Hoy mezcla español e inglés (MDR, MAB, Heartbeat...). Definir política: español excepto nombres de productos.
 
+
+---
+
+### Refinamiento del cotizador público (a partir de Excel comercial - 11/sep/2026)
+
+**Contexto:** El Excel `_privado/centro_costos_servicios_administrados.xlsx` es una
+herramienta interna de PLANIFICACION comercial para que el area comercial pueda
+visualizar la estructura de costos y proponer mejoras al cotizador publico.
+NO esta conectado con la aplicacion, NO modifica el sitio, NO es codigo fuente
+del proyecto. Es solo un documento de trabajo para refinar el cotizador.
+
+**Estado actual del cotizador publico:**
+- Cotiza por `endpoints` como bloque unico (multiplicador global).
+- Cotiza por `servidores` como bloque unico.
+- Cotiza por `sites` como bloque unico.
+- Cotiza por 6 modulos (NOC, FW, AD, SOC, VoIP, WiFi/PAM) con multiplicador simple.
+
+**Refinamientos identificados por el area comercial que el Excel ayudara a modelar:**
+
+- **[ ] Segmentar `endpoints` en 3 tiers:**
+  - **Basico**: Solo LIC (licencia de agente sin monitoreo gestionado).
+  - **MDR Essentials**: LIC + monitoreo + ticket automatico (sin gestion activa).
+  - **MDR Complete**: LIC + monitoreo + gestion activa + reporte ejecutivo.
+  - Hoy el cotizador cobra lo mismo para los 3, lo cual es incorrecto comercialmente.
+
+- **[ ] Segmentar `servidores` en tiers similares:** Basico / Managed / Enterprise.
+
+- **[ ] Segmentar modulos con sub-opciones:**
+  - **NOC**: Basico (alertas), Estándar (alertas + tickets), Premium (alertas + tickets + reportes mensuales).
+  - **SOC**: Monitoreo, Deteccion y respuesta, Threat hunting continuo.
+  - **AD**: Solo sincronizacion, +MFA, +Identity Protection completo.
+  - **VoIP**: Solo troncales, +IVR, +Call center completo.
+  - **WiFi/PAM**: WiFi solo, PAM solo, ambos.
+
+- **[ ] Agregar servicios transversales que hoy no estan:**
+  - **Backup gestionado** (Veeam / Acronis).
+  - **Microsoft 365 / Google Workspace gestionado**.
+  - **Compliance pack** (nom-151 + iso 27001 + co-sa-17.18/24 combinados).
+  - **Mesa de ayuda bilingue** (espanol + ingles).
+  - **Capacitacion y awareness** para empleados del cliente.
+
+- **[ ] Definir politica de descuentos por compromiso:**
+  - Contrato anual: descuento -5%.
+  - Contrato 3 anos: descuento -10%.
+  - Pago anticipado anual: descuento -3% adicional.
+  - Hoy ninguno de estos se refleja en el cotizador.
+
+- **[ ] Agregar el concepto de "setup inicial" (CAPEX inicial):**
+  - Hoy todo se cobra mensual (OPEX puro).
+  - Algunos proyectos requieren inversion inicial grande (firewall dedicado, rack, implementacion).
+  - El cotizador deberia permitir desglosar CAPEX + OPEX.
+
+**Workflow propuesto (futuro):**
+1. El area comercial propone tiers/segmentos en el Excel.
+2. Cline valida que el modelo de costos cuadre.
+3. Cline implementa los cambios en el cotizador JS de `servicios/index.html`.
+4. Se actualiza la Hoja 6 del Excel con la nueva formula.
+5. Se hace commit + push con la nueva version.
+
+**Decisiones pendientes (preguntar a Ernesto):**
+- ¿Que tiers especificos quiere para cada modulo?
+- ¿Cuales son los multiplicadores comerciales de cada tier?
+- ¿Como se llaman comercialmente los tiers (Basico/Standard/Premium vs Lite/Pro/Enterprise)?
