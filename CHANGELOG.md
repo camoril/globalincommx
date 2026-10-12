@@ -2,10 +2,65 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov/2025 - 11/sep/2026
-**Última actualización:** 11/sep/2026
+**Período:** 28/nov/2025 - 12/oct/2026
+**Última actualización:** 12/oct/2026
 
 ---
+
+### Adición de modelo de arrendamiento y renombre de card NPS+MAB (12 de octubre de 2026)
+
+> Refuerza el mensaje comercial clave: **todo bajo arrendamiento, sin CAPEX**. Crea una sección dedicada para que el cliente entienda qué se incluye en la mensualidad (servidores de AD, equipamiento de red, cableado, garantía) y aclara que el control de acceso WiFi/cableado soporta tanto 802.1X (PCs y miembros del dominio) como MAB (dispositivos que no se pueden unir al dominio).
+
+- **Feature:** Nueva sección **"Todo bajo arrendamiento, sin CAPEX"** (`#arrendamiento`) entre `#modulos` y `#paquetes`. 4 cards explicativos: **Servidores de Active Directory** (físicos o virtualizados en Proxmox — el "cerebro" de la operación), **Equipamiento de red** (Sophos XGS, switches, APs), **Cableado estructurado** (categoría 6/6A, fibra, canalización, certificación) y **Mesa de ayuda + garantía** (reparación y reemplazo sin costo adicional durante la vigencia del contrato). Banda inferior con nota sobre cotización caso por caso según precios de mercado + CTA "Solicita una propuesta con equipamiento incluido" hacia `#cotizador`.
+- **Refactor (Stack 4 NPS+MAB):** Renombrado de **"NPS + MAB"** → **"NPS con 802.1X + MAB"**. Reescritura del card con bullets estructurados: `802.1X con certificados (EAP-TLS)` para PCs/dominio, `MAB (MAC Authentication Bypass)` exclusivo para IoT, impresoras, APs, cámaras y VoIP, y `Políticas por VLAN, horario y tipo de dispositivo`. Ahora se entiende claramente que son dos métodos complementarios, no una sola cosa.
+- **Feature (tabla `#capacidades`):** Nueva fila **"Servidores de AD arrendados"** con sub-texto "Físicos o virtualizados en Proxmox · hardware incluido", ubicada justo después de "Gestión de identidad (MFA, GPO, accesos)". Check en los **3 tiers** (Bronze, Silver y Gold) — el arrendamiento está disponible para todos los niveles, pero los tooltips diferencian el alcance: Bronze = "1 servidor virtualizado en Proxmox incluido, ideal si partes de cero", Silver = "Servidor físico o virtualizado, con réplica opcional para escalar a más de 50 usuarios", Gold = "Servidores redundantes, virtualizados en Proxmox con HA, para operaciones críticas o multisitio".
+- **Refactor (footer):** Nueva entrada en la lista "Servicios" del footer → **"Modelo de arrendamiento"** con ancla `#arrendamiento`.
+- **Refactor (SEO):** Meta description actualizada para mencionar servidores de AD, cableado estructurado y equipamiento de red incluidos en arrendamiento. JSON-LD `Service` actualizado: descripción principal menciona modelo llave en mano, y los 3 `Offer` (Bronze/Silver/Gold) ahora describen explícitamente la profundidad del servidor de AD incluido en cada tier.
+- **QA:** Validación visual con Playwright en `/tmp/servicios_v3_light.png` y `/tmp/servicios_v3_dark.png` (full_page, 1280px viewport). Zooms adicionales: `/tmp/zoom_arrendamiento_{light,dark}.png`, `/tmp/zoom_card_nps_{light,dark}.png`, `/tmp/zoom_tabla_{light,dark}.png`. Verificado: card NPS sin overflow, 3 bullets alineados verticalmente, íconos Lucide cargan, tabla de capacidades muestra la nueva fila con checks en los 3 tiers y sub-texto legible. HTML válido (0 errores, 0 tags sin cerrar). 0 menciones regulatorias (AFAC/UVA/MSSP/CO-SA/Global Lynx/CST/numeral XIII).
+
+### Refactor de tono comercial - eliminación de referencias regulatorias explícitas (12 de octubre de 2026)
+
+> Reenfoque del mensaje al cliente: GlobalIncom vende **servicios administrados de ciberseguridad y redes**; no menciona marcas regulatorias, no exhibe el modelo de canalización y no muestra el mapeo a cláusulas específicas. La página queda como un producto comercial vendible, no como un escaparate regulatorio.
+
+- **Refactor (hero):** Título cambiado de "Cumple la CO-SA-17.18/24 sin CAPEX..." → "Tu operación segura, sin CAPEX y sin operar tu propio SOC". Subtítulo sin cláusulas ni informe semestral. **Eliminado** el disclaimer ámbar sobre "modelo de canalización" (MSSP/UVA).
+- **Refactor (widget del hero):** Encabezado "ESTADO DE CUMPLIMIENTO AFAC" → "ESTADO DE OPERACIÓN". Bloque "Tu Entidad Regulada / Concesionario, permisionario, transportista" → "Tu organización / Operación continua y segura". Banda central "Auditoría CO-SA-17.18/24" → "Monitoreo 24/7". Tarjeta final "Informe Semestral AFAC / 2x año" → "Reportes ejecutivos / Mensuales". Footer del widget "Cláusulas cubiertas 7.1-7.13" → "Cobertura 8 componentes".
+- **Refactor (bullets hero):** Bullet "Informe semestral AFAC listo" → "Monitoreo 24/7".
+- **Refactor (CTA secundario hero):** "Mapeo 7.1 - 7.13 AFAC" (#cobertura) → "Conoce la plataforma" (#modulos).
+- **Refactor (sección "Ciclo audit-to-remediation"):** Renombrada a **"Cómo trabajamos"**. Título "De la auditoría AFAC al servicio administrado, en 4 pasos" → "Del diagnóstico a la operación, en 4 pasos". Subtítulo sin mención a AFAC/UVA/MSSP. 4 pasos reescritos como proceso comercial genérico: Diagnóstico inicial → Diseño del plan → Despliegue y onboarding → Operación continua.
+- **Refactor (stack 8 componentes):** Etiquetas "Cláusula 7.x" eliminadas de los 8 cards. Reemplazadas por categorías comerciales: Perímetro seguro, Identidad y accesos, Identidad corporativa, Acceso inalámbrico, Monitoreo y logs, Gestión de vulnerabilidades, Correo y colaboración, Concientización. También eliminada mención a "Global Lynx" en la descripción de Phish Threat.
+- **Refactor (sección #paquetes):** Título "Tres caminos al cumplimiento CO-SA-17.18/24" → "Elige el paquete que se ajusta a tu operación". Subtítulo sin cláusulas 7.1-7.13. Badge Bronze "Cumplimiento mínimo" → "Esencial". H3 Bronze "Cumplir para renovar" → "Empezar sin sobresaltos". Descripción Bronze sin concesión AFAC. Bullet Bronze "Bitácora auditable + reporte semestral AFAC" → "Bitácora auditable + reportes ejecutivos mensuales". Badge Gold "Cumplimiento total" → "Cobertura total". Descripción Gold sin "informe AFAC listo". Bullets Gold sin "Global Lynx" ni "Informe semestral AFAC".
+- **Refactor (sección #cobertura → #capacidades):** **Eliminada** la tabla 13×3 con cláusulas 7.1-7.13. **Reemplazada** por tabla de 12×3 con **capacidades comerciales** (Monitoreo de red 24/7, Gestión de identidad, Endpoint EDR, Endpoint MDR, SIEM, Gestión de vulnerabilidades, Mesa de ayuda bilingüe, Simulacros de phishing, Pentest semestral, Capacitación JSA/JSTA/CSV, Consultoría estratégica trimestral, Reportes ejecutivos mensuales). Título: "Compara capacidades entre Bronze, Silver y Gold".
+- **Refactor (sección #cumplimiento):** Renombrada de "Cumplimiento Regulatorio desde el Primer Día" → "Calidad y buenas prácticas". Subtítulo: "Alineados con los marcos que la AFAC y auditores UVA exigen" → "Operamos con los estándares que tu organización espera". Texto descriptivo sin menciones a AFAC/UVA. **4 bullets reescritos:** se elimina la tarjeta "Circular CO-SA-17.18/24 AFAC" (sustituida por "Gestión con SLA"), ITIL v4 + SLA → "Gestión con SLA", ISO 27001+NIST CSF → "Marcos de seguridad", NOM-151+LFPDPPP → "Privacidad y datos".
+- **Refactor (banda CST):** **Eliminada** la banda ámbar con aviso sobre el Coordinador de Seguridad en Tierra y el numeral XIII de la CO-SA-17.18/24.
+- **Refactor (cotizador):** Título "Cotizador por Paquete CO-SA-17.18/24" → "Arma tu plan y conoce el estimado". Subtítulo "tu entidad" → "tu organización". Etiqueta card Bronze "Cumplimiento mínimo" → "Esencial". Título panel resumen "Servicio Administrado AFAC" → "Servicio Administrado".
+- **Refactor (footer):** Link "Mapeo 7.1 – 7.13 AFAC" (#cobertura) → "Comparativa de capacidades" (#capacidades). Footer bottom: "...entidades reguladas por la AFAC (CO-SA-17.18/24). Operado por [EMPRESA A DEFINIR] (MSSP), con canalización de GlobalIncom (UVA)." → "...servicios administrados de ciberseguridad y redes. Operado por GlobalIncom, con base en México y soporte en español."
+- **Refactor (modal de éxito):** "Un especialista de cumplimiento de la CO-SA-17.18/24 se pondrá en contacto contigo... paquete adecuado a tu entidad." → "Un especialista de GlobalIncom se pondrá en contacto contigo... paquete adecuado a tu organización."
+- **Refactor (menú dropdown header):** Submenú "Normatividad Aeronautica / Cumplimiento CO-SA-17.18/24" → "... / Cumplimiento normativo".
+- **Refactor (SEO meta):** `<title>`, `description`, `keywords`, Open Graph y Twitter Card reescritos sin AFAC/CO-SA. JSON-LD `Service.serviceType` cambia a "Managed Cybersecurity and IT Infrastructure Services" y los 3 `Offer` reescritos como descripciones de capacidades (no cláusulas).
+- **QA:** Validación visual con Playwright en `/tmp/servicios_v2_light.png` y `/tmp/servicios_v2_dark.png` (full_page, 1280px viewport). 11 secciones verificadas en ambos temas: hero, widget, "Cómo trabajamos", stack 8, paquetes B/S/G, capacidades 12×3, NOC/SOC, cotizador, cumplimiento, footer, modal. Sin overflow. Iconos Lucide cargan. Dark mode funcional. HTML válido (0 errores, 0 tags sin cerrar).
+
+### Refactor alineado a CATALOGO_SERVICIOS_ADMINISTRADOS.md v4 (12 de octubre de 2026)
+
+- **Feature:** Reenfoque completo de la página `/servicios/` hacia el cumplimiento de la **Circular CO-SA-17.18/24 de la AFAC** (ya no NOC/SOC genérico).
+- **Feature:** Nueva sección **"Paquetes"** (`#paquetes`) con 3 tiers: **Bronze** (USD $2,500/mes), **Silver** (USD $4,500/mes) y **Gold** (USD $8,000/mes). Cada paquete con su lista de entregables y cláusula dominante.
+- **Feature:** Nueva sección **"Cobertura regulatoria 7.1-7.13"** (`#cobertura`) con tabla matriz: cada cláusula de la circular × cada paquete, con checkmarks que muestran qué cubre cada tier.
+- **Feature:** Sección de **stack tecnológico** reescrita con los 8 componentes confirmados del catálogo: Sophos XGS, Sophos Endpoint, Active Directory, NPS/MAB, Site24x7+Log360, Vulnerability Manager Plus, Correo+M365, Phish Threat+Awareness.
+- **Feature:** **Disclaimer visible** sobre el modelo de canalización: el servicio lo opera [EMPRESA A DEFINIR] (MSSP) y GlobalIncom supervisa como UVA. Texto literal `[EMPRESA A DEFINIR]` mientras se define el nombre comercial.
+- **Feature:** **Banda de aviso** sobre el **Coordinador de Seguridad en Tierra (CST)** según numeral XIII de la circular, dirigida a transportistas aéreos.
+- **Refactor:** Hero reescrito con propuesta de valor específica al cumplimiento AFAC: "Cumple la CO-SA-17.18/24 sin CAPEX y sin operar tu propio SOC". Beneficios: "Informe semestral AFAC listo", "3 paquetes tiered", "Stack enterprise", "100% gasto operativo".
+- **Refactor:** Widget del hero cambiado de "ESTADO DE OPERACIÓN" (NOC/SOC) a "ESTADO DE CUMPLIMIENTO AFAC" (entidad regulada + informe semestral).
+- **Refactor:** Sección "Modelo de operación remota" cambiada a "Ciclo audit-to-remediation" (4 pasos: AFAC asigna → UVA audita → MSSP implementa → Informe semestral).
+- **Refactor:** **Cotizador reescrito** con tres inputs principales (paquete base Bronze/Silver/Gold + dimensión: usuarios, endpoints, servidores, sedes) y 4 add-ons opcionales (pentest, awareness, capacitación JSA/JSTA/CSV, mesa de ayuda bilingüe 24/7).
+- **Refactor:** Fórmula del cotizador reemplazada. Ahora: `precio = paqueteBase + perUser + perEndpoint + perServer + perSite + addonsTotal` (en USD/mes). Variables por dimensione con topes implícitos (usuarios > 25, endpoints > 30, etc.).
+- **Refactor:** Precio mostrado en **USD** (antes MXN). Bandera de "Precio preliminar. Cotización final tras diagnóstico." visible.
+- **Refactor:** Sección "Cumplimiento normativo desde el primer día" reordenada con la **Circular CO-SA-17.18/24 AFAC** como primer bullet, ITIL v4 segundo, ISO 27001+NIST CSF tercero, NOM-151+LFPDPPP cuarto.
+- **Refactor:** JSON-LD `Service` actualizado con `serviceType` específico a "Managed Cybersecurity Services for AFAC-regulated entities" y `offers` con las 3 tiers Bronze/Silver/Gold.
+- **Tweak:** `<title>` y meta description actualizados a enfoque CO-SA-17.18/24.
+- **Tweak:** CTA del hero reorientados a `#paquetes` y `#cobertura` (antes `#cotizador` y `#arquitectura`).
+- **Tweak:** Footer reescrito: nueva sección "Servicios" con links a paquetes, cobertura, stack y cotizador. Copy final menciona explícitamente "Operado por [EMPRESA A DEFINIR] (MSSP), con canalización de GlobalIncom (UVA)".
+- **Tweak:** Modal de éxito actualizado: "Un especialista de cumplimiento de la CO-SA-17.18/24 se pondrá en contacto contigo".
+- **Pendiente / TODO explícito:** confirmar precios finales con el catálogo una vez consolidada la sección 5; el literal `[EMPRESA A DEFINIR]` debe sustituirse por el nombre comercial cuando se defina.
+- **QA:** Validación visual con Playwright. Capturas `light` y `dark` generadas en `/tmp/servicios_full.png` y `/tmp/servicios_dark.png` confirman render correcto de las 11 secciones clave (hero, widget, ciclo audit-to-remediation, stack 8 componentes, paquetes Bronze/Silver/Gold, cobertura 7.1-7.13, consola NOC/SOC, cotizador, banda CST, cumplimiento, footer). Sin overflow, iconos Lucide cargan, proporciones OK, dark mode funcional.
 
 ### Refactor de identidad visual en /servicios/ (11 de septiembre de 2026)
 

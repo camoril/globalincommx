@@ -7,6 +7,9 @@ Actualizacion 11/may/2026: Se agrego el subproyecto `vcard/demo/` como portal de
 Actualizacion 25/may/2026: El subproyecto `vcard/demo/` se amplio con 6 layouts verticales y selector de estilos persistente.
 Actualizacion 05/jun/2026: Se actualizaron contenidos de Normatividad Aeronautica en `index.html` y se agregaron enlaces externos en "Normas y Estandares Aplicados". Sin cambios en tareas pendientes.
 Actualizacion 11/sep/2026: Se creo `servicios/index.html` con refactor de identidad visual (paleta canon, Montserrat, Lucide, dark mode, SEO/JSON-LD completos). Ver CHANGELOG.
+Actualizacion 12/oct/2026: Reenfoque completo de `servicios/index.html` al cumplimiento CO-SA-17.18/24. Nueva seccion Paquetes (Bronze/Silver/Gold), Mapeo 7.1-7.13, disclaimer de modelo MSSP/UVA y de CST. Cotizador reescrito en USD. Stack reescrito con Sophos+ManageEngine. Ver CHANGELOG.
+Actualizacion 12/oct/2026 (refactor comercial): Segunda pasada sobre `servicios/index.html` para eliminar TODA mencion explicita a AFAC, CO-SA-17.18/24, UVA, MSSP, canalizacion, [EMPRESA A DEFINIR], numeral XIII/CST, Cláusulas 7.1-7.13 y Global Lynx. La página queda como un producto comercial vendible, no como un escaparate regulatorio. Ver CHANGELOG.
+Actualizacion 12/oct/2026 (modelo de arrendamiento): Tercera pasada sobre `servicios/index.html` para reforzar el mensaje comercial "todo bajo arrendamiento, sin CAPEX". Se creo nueva seccion `#arrendamiento` (4 cards: AD/Proxmox, red Sophos, cableado, garantia), se renombro el card Stack 4 a "NPS con 802.1X + MAB" con bullets estructurados, y se agrego nueva fila "Servidores de AD arrendados" en la tabla de capacidades con check en los 3 tiers. Ver CHANGELOG.
 
 ### Seguimiento vCard
 
@@ -47,19 +50,32 @@ Actualizacion 11/sep/2026: Se creo `servicios/index.html` con refactor de identi
 
 ---
 
-### Pendientes específicos de `/servicios/index.html` (post-refactor 11/sep/2026)
+### Pendientes específicos de `/servicios/index.html` (post-refactor 12/oct/2026)
 
-- **[ ] Ofuscar la fórmula del cotizador:** La lógica de precios (`basePrice = 3000 + endpoints*160...`) está visible en el JS del frontend. Mover el cálculo a un endpoint backend o, mínimo, ofuscarlo para que un visitante con DevTools no vea el pricing exacto.
-- **[ ] Definir destino real del formulario de cotización:** Actualmente `handleQuoteSubmit` solo abre el modal sin enviar datos. Decidir entre Formspree, endpoint propio, mailto: o webhook a CRM (HubSpot/Pipedrive).
-- **[ ] Agregar sección de casos de éxito / logos de clientes:** Hoy la página tiene features pero cero evidencia social. Incluir 3-4 logos por sector (Gobierno, Retail, Manufactura, Salud).
-- **[ ] Agregar CTAs intermedios a WhatsApp:** Solo hay un formulario al final. Tras secciones largas debería haber un botón "Te llamamos en 15 min" -> `https://wa.me/525555145729`.
-- **[ ] Conectar o retirar la sección "Consola NOC/SOC en vivo":** Los datos de `Chart.js` son hardcoded. Si la página sigue "no pública" está bien; cuando se publique, conectar a un endpoint real de métricas o eliminar la sección para evitar promesas falsas.
-- **[ ] Reescribir el copy / propuesta de valor:** El título y promesa siguen genéricos. Diferenciar: SLA medibles, mesa bilingüe, un solo contrato OPEX, TCO a 3 años vs CAPEX.
-- **[ ] Agregar métricas duras propias:** Hoy hay "24/7/365", "< 15 min", "+99.9% uptime" pero faltan datos propios: tickets/mes, % resolución primer contacto, años experiencia del equipo.
-- **[ ] Migrar Tailwind CDN a build:** Sigue usando `cdn.tailwindcss.com`. Cuando la página sea pública, migrar a `tailwind.config.js` + build con purge para reducir ~80% del CSS.
-- **[ ] Validación de input tel con pattern:** El campo teléfono del formulario no valida formato antes del submit. Añadir `pattern="[0-9 +\-()]{10,}"`.
-- **[ ] Accesibilidad de los toggles del cotizador:** Agregar `aria-pressed` y `role="switch"` en los 6 toggles de módulos.
-- **[ ] Glosario / normalización de términos:** Hoy mezcla español e inglés (MDR, MAB, Heartbeat...). Definir política: español excepto nombres de productos.
+- **[x] Reescribir el copy / propuesta de valor:** Hero ahora habla explícitamente de cumplimiento CO-SA-17.18/24 y entrega de informe semestral AFAC.
+- **[x] Reemplazar los 6 módulos genéricos por el stack del catálogo:** Sophos XGS + Endpoint, AD/Entra, NPS/MAB, Site24x7+Log360, Vulnerability Manager Plus, Correo+M365, Phish Threat.
+- **[x] Agregar paquetes tiered (Bronze/Silver/Gold):** Nueva sección `#paquetes` con 3 tiers y precios aproximados en USD.
+- **[x] Agregar mapeo cláusula 7.x × paquete:** Nueva sección `#cobertura` con tabla 13×3.
+- **[x] Disclaimer del modelo MSSP/UVA:** Banda visible en el hero, en el footer y en el JSON-LD.
+- **[x] Disclaimer del CST (numeral XIII):** Banda ámbar visible antes del footer.
+- **[x] Cambiar moneda del cotizador de MXN a USD:** Coherente con el catálogo comercial.
+- **[x] Refactor del cotizador a modelo de paquetes + add-ons:** Fórmula nueva basada en paquete base + dimensione + add-ons.
+- **[ ] Reemplazar `[EMPRESA A DEFINIR]` por el nombre comercial del MSSP** cuando se defina (5 ocurrencias en la página: hero, footer, JSON-LD, disclaimer, modal).
+- **[ ] Confirmar precios finales del cotizador** cuando se consolide la sección 5 del catálogo (precios actuales son preliminares según el propio catálogo v4).
+- **[ ] Ofuscar la fórmula del cotizador:** La lógica de precios sigue visible en el JS del frontend. Mover el cálculo a un endpoint backend o, mínimo, ofuscarlo.
+- **[ ] Definir destino real del formulario de cotización:** `handleQuoteSubmit` solo abre el modal. Decidir entre Formspree, endpoint propio, mailto: o webhook a CRM.
+- **[ ] Conectar o retirar la sección "Consola NOC/SOC en vivo":** Los datos de `Chart.js` son hardcoded. Cuando se publique, conectar a endpoint real o eliminar.
+- **[ ] Agregar sección de casos de éxito / logos de clientes:** Incluir 3-4 logos por sector (Aviación, Aeropuertos, Concesionarios).
+- **[ ] Agregar CTAs intermedios a WhatsApp:** Botón "Te llamamos en 15 min" -> `https://wa.me/525555145729`.
+- **[ ] Migrar Tailwind CDN a build:** Migrar a `tailwind.config.js` + build con purge.
+- **[ ] Validación de input tel con pattern:** Añadir `pattern="[0-9 +\-()]{10,}"`.
+- **[ ] Accesibilidad de los toggles del cotizador:** Agregar `aria-pressed` y `role="switch"` en los 4 add-ons y radios de paquetes.
+- **[ ] Glosario / normalización de términos:** Hoy mezcla español e inglés (MDR, MAB, EDR, CSV...). Definir política: español excepto nombres de productos.
+- **[x] Pruebas visuales finales con Playwright/screenshot:** Validar render de las nuevas secciones `paquetes` y `cobertura` con y sin dark mode, y el comportamiento del cotizador con diferentes paquetes y add-ons. Capturas `light` y `dark` generadas en `/tmp/servicios_full.png` y `/tmp/servicios_dark.png` muestran render correcto de las 11 secciones clave.
+- **[x] Refactor de tono comercial (12/oct/2026):** Eliminadas todas las menciones regulatorias explicitas de la página `servicios/`. Hero, widget, "Cómo trabajamos" (antes ciclo audit-to-remediation), stack 8, paquetes B/S/G, comparativa de capacidades (antes cobertura 7.1-7.13), cumplimiento (antes regulatorio), footer, modal, SEO, JSON-LD y menú reescritos sin AFAC/CO-SA/UVA/MSSP/[EMPRESA A DEFINIR]/CST/numeral XIII/Cláusula 7.x/Global Lynx. HTML válido (0 errores). Capturas v2 en `/tmp/servicios_v2_light.png` y `/tmp/servicios_v2_dark.png`.
+- **[x] Refuerzo del modelo de arrendamiento (12/oct/2026):** Nueva sección `#arrendamiento` con 4 cards (Servidores de AD/Proxmox, Equipamiento de red, Cableado estructurado, Mesa de ayuda + garantía) + nota sobre cotización caso por caso + CTA a `#cotizador`. Card Stack 4 renombrado a "NPS con 802.1X + MAB" con bullets que distinguen 802.1X (EAP-TLS para PCs/dominio) vs MAB (IoT, impresoras, APs, VoIP). Nueva fila "Servidores de AD arrendados" en la tabla de capacidades con check en los 3 tiers (Bronze/Silver/Gold) y tooltips diferenciados por nivel. Footer actualizado con ancla `#arrendamiento`. Meta description y JSON-LD `Service` actualizados para mencionar arrendamiento. HTML válido (0 errores). Capturas v3 en `/tmp/servicios_v3_light.png` y `/tmp/servicios_v3_dark.png`. Zooms: `/tmp/zoom_arrendamiento_*.png`, `/tmp/zoom_card_nps_*.png`, `/tmp/zoom_tabla_*.png`.
+- **[ ] Decisión sobre la sección `#noc-soc` (consola de telemetría):** Tras el refactor comercial, queda una sección con "Visibilidad Total en Tiempo Real" + dashboard con datos hardcoded. Decidir: (a) conectar a endpoint real con métricas del servicio, (b) eliminar antes de publicación, o (c) reemplazar por mockup estático más neutro. Si se conserva, validar que no rompa el tono comercial.
+- **[ ] Definir si GlobalIncom aparece como "operador" del servicio:** Asumí que GlobalIncom sí aparece como marca comercial (footer ahora dice "Operado por GlobalIncom"). Confirmar si esto es correcto o si se debe usar un genérico ("Servicios Administrados AeroRed", "Servicio Administrado de Ciberseguridad", etc.).
 
 
 ---
