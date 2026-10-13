@@ -7,6 +7,15 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ---
 
+### Refactor de copy en titulos de paquetes (tiers) - mejora de narrativa comercial (13 de octubre de 2026)
+
+- **Feature (cards de paquetes `#paquetes`):** refactor de los 4 titulos de los tiers para que sigan una escalera de madurez operativa. Antes tenian redundancia verbal ("Empezar con poco" / "Empezar sin sobresaltos" / "Operar sin sobresaltos" / "Probar y demostrar"). Ahora cada titulo responde a una pregunta comercial distinta:
+  - **Bronze Economico:** "Arrancar con bajo costo" (presupuesto limitado, cobertura esencial)
+  - **Bronze Premium:** "Estabilizar la operacion" (cliente que ya decidio invertir)
+  - **Silver:** "Operar 24/7 sin sobresaltos" (manos expertas todos los dias)
+  - **Gold:** "Demostrar y certificar" (evidencia para auditoria/regulador)
+- **Validacion:** Playwright valido que los 4 titulos se renderizan correctamente. Sin cambios en el modelo de costos, precios, add-ons, capacidades ni estructura del cotizador.
+
 ### Adición de ManageEngine PAM360 como add-on de PAM (13 de octubre de 2026)
 
 > Cierra uno de los `[GAP]` que quedaba pendiente en el catalogo: el PAM (Privileged Access Management). ManageEngine PAM360 tiene edicion MSP oficial, capacidades avanzadas (credential vaulting AES-256, JIT privilege elevation, session recording RDP/SSH/VNC/SQL, secrets management, cloud entitlements management) y cumple marcos internacionales (NIST, PCI-DSS, FISMA, HIPAA, SOX, ISO-IEC 27001). Challenger en Gartner 2025.
