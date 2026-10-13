@@ -7,6 +7,10 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ---
 
+### Re-push de c8202c4 (13 de octubre de 2026)
+
+- **Re-push tecnico para forzar actualizacion de cPanel.** Commit anterior 449b653 se subio correctamente a GitHub pero cPanel no se actualizo. Se agrega un comentario HTML distintivo en la seccion `#paquetes` (no afecta el render) para que cPanel detecte el archivo como nuevo y fuerce la sincronizacion con `public_html/`.
+
 ### Refactor de copy en titulos de paquetes (tiers) - mejora de narrativa comercial (13 de octubre de 2026)
 
 - **Feature (cards de paquetes `#paquetes`):** refactor de los 4 titulos de los tiers para que sigan una escalera de madurez operativa. Antes tenian redundancia verbal ("Empezar con poco" / "Empezar sin sobresaltos" / "Operar sin sobresaltos" / "Probar y demostrar"). Ahora cada titulo responde a una pregunta comercial distinta:
