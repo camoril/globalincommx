@@ -2,8 +2,78 @@
 
 Registro de cambios implementados en el sitio web de GlobalIncom.
 
-**Período:** 28/nov/2025 - 12/oct/2026
-**Última actualización:** 12/oct/2026
+**Período:** 28/nov/2025 - 13/oct/2026
+**Última actualización:** 13/oct/2026
+
+---
+
+### Adición de ManageEngine PAM360 como add-on de PAM (13 de octubre de 2026)
+
+> Cierra uno de los `[GAP]` que quedaba pendiente en el catalogo: el PAM (Privileged Access Management). ManageEngine PAM360 tiene edicion MSP oficial, capacidades avanzadas (credential vaulting AES-256, JIT privilege elevation, session recording RDP/SSH/VNC/SQL, secrets management, cloud entitlements management) y cumple marcos internacionales (NIST, PCI-DSS, FISMA, HIPAA, SOX, ISO-IEC 27001). Challenger en Gartner 2025.
+
+- **Feature (cotizador `#cotizador`):** Nuevo add-on **"PAM — Cuentas privilegiadas"** (`+USD 450/mes`, ícono `key-round`, paleta púrpura). Costo partner estimado ~$758/mes para 20 admins + 50 keys (ManageEngine list price $12,995/año con descuento partner -30%). Markup bajo (~2x) porque el add-on incluye gestion activa: configuracion inicial, onboarding de cuentas, monitoreo y reportes. El JS `calculateEstimate()` ahora tambien suma este add-on al total.
+- **Feature (tabla `#capacidades`):** Nueva fila **"PAM — Cuentas privilegiadas (ManageEngine PAM360)"** con marca "Add-on" en los 4 tiers (no incluido en paquete base, disponible como add-on). Marcada con clase púrpura para diferenciarla visualmente de los checks verdes (incluido) y círculos grises (no disponible).
+- **Refactor (copy Bronze Economico):** Eliminada la oracion "Costo operativo calculado sobre descuentos de partner reales." Es copy interno de tu modelo de costos, no debe aparecer en la landing publica. Mantengo la esencia del mensaje (stack Seqrite + ManageEngine, menor costo, ideal para presupuesto limitado) sin exponer la metodologia.
+- **Documentacion:** Actualizado `vario/Servicios_Administrados/MODELO_COSTOS_v1.md` con seccion 2.9 (pricing de PAM360 por tier de administradores+keys) y entrada en tabla de add-ons.
+- **QA ejecutado:** HTML valido (parser Python, 0 tags sin cerrar), tabla renderiza correctamente con la nueva fila, add-on aparece en cotizador y suma al total, light + dark mode OK.
+
+---
+
+### Refactor del modelo de precios del cotizador con descuentos de partner reales (13 de octubre de 2026)
+
+> Sustituye los precios hardcoded del cotizador por un modelo dinamico basado en descuentos de partner (P1-D), costo de personal prorrateado (P2-A) y margen operativo 40% (P4-B). El subcontrato de Global Lynx queda como linea configurable en $0 hasta que se defina el numero (P3-pendiente). El cliente ahora puede ver el desglose de costos en tiempo real antes de enviar la solicitud de cotizacion.
+
+- **Feature (cotizador `#cotizador`):** Reescritura completa de `calculateEstimate()` con modelo de costos basado en:
+  - **Licencias** calculadas dinamicamente segun el tier: XGS prorrateado (~$86/mes Bronze-Silver, $342/mes Gold), endpoint EDR/MDR per-user (Seqrite $2.12 Bronze Eco, Sophos $3.25-$6.58 tiers superiores), Site24x7 MSP prorrateado ($7-$44/mes), Log360 escalado por fuentes de log (10/25/50/100 fuentes), VMP escalado por endpoints (50/100/250).
+  - **Personal NOC/SOC:** $1,000/mes Bronze-Silver, $1,500/mes Gold (1 FTE compartido entre 5-8 clientes).
+  - **Soporte 24/7:** $500/mes Silver, $700/mes Gold (incluido en precio).
+  - **Overhead:** $200/mes Bronze-Silver, $300/mes Gold.
+  - **Subcontrato Global Lynx:** $0 (pendiente de negociacion).
+  - **Cargos por dimension:** usuario extra $18/mes (antes $12), endpoint extra $9/mes (antes $6), servidor $90/mes (sin cambio), sede $250/mes (sin cambio).
+  - **Margen 40% sobre costo total:** precio al cliente = costo / 0.60.
+- **Feature (resumen del cotizador):** Nuevo bloque `<details>` colapsable "Ver desglose de costos" debajo del scope breakdown. Muestra 5 lineas dinamicas:
+  - Licencias (Sophos/Seqrite/ME): USD $X
+  - Personal + Soporte + Overhead: USD $Y
+  - Subcontrato (pentest/awareness): Pendiente
+  - Costo total estimado: USD $Z
+  - Margen operativo: 40% (USD $W)
+  - Nota explicativa al pie con la metodologia (descuentos MSP aplicados, prorrateo de personal, estado del subcontrato).
+- **Refactor (precios base de paquetes):**
+  - **Bronze Economico:** "Desde USD $1,500" → **"Desde USD $2,000"** (margen ~30% para entrar al segmento de bajo presupuesto).
+  - Bronze Premium, Silver, Gold mantienen sus precios de referencia (la logica del modelo los valida automaticamente).
+- **Feature (descripcion card Bronze Economico):** Copy ampliada para mencionar que el costo operativo se calcula sobre descuentos de partner reales.
+- **Documentacion:** Nuevo documento tecnico `MODELO_COSTOS_v1.md` en `vario/Servicios_Administrados/` con el desglose completo del modelo de costos por tier, parametros del modelo, calculos paso a paso y recomendaciones.
+- **Decisiones tomadas (alineadas contigo en sesion 13/oct/2026):**
+  - **P1-D:** Descuento de partner variable por volumen (30% enterprise, 40% volumen).
+  - **P2-A:** 1 FTE NOC/SOC compartido USD $1,000/mes promedio por cliente.
+  - **P3:** Subcontrato Global Lynx PENDIENTE (linea en $0 hasta definir).
+  - **P4-B:** Margen 40% estandar industria.
+- **QA ejecutado (Playwright):**
+  - Bronze Eco default (25u/30e/3s/1sed): Precio $2,494. Licencias $296.60, Personal $1,200, Costo total $1,496.60, Margen 40% = $599.
+  - Gold + DLP+MDM+ZTNA (25u/30e/3s/1sed por default): Precio $6,372. Licencias $723.40, Personal $2,500, Costo total $3,223.40, Margen 40% = $1,289.
+  - Verificacion visual: details se expande correctamente, valores dinamicos se actualizan al cambiar tier/add-ons/sliders, contraste adecuado en light y dark mode.
+
+---
+
+### Adición de opción Bronze Económico con stack Seqrite (13 de octubre de 2026)
+
+> Incorpora al brochure público la opción de **Bronze Económico**: un paquete de menor costo orientado a clientes con presupuesto limitado (FBOs, aeródromos pequeños, transportistas chárter) usando **Seqrite** (Quick Heal Technologies) como fabricante de endpoint/EDR en alianza con **iCORP**. Mantiene el stack premium **Sophos + ManageEngine** sin cambios para los demás tiers. Cierra los `[GAP]` de DLP, MDM y ZTNA ahora disponibles como add-ons comerciales en el cotizador.
+
+- **Feature (sección `#paquetes`):** Nuevo card **"Bronze Económico"** (paleta esmeralda, botón esmeralda) ubicado como **primer paquete** en la grid (`lg:grid-cols-4`). Precio **Desde USD $1,500/mes**. Stack: Sophos XGS + Seqrite EPS (AV + EDR + App Control) + ManageEngine Site24x7 + VMP. CTA "Cotizar Bronze Económico" hacia `#cotizador`. Se renombró el card existente "Bronze" → "Bronze Premium" para diferenciar.
+- **Feature (cotizador `#cotizador`):** Grid de paquetes cambiada de `sm:grid-cols-3` a `sm:grid-cols-4` para acomodar Bronze Eco. Nuevo radio button **"Bronze Eco"** (esmeralda, USD $1,500) seleccionado por default. Lógica de `calculateEstimate()` actualizada con lookup `bronzeeco: 1500` y label "Bronze Económico".
+- **Feature (add-ons del cotizador):** Tres nuevos add-ons disponibles para cualquier tier:
+  - **DLP nativo (Seqrite Data Privacy)** — `+USD 350/mes`, ícono `lock`.
+  - **MDM / BYOD (Seqrite EMM)** — `+USD 250/mes`, ícono `smartphone`.
+  - **ZTNA / VPN seguro (Seqrite)** — `+USD 400/mes`, ícono `shield-check`.
+  Grid de add-ons cambiada de 2 a 3 columnas (`lg:grid-cols-3`). Hover de los nuevos add-ons en verde esmeralda para indicar que son del stack Seqrite.
+- **Feature (tabla `#capacidades`):** Nueva columna **"Bronze Eco"** (esmeralda) en el header de la tabla, ubicada antes de "Bronze". Las 14 filas de capacidades ahora muestran los 4 tiers: **Bronze Eco / Bronze / Silver / Gold**. Bronze Eco tiene check en Monitoreo, Identidad, Servidores de AD, EDR, XGS, VMP, Awareness y Reportes; y círculo vacío en MDR, SIEM, Mesa 8x5, Mesa 24/7, Pentest y Consultoría (reflejando el alcance de menor profundidad operativa).
+- **Refactor (sección `#modulos`):** Descripción actualizada para mencionar la alternativa de menor costo con Seqrite como fabricante de endpoint, EDR, DLP, MDM y ZTNA. Tono comercial, sin marcas regulatorias.
+- **Refactor (JSON-LD `Service`):** Descripción principal actualizada mencionando la alianza con Sophos, ManageEngine y Seqrite (opción de bajo costo). Se agregó un cuarto `Offer` "Bronze Económico" antes del "Bronze Premium". Se renombró el `Offer` "Bronze" → "Bronze Premium".
+- **Refactor (SEO meta tags):** `description`, `og:description`, `twitter:description` y `keywords` actualizados para mencionar Bronze Económico y Seqrite.
+- **Refactor (footer):** Entrada "Servicios" actualizada → "Paquetes Bronze (Eco/Premium) / Silver / Gold".
+- **Bugfix:** Eliminada sección **HTML duplicada** de sliders legacy (líneas 1197-1232) que repetía el bloque de dimensionamiento con IDs idénticos (sobreescribía silenciosamente los valores del slider canónico en el DOM). Ahora solo queda la sección canónica con `inputUsers`, `inputEndpoints`, `inputServers` e `inputSites`.
+- **Documentación:** Backup completo del HTML previo guardado en `servicios/index_v1_backup_antes_seqrite.html` por si se requiere rollback.
+- **QA (pendiente):** Validar visualmente con Playwright en `/tmp/servicios_v4_{light,dark}.png` (full_page, 1280px viewport). Verificar: nuevo card Bronze Económico no overflow en móvil, tabla con 5 columnas (header + 4 tiers) cabe en desktop pero requiere scroll horizontal en móvil, 3 nuevos add-ons se ven correctamente, lógica del cotizador devuelve el precio correcto al cambiar entre Bronze Eco ($1,500), Bronze ($2,500), Silver ($4,500) y Gold ($8,000). HTML válido, 0 menciones regulatorias (AFAC/UVA/MSSP/CO-SA/Global Lynx/CST/numeral XIII).
 
 ---
 
