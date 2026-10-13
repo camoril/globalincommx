@@ -7,6 +7,17 @@ Registro de cambios implementados en el sitio web de GlobalIncom.
 
 ---
 
+### Limpieza de copy comercial en HTML publico (13 de octubre de 2026)
+
+- **Refactor (HTML publico):** eliminadas menciones de relaciones comerciales (partner, aliado, alianza) y de metodologia de costos interna (descuentos de lista, margen operativo, subcontratos pendientes) que no deben aparecer en la landing publica. Cambios especificos:
+  - **Linea 9 (meta description):** "Alianza tecnologica con Sophos..." -> "Stack tecnologico basado en Sophos..."
+  - **Linea 17 (og:description):** "Alianza con Sophos..." -> "Stack tecnologico basado en Sophos..."
+  - **Linea 113 (JSON-LD description):** "Stack enterprise en alianza con..." -> "Stack enterprise basado en tecnologia..."
+  - **Linea 539 (seccion de stacks):** reescrito para describir los componentes del servicio (Sophos XGS, Intercept X, ManageEngine, etc.) en vez de mencionar la relacion comercial.
+  - **Linea 1405 (bloque "Ver desglose de costos"):** cambio critico. Antes decia "Costo de partner estimado con descuentos MSP sobre precios de lista (Sophos -30%, ManageEngine -30%, Seqrite -40%). Costo de personal prorrateado entre 5-8 clientes. Subcontrato Global Lynx pendiente de negociacion. Margen operativo 40% sobre costo total." Ahora solo dice "Estimacion calculada sobre el costo operativo real: licencias de los componentes incluidos, personal tecnico asignado a la operacion y soporte 24/7. El precio final se valida con un diagnostico tecnico sin costo antes de la firma del contrato."
+  - **Comentarios JS (lineas 1641, 1672, 1676, 1758):** "costo de partner" / "costo partner" / "markup sobre costo partner" cambiados a "costo base" / "costo operativo" / "markup sobre costo base" (no visibles al cliente, solo limpieza de codigo).
+- **Validacion:** grep final muestra 0 menciones de "partner/aliado/alianza/socio comercial" y 0 menciones visibles al cliente de descuentos/margen/subcontrato.
+
 ### Re-push de c8202c4 (13 de octubre de 2026)
 
 - **Re-push tecnico para forzar actualizacion de cPanel.** Commit anterior 449b653 se subio correctamente a GitHub pero cPanel no se actualizo. Se agrega un comentario HTML distintivo en la seccion `#paquetes` (no afecta el render) para que cPanel detecte el archivo como nuevo y fuerce la sincronizacion con `public_html/`.
